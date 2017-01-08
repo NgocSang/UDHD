@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.TransactionDetail" table="TRANSACTION_DETAIL">
+        <id name="transactionId" type="string">
+            <column name="TRANSACTION_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="merchant" class="com.nhatnguyen.pojo.Merchant" fetch="select">
+            <column name="MERCHANT_NUMBER" not-null="true" />
+        </many-to-one>
+        <property name="expirationDate" type="timestamp">
+            <column name="EXPIRATION_DATE" length="23" not-null="true" />
+        </property>
+        <property name="transactionCode" type="string">
+            <column name="TRANSACTION_CODE" not-null="true" />
+        </property>
+        <property name="transactionAmount" type="long">
+            <column name="TRANSACTION_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="transactionDate" type="date">
+            <column name="TRANSACTION_DATE" length="10" not-null="true" />
+        </property>
+        <property name="transactionTime" type="time">
+            <column name="TRANSACTION_TIME" length="16" not-null="true" />
+        </property>
+        <property name="keyedEntry" type="string">
+            <column name="KEYED_ENTRY" not-null="true" />
+        </property>
+        <property name="authorizationNumber" type="string">
+            <column name="AUTHORIZATION_NUMBER" not-null="true" unique="true" />
+        </property>
+        <property name="transactionDescription" type="string">
+            <column name="TRANSACTION_DESCRIPTION" />
+        </property>
+        <property name="batchNumber" type="string">
+            <column name="BATCH_NUMBER" not-null="true" />
+        </property>
+        <property name="accountNumber" type="string">
+            <column name="ACCOUNT_NUMBER" not-null="true" />
+        </property>
+        <property name="cardtypeCode" type="string">
+            <column name="CARDTYPE_CODE" not-null="true" />
+        </property>
+        <property name="countryCode" type="string">
+            <column name="COUNTRY_CODE" not-null="true" />
+        </property>
+        <property name="firstTwelveAccountNumber" type="string">
+            <column name="FIRST_TWELVE_ACCOUNT_NUMBER" not-null="true" />
+        </property>
+        <property name="isRead" type="string">
+            <column name="IS_READ" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Agent" table="AGENT">
+        <id name="agentNumber" type="string">
+            <column name="AGENT_NUMBER" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="processor" class="com.nhatnguyen.pojo.Processor" fetch="select" lazy="false">
+            <column name="BACKEND_PROCESSOR" not-null="true" />
+        </many-to-one>
+        <property name="agentName" type="string">
+            <column name="AGENT_NAME" not-null="true" />
+        </property>
+        <property name="agentTelephone1" type="string">
+            <column name="AGENT_TELEPHONE1" not-null="true" />
+        </property>
+        <property name="agentTelephone2" type="string">
+            <column name="AGENT_TELEPHONE2" />
+        </property>
+        <property name="agentTelephone3" type="string">
+            <column name="AGENT_TELEPHONE3" />
+        </property>
+        <property name="agentCity" type="string">
+            <column name="AGENT_CITY" not-null="true" />
+        </property>
+        <property name="agentDistrict" type="string">
+            <column name="AGENT_DISTRICT" not-null="true" />
+        </property>
+        <property name="agentStreet" type="string">
+            <column name="AGENT_STREET" not-null="true" />
+        </property>
+        <property name="agentStreetNumber" type="string">
+            <column name="AGENT_STREET_NUMBER" not-null="true" />
+        </property>
+        <property name="agentRegion" type="string">
+            <column name="AGENT_REGION" not-null="true" />
+        </property>
+        <property name="agentOwner" type="string">
+            <column name="AGENT_OWNER" not-null="true" />
+        </property>
+        <property name="agentFax" type="string">
+            <column name="AGENT_FAX" not-null="true" />
+        </property>
+        <property name="agentEmail1" type="string">
+            <column name="AGENT_EMAIL_1" not-null="true" />
+        </property>
+        <property name="agentEmail2" type="string">
+            <column name="AGENT_EMAIL_2" />
+        </property>
+        <property name="agentEmail3" type="string">
+            <column name="AGENT_EMAIL_3" />
+        </property>
+        <property name="agentBankAccount" type="string">
+            <column name="AGENT_BANK_ACCOUNT" not-null="true" />
+        </property>
+        <property name="agentStatus" type="string">
+            <column name="AGENT_STATUS" not-null="true" />
+        </property>
+        <property name="agentAppr0veDate" type="timestamp">
+            <column name="AGENT_APPR0VE_DATE" length="23" not-null="true" />
+        </property>
+        <property name="agentFirstDateActivate" type="timestamp">
+            <column name="AGENT_FIRST_DATE_ACTIVATE" length="23" />
+        </property>
+        <property name="agentLastDayActivate" type="timestamp">
+            <column name="AGENT_LAST_DAY_ACTIVATE" length="23" />
+        </property>
+        <set name="merchants" table="MERCHANT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MANAGE_AGENT" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.Merchant" />
+        </set>
+    </class>
+</hibernate-mapping>

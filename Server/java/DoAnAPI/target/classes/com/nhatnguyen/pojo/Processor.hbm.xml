@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Processor" table="PROCESSOR">
+        <id name="processorId" type="string">
+            <column name="PROCESSOR_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="processorAddress" type="string">
+            <column name="PROCESSOR_ADDRESS" not-null="true" />
+        </property>
+        <property name="processorBankAccount" type="string">
+            <column name="PROCESSOR_BANK_ACCOUNT" not-null="true" />
+        </property>
+        <set name="agents" table="AGENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BACKEND_PROCESSOR" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.Agent" />
+        </set>
+        <set name="merchants" table="MERCHANT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BACKEND_PROCESSOR" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.Merchant" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.MerchantSummary" table="MERCHANT_SUMMARY">
+        <composite-id name="id" class="com.nhatnguyen.pojo.MerchantSummaryId">
+            <key-property name="merchantNumber" type="binary">
+                <column name="MERCHANT_NUMBER" />
+            </key-property>
+            <key-property name="reportDate" type="date">
+                <column name="REPORT_DATE" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="merchant" class="com.nhatnguyen.pojo.Merchant" update="false" insert="false" fetch="select">
+            <column name="MERCHANT_NUMBER" not-null="true" />
+        </many-to-one>
+        <property name="transactionCount" type="int">
+            <column name="TRANSACTION_COUNT" not-null="true" />
+        </property>
+        <property name="salesCount" type="int">
+            <column name="SALES_COUNT" not-null="true" />
+        </property>
+        <property name="salesAmount" type="long">
+            <column name="SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="returnCount" type="int">
+            <column name="RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="returnAmount" type="long">
+            <column name="RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="netAmount" type="long">
+            <column name="NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="keyedCount" type="int">
+            <column name="KEYED_COUNT" not-null="true" />
+        </property>
+        <property name="keyAmount" type="long">
+            <column name="KEY_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="foreignCardCount" type="int">
+            <column name="FOREIGN_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="foreignCardSalesCount" type="int">
+            <column name="FOREIGN_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="foreignCardReturnCount" type="int">
+            <column name="FOREIGN_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="foreignCardSalesAmount" type="long">
+            <column name="FOREIGN_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="foreignCardReturnAmount" type="long">
+            <column name="FOREIGN_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="foreignCardNetAmount" type="long">
+            <column name="FOREIGN_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="debitCardCount" type="int">
+            <column name="DEBIT_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="debitCardSalesCount" type="int">
+            <column name="DEBIT_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="debitCardReturnCount" type="int">
+            <column name="DEBIT_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="debitCardSalesAmount" type="long">
+            <column name="DEBIT_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="debitCardReturnAmount" type="long">
+            <column name="DEBIT_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="debitCardNetAmount" type="long">
+            <column name="DEBIT_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="visaCardCount" type="int">
+            <column name="VISA_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="visaCardSalesCount" type="int">
+            <column name="VISA_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="visaCardReturnCount" type="int">
+            <column name="VISA_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="visaCardSalesAmount" type="long">
+            <column name="VISA_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="visaCardReturnAmount" type="long">
+            <column name="VISA_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="visaCardNetAmount" type="long">
+            <column name="VISA_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="masterCardCount" type="int">
+            <column name="MASTER_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="masterCardSalesCount" type="int">
+            <column name="MASTER_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="masterCardReturnCount" type="int">
+            <column name="MASTER_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="masterCardSalesAmount" type="long">
+            <column name="MASTER_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="masterCardReturnAmount" type="long">
+            <column name="MASTER_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="masterCardNetAmount" type="long">
+            <column name="MASTER_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="americanexpressCardCount" type="int">
+            <column name="AMERICANEXPRESS_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="americanexpressCardSalesCount" type="int">
+            <column name="AMERICANEXPRESS_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="americanexpressCardReturnCount" type="int">
+            <column name="AMERICANEXPRESS_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="americanexpressCardSalesAmount" type="long">
+            <column name="AMERICANEXPRESS_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="americanexpressCardReturnAmount" type="long">
+            <column name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="americanexpressCardNetAmount" type="long">
+            <column name="AMERICANEXPRESS_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="discoveryCardCount" type="int">
+            <column name="DISCOVERY_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="discoveryCardSalesCount" type="int">
+            <column name="DISCOVERY_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="discoveryCardReturnCount" type="int">
+            <column name="DISCOVERY_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="discoveryCardSalesAmount" type="long">
+            <column name="DISCOVERY_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="discoveryCardReturnAmount" type="long">
+            <column name="DISCOVERY_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="discoveryCardNetAmount" type="long">
+            <column name="DISCOVERY_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="otherCardCount" type="int">
+            <column name="OTHER_CARD_COUNT" not-null="true" />
+        </property>
+        <property name="otherCardSalesCount" type="int">
+            <column name="OTHER_CARD_SALES_COUNT" not-null="true" />
+        </property>
+        <property name="otherCardReturnCount" type="int">
+            <column name="OTHER_CARD_RETURN_COUNT" not-null="true" />
+        </property>
+        <property name="otherCardSalesAmount" type="long">
+            <column name="OTHER_CARD_SALES_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="otherCardReturnAmount" type="long">
+            <column name="OTHER_CARD_RETURN_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+        <property name="otherCardNetAmount" type="long">
+            <column name="OTHER_CARD_NET_AMOUNT" precision="18" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

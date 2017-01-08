@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Merchant" table="MERCHANT">
+        <id name="merchantNumber" type="string">
+            <column name="MERCHANT_NUMBER" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="agent" class="com.nhatnguyen.pojo.Agent" fetch="select" lazy="false">
+            <column name="MANAGE_AGENT" />
+        </many-to-one>
+        <many-to-one name="processor" class="com.nhatnguyen.pojo.Processor" fetch="select" lazy="false">
+            <column name="BACKEND_PROCESSOR" not-null="true" />
+        </many-to-one>
+        <property name="merchantName" type="string">
+            <column name="MERCHANT_NAME" not-null="true" />
+        </property>
+        <property name="merchantType" type="string">
+            <column name="MERCHANT_TYPE" not-null="true" />
+        </property>
+        <property name="merchantTelephone1" type="string">
+            <column name="MERCHANT_TELEPHONE1" not-null="true" />
+        </property>
+        <property name="merchantTelephone2" type="string">
+            <column name="MERCHANT_TELEPHONE2" />
+        </property>
+        <property name="merchantTelephone3" type="string">
+            <column name="MERCHANT_TELEPHONE3" />
+        </property>
+        <property name="merchantCity" type="string">
+            <column name="MERCHANT_CITY" not-null="true" />
+        </property>
+        <property name="merchantDistrict" type="string">
+            <column name="MERCHANT_DISTRICT" not-null="true" />
+        </property>
+        <property name="merchantStreet" type="string">
+            <column name="MERCHANT_STREET" not-null="true" />
+        </property>
+        <property name="merchantSteetNumber" type="string">
+            <column name="MERCHANT_STEET_NUMBER" not-null="true" />
+        </property>
+        <property name="merchantRegion" type="string">
+            <column name="MERCHANT_REGION" not-null="true" />
+        </property>
+        <property name="merchantOwner" type="string">
+            <column name="MERCHANT_OWNER" not-null="true" />
+        </property>
+        <property name="merchantFax" type="string">
+            <column name="MERCHANT_FAX" not-null="true" />
+        </property>
+        <property name="merchantEmail1" type="string">
+            <column name="MERCHANT_EMAIL1" not-null="true" />
+        </property>
+        <property name="merchantEmail2" type="string">
+            <column name="MERCHANT_EMAIL2" />
+        </property>
+        <property name="merchantEmail3" type="string">
+            <column name="MERCHANT_EMAIL3" />
+        </property>
+        <property name="merchantBankAccount" type="string">
+            <column name="MERCHANT_BANK_ACCOUNT" not-null="true" />
+        </property>
+        <property name="merchantStatus" type="string">
+            <column name="MERCHANT_STATUS" not-null="true" />
+        </property>
+        <property name="merchantAppr0veDate" type="timestamp">
+            <column name="MERCHANT_APPR0VE_DATE" length="23" not-null="true" />
+        </property>
+        <property name="merchantFirstDateActivate" type="timestamp">
+            <column name="MERCHANT_FIRST_DATE_ACTIVATE" length="23" />
+        </property>
+        <property name="merchantLastDayActivate" type="timestamp">
+            <column name="MERCHANT_LAST_DAY_ACTIVATE" length="23" />
+        </property>
+        <set name="transactionDetails" table="TRANSACTION_DETAIL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MERCHANT_NUMBER" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.TransactionDetail" />
+        </set>
+        <set name="merchantSummaries" table="MERCHANT_SUMMARY" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MERCHANT_NUMBER" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.MerchantSummary" />
+        </set>
+    </class>
+</hibernate-mapping>

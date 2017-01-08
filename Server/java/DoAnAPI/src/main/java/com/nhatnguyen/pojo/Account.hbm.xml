@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Account" table="ACCOUNT">
+        <id name="account" type="serializable">
+            <column name="ACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="serializable">
+            <column name="PASSWORD" not-null="true" />
+        </property>
+        <property name="role" type="serializable">
+            <column name="ROLE" not-null="true" />
+        </property>
+        <set name="outboxMessagesForSendingAccount" table="OUTBOX_MESSAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SENDING_ACCOUNT" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.OutboxMessage" />
+        </set>
+        <set name="messagesForReceivedAccount" table="MESSAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RECEIVED_ACCOUNT" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.Message" />
+        </set>
+        <set name="outboxMessagesForReceivedAccount" table="OUTBOX_MESSAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RECEIVED_ACCOUNT" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.OutboxMessage" />
+        </set>
+        <set name="messagesForSendingAccount" table="MESSAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SENDING_ACCOUNT" not-null="true" />
+            </key>
+            <one-to-many class="com.nhatnguyen.pojo.Message" />
+        </set>
+    </class>
+</hibernate-mapping>

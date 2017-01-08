@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Retrival" table="RETRIVAL">
+        <id name="retrivalId" type="string">
+            <column name="RETRIVAL_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="transactionId" type="string">
+            <column name="TRANSACTION_ID" />
+        </property>
+        <property name="retrivalDate" type="timestamp">
+            <column name="RETRIVAL_DATE" length="23" not-null="true" />
+        </property>
+        <property name="retrivalDescription" type="string">
+            <column name="RETRIVAL_DESCRIPTION" />
+        </property>
+    </class>
+</hibernate-mapping>

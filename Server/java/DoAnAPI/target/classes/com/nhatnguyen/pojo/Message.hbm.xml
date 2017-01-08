@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping>
+    <class name="com.nhatnguyen.pojo.Message" table="MESSAGE">
+        <id name="emailId" type="int">
+            <column name="EMAIL_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="accountByReceivedAccount" class="com.nhatnguyen.pojo.Account" fetch="select">
+            <column name="RECEIVED_ACCOUNT" not-null="true" />
+        </many-to-one>
+        <many-to-one name="accountBySendingAccount" class="com.nhatnguyen.pojo.Account" fetch="select">
+            <column name="SENDING_ACCOUNT" not-null="true" />
+        </many-to-one>
+        <property name="sendingDate" type="timestamp">
+            <column name="SENDING_DATE" length="23" not-null="true" />
+        </property>
+        <property name="readingStatus" type="serializable">
+            <column name="READING_STATUS" not-null="true" />
+        </property>
+        <property name="description" type="serializable">
+            <column name="DESCRIPTION" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

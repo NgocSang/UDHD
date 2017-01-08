@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 4, 2016 9:17:21 PM by Hibernate Tools 3.6.0.Final -->
+<hibernate-mapping default-access="field">
+ <class name="com.nhatnguyen.pojo.OutboxMessage" table="MESSAGE_OUTBOX">
+  <id name="emailId" type="int">
+   <column name="EMAIL_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="com.nhatnguyen.pojo.Account" fetch="select" name="accountByReceivedAccount">
+   <column name="RECEIVED_ACCOUNT" not-null="true"/>
+  </many-to-one>
+  <many-to-one class="com.nhatnguyen.pojo.Account" fetch="select" name="accountBySendingAccount">
+   <column name="SENDING_ACCOUNT" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="sendingDate" type="timestamp">
+   <column length="23" name="SENDING_DATE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="readingStatus" type="serializable">
+   <column name="READING_STATUS" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="description" type="serializable">
+   <column name="DESCRIPTION" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

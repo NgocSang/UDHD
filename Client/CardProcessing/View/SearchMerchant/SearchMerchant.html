@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h2>Tìm kiếm Merchant</h2>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- /.row -->
+    <div class="" style="margin:10px 0px 10px 0px; border:1px solid #ddd; border-radius: 25px">
+        <a style="margin-left:20px; font-size:18px;text-decoration: none;"  target="_self" ng-click="deleteClass()">Điều kiện tìm kiếm</a>
+        <div id="collapse12" >
+            <div class="row" style="margin-top:15px">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5 form-group">
+                    <label >Mã merchant</label>
+                    <input class="form-control" placeholder="Mã merchant" ng-model="merchant.merchant_number" style="width:50%; float:right" />
+                </div>
+                <div class="col-lg-5  form-group">
+                    <label>Mã Agent quản lý</label>
+                    <input class="form-control" placeholder="Agent quản lý" ng-model="merchant.agent_manager" style="width:50%; float:right" />
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            <!--/.row-->
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5  form-group">
+                    <label >Thành phố merchant</label>
+                    <input class="form-control" placeholder="Địa chỉ merchant" ng-model="merchant.merchant_address" style="width:50%; float:right" />
+                </div>
+                <div class="col-lg-5  form-group">
+                    <label >Tên merchant</label>
+                    <input class="form-control" placeholder="Tên merchant" ng-model="merchant.merchant_name" style="width:50%; float:right" />
+                </div>
+            </div>
+            <!--/.row-->
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5  form-group">
+                    <label >Loại merchant</label>
+                    <select   class="form-control" ng-model="merchant.typeMerchant"  style="width:50%; float:right">
+                        <option value=""></option>
+                        <option value="SIEUTHI">Siêu Thị</option>
+                        <option value="NHAHANG">Nhà Hàng</option>
+                        <option value="KHACHSAN">Khách sạn</option>
+                        <option value="THOITRANG">Shop quần áo</option>
+                    </select>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5"></div>
+            </div>
+            <!--/.row-->
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-5"></div>
+                <div class="col-lg-5">
+                    <button class="btn btn-primary" ng-click="searchMerchant()" style="float:right">
+                        Tìm kiếm 
+                        <span class="fa fa-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!--/.row-->
+    </div>
+    <!-- /.panel -->
+    
+    <!--- -->
+    <div class="input-group col-md-12">
+        <input type="text" class="form-control" ng-model="customFilter.search"/>
+        <span class="input-group-btn">
+            <button class="btn btn-info " type="button">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+    </div>
+    <!--    --->
+    <div >
+        <md-table-container>
+            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="oselected" md-progress="promise">
+                <thead  md-head md-order="query.order" md-on-reorder="logOrder">
+                <tr md-row>
+                    <th md-column ng-if="role == 1" ><span style="color: black;font-size: 120%">Active</span></th>
+                    <th md-column md-order-by="MERCHANT_NUMBER"><span style="color: black;font-size: 120%">Mã merchant</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_NAME"><span style="color: black;font-size: 120%">Tên Merchant</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_TELEPHONE1" md-desc><span style="color: black;font-size: 120%">Số điện thoại</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_CITY"><span style="color: black;font-size: 120%">Thành phố</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_DISTRICT"><span style="color: black;font-size: 120%">Tên đường</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_STREET"><span style="color: black;font-size: 120%">ĐỊa chỉ</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_EMAIL_1" hide-gt-xs show-gt-md><span style="color: black;font-size: 120%">Email</span></th>
+                    <th md-column md-numeric md-order-by="MERCHANT_STATUS" hide-gt-xs show-gt-lg><span style="color: black;font-size: 120%">Merchant status</span></th>
+                    
+                </tr>
+                 
+                </thead>
+                <tbody md-body>
+                <tr md-row md-select="merchant" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="merchant in merchants.data | filter: customFilter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell ng-if="role == 1"><button style="width: 100px;text-align:center" ng-if="merchant.MERCHANT_STATUS == '1'" ng-click="Update_status(merchant)" class="btn btn-primary">Active</button>
+                                                <button style="width: 100px;text-align:center" ng-if="merchant.MERCHANT_STATUS == '0'" ng-click="Update_status(merchant)" class="btn btn-danger">Inactivate</button></td>
+                    <td md-cell>{{merchant.MERCHANT_NUMBER}}</td>
+                    <td md-cell> {{merchant.MERCHANT_NAME}}</td>
+                    <td md-cell>{{merchant.MERCHANT_TELEPHONE1}}</td>
+                    <td md-cell>{{merchant.MERCHANT_CITY}}</td>
+                    <td md-cell>{{merchant.MERCHANT_DISTRICT}}</td>
+                    <td md-cell>{{merchant.MERCHANT_STREET}}<td>
+                    <td md-cell hide-gt-xs show-gt-md>{{merchant.MERCHANT_EMAIL1}}</td>
+                    <td md-cell hide-gt-xs show-gt-lg>{{merchant.MERCHANT_STATUS}}</td>
+                </tr>
+                    
+                </tbody>
+            </table>
+        </md-table-container>
+    </div>
+
+        <md-table-pagination  md-limit="query.limit" md-page="query.page" md-total="{{merchants.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      
+</div>

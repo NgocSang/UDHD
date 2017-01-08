@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div>
+        <input type="radio" ng-model="revenue.type" value="Ngay"/>
+        <input type="text" ng-model="revenue.date" />
+        <input type="radio" ng-model="revenue.type" value="Thang"/>
+        <input type="text" ng-model="revenue.month" />
+        <input type="text" ng-model="revenue.yearmonth" />
+        <input type="radio" ng-model="revenue.type" value="Nam"/>
+        <input type="text" ng-model="revenue.quarter" />
+        <input type="text" ng-model="revenue.yearquarter" />
+        
+    </div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script src="Chart.min.js"></script>
+    <script src="pdfmake.min.js"></script>
+    <script src="vfs_fonts.js"></script>
+    <button class="btn btn-primary" ng-click="Xuat()">Xuat</button>
+    <button class="btn btn-primary" ng-click="Test()">Test</button>
+</div>

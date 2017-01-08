@@ -1,0 +1,298 @@
+<div class="container-fluid">
+ <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h2>Tìm kiếm Agent</h2>
+            </div>
+        </div>
+    </div>
+   
+    <div>
+        <div class="panel panel-body" style="margin-top:10px; border:1px solid #ddd; border-radius: 25px">
+        <div class="row" style="margin-top:15px">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 form-group">
+                <label>Mã ngân hàng </label>
+                <input type="text" class="form-control" placeholder="Bank's Account" ng-model="agent.agentBankNumber" style="width:50%; float:right">
+            </div>
+            <div class="col-lg-5  form-group">
+                <label>Quận </label>
+                <input type="text" class="form-control" placeholder="Agent's District" ng-model="agent.agentDistrict" style="width:50%; float:right">
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5  form-group">
+                <label>Ngày kích hoạt </label>
+                <input type="date" class="form-control" placeholder="Agent's Approved Date" ng-model="agent.agentApprovedDate" style="width:50%; float:right">
+            </div>
+            
+            <div class="col-lg-5  form-group">
+                <label>Loại Merchant </label>
+                <select   class="form-control" ng-model="agent.merchantType" style="width:50%; float:right">
+                    <option value="">Chọn loại Merchant</option>
+                    <option value="SIEUTHI">Siêu Thị</option>
+                    <option value="NHAHANG">Nhà Hàng</option>
+                    <option value="KHACHSAN">Khách sạn</option>
+                    <option value="THOITRANG">Shop quần áo</option>
+                </select>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5"></div>
+            <div class="col-lg-5">
+                <button class="btn btn-primary" ng-click="SearchAgent()" style="float:right">
+                    Tìm kiếm 
+                    <span class="fa fa-search"></span>
+                </button>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+    <!-- /.panel -->
+    
+    <div class="row">
+        <div class="input-group col-md-12">
+            <input type="text" class="form-control" ng-model="customFilter.search"/>
+            <span class="input-group-btn">
+                <button class="btn btn-info " type="button">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+        <md-table-container>
+            <!--<table 
+                   md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" 
+                   ng-model="selectedAgent" 
+                   md-progress="promise">-->
+            <table md-table md-row-select="options.rowSelection"  ng-model="oselected" md-progress="promise">
+                
+                <thead  md-head md-order="query.order" md-on-reorder="logOrder">
+                <tr md-row>
+                    <th md-column md-order-by="AGENT_NUMBER"><span style="font">Mã Agent</span></th>
+                    <th md-column md-order-by="AGENT_NAME"><span>Tên Agent</span></th>
+                    <th md-column md-order-by="AGENT_TELEPHONE1" md-desc><span>SĐT</span></th>
+                    <th md-column md-order-by="AGENT_CITY"><span>Thành Phố</span></th>
+                    <th md-column md-order-by="AGENT_DISTRICT"><span>Quận</span></th>
+                    <th md-column md-order-by="AGENT_STREET"><span>Địa chỉ</span></th>
+                    <th md-column md-order-by="AGENT_EMAIL_1"><span>Email</span></th>
+                    <th md-column md-numeric md-order-by="AGENT_STATUS"><span>Trạng Thái</span></th>
+                </tr>
+                 
+                </thead>
+                <tbody md-body>
+                <tr 
+                    md-row md-select="agent"
+                    md-on-select="logItem"
+                    md-auto-select="options.autoSelect"
+                    ng-repeat="agent in agents.data | filter: customFilter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                    
+                    <td md-cell>{{agent.AGENT_NUMBER}}</td>
+                    <td md-cell>{{agent.AGENT_NAME}}</td>
+                    <td md-cell>{{agent.AGENT_TELEPHONE1}}</td>
+                    <td md-cell>{{agent.AGENT_CITY}}</td>
+                    <td md-cell>{{agent.AGENT_DISTRICT}}</td>
+                    <td md-cell>{{agent.AGENT_STREET}}<td>
+                    <td md-cell>{{agent.AGENT_EMAIL_1}}</td>
+                    <td md-cell>{{agent.AGENT_STATUS}}</td>
+                </tr>
+                    
+                </tbody>
+            </table>
+        </md-table-container>
+        
+        <md-table-pagination
+             md-limit="query.limit"
+             md-page="query.page"
+             md-total="{{agents.size}}"
+             md-page-select="options.pageSelect"
+             md-boundary-links="options.boundaryLinks"
+             md-on-paginate="logPagination">
+        </md-table-pagination>
+    </div>
+    </div>
+    <div>
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h2>Phân quyền Agent</h2>
+            </div>
+        </div>
+    </div>
+        <br><span  style="font-size: 20px;text-align:center;">Thông tin Agent đã chọn</span><br>
+        <h3>&nbsp;<span style="font-size: 20px">Mã Agent:</span>&nbsp;<span  style="font-size: 20px">{{information.AGENT_NUMBER}}</span><h3></h3>
+        <h3>&nbsp;<span style="font-size: 20px">Tên Agent: </span>&nbsp;<span style="font-size: 20px">{{information.AGENT_NAME}}</span></h3><br>
+        <legend></legend>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1" style="text-align:center;">
+                   <span class="label label-info" style="font-size: 20px">Các Merchant có {{information.AGENT_NUMBER}} quản lý</span><br><br>
+                
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control" ng-model="customFilter.searchQL"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info " type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+                
+                
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="active"><strong>Mã Merchant</strong></td>
+                            <td class="active"><strong>Tên Merchant</strong></td>
+                            <td class="active"><strong>Địa chỉ</strong></td>
+                            <td class="warning"><strong>Chọn</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="merchantOwn in merchantOwns | filter: customFilter.searchQL |limitTo: query2.limit : (query2.page -1) * query2.limit">
+                        <tr >
+                            <td class="info">{{merchantOwn.MERCHANT_NUMBER}}</td>
+                            <td class="success">{{merchantOwn.MERCHANT_NAME}}</td>
+                            <td class="danger"><p style="height:25px;width:350px;display:inline-block;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;">{{merchantOwn.MERCHANT_STEET_NUMBER}}, {{merchantOwn.MERCHANT_STREET}}, {{merchantOwn.MERCHANT_CITY}}</p></td>
+                            <td class="warning"><button class="btn btn-danger" data-toggle="modal" data-target="{{'#' + merchantOwn.MERCHANT_NUMBER+'Opts'}}"><span class="glyphicon glyphicon-remove-sign"></span> </button>  
+                            <div class="modal fade" id="{{merchantOwn.MERCHANT_NUMBER+'Opts'}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                                  </div>
+                                  <div class="modal-body" >
+                                    <p> Bạn có muốn {{merchantOwn.MERCHANT_NUMBER}} không còn được quản lý bởi {{information.AGENT_NUMBER}}?</p> 
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="huy(merchantOwn)">OK</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>    
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <md-table-pagination md-limit="query2.limit" md-page="query2.page" md-total="{{merchantOwns.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination><br>
+            </div>
+            
+            <div class="col-xs-10 col-xs-offset-1 " style="text-align:center;">
+                <span class="label label-info" style="font-size: 20px">Các Merchant không có Agent quản lý</span><br><br>
+                
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control" ng-model="customFilter.searchKQL"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info " type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+                
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="active"><strong>Mã Merchant</strong></td>
+                            <td class="active"><strong>Tên Merchant</strong></td>
+                            <td class="active"><strong>Địa chỉ</strong></td>
+                            <td class="info"><strong>Chọn</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="merchantNoOwn in merchantNoOwns | filter: customFilter.searchKQL |limitTo: query3.limit : (query3.page -1) * query3.limit">
+                        <tr>
+                            <td class="info">{{merchantNoOwn.MERCHANT_NUMBER}}</td>
+                            <td class="success">{{merchantNoOwn.MERCHANT_NAME}}</td>
+                            <td class="danger"><p style="height:25px;width:350px;display:inline-block;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;">{{merchantNoOwn.MERCHANT_STEET_NUMBER}}, {{merchantNoOwn.MERCHANT_STREET}}, {{merchantNoOwn.MERCHANT_CITY}}</p></td>
+                            <td class="info"><button class="btn btn-primary" data-toggle="modal" data-target="{{'#' + merchantNoOwn.MERCHANT_NUMBER+'Opts'}}"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                            
+                             <div class="modal fade" id="{{merchantNoOwn.MERCHANT_NUMBER+'Opts'}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                                  </div>
+                                  <div class="modal-body" >
+                                    <p> Bạn có muốn {{merchantNoOwn.MERCHANT_NUMBER}} được quản lý bởi {{information.AGENT_NUMBER}}?</p> 
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="them(merchantNoOwn)">OK</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <md-table-pagination md-limit="query3.limit" md-page="query3.page" md-total="{{merchantNoOwns.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination><br>
+            </div>
+            
+      
+    
+        <div class="col-xs-10 col-xs-offset-1" style="text-align:center;">
+            <span class="label label-info" style="font-size: 20px">Các Merchant có Agent khác quản lý </span><br><br>
+                
+            <div class="input-group col-md-12">
+                    <input type="text" class="form-control" ng-model="customFilter.searchQLK"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info " type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td class="active"><strong>Mã Agent</strong></td>
+                            <td class="active"><strong>Tên Agent</strong></td>
+                            <td class="active"><strong>Mã Merchant</strong></td>
+                            <td class="active"><strong>Tên Merchant</strong></td>
+                            <td class="active"><strong>Địa chỉ</strong></td>
+                            <td class="info"><strong>Chọn</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="merchanthasOwn in merchanthasOwns | filter: customFilter.searchQLK |limitTo: query4.limit : (query4.page -1) * query4.limit">
+                        <tr>
+                            <td class="info">{{merchanthasOwn.MANAGE_AGENT}}</td>
+                            <td class="success">{{merchanthasOwn.AGENT_NAME}}</td>
+                            <td class="danger">{{merchanthasOwn.MERCHANT_NUMBER}}</td>
+                            <td class="warning">{{merchanthasOwn.MERCHANT_NAME}}</td>
+                            <td class="danger"><p style="height:25px; width:350px;display:inline-block;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;">{{merchanthasOwn.MERCHANT_STEET_NUMBER}}, {{merchanthasOwn.MERCHANT_STREET}}, {{merchanthasOwn.MERCHANT_CITY}}</p></td>
+                            <td class="info"><button class="btn btn-primary" data-toggle="modal" data-target="{{'#' + merchanthasOwn.MERCHANT_NUMBER+'Opts'}}"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                              <div class="modal fade" id="{{merchanthasOwn.MERCHANT_NUMBER+'Opts'}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+                                  </div>
+                                  <div class="modal-body" >
+                                    <p> Bạn có muốn {{merchanthasOwn.MERCHANT_NUMBER}} được quản lý bởi {{information.AGENT_NUMBER}}?</p> 
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="themAgent(merchanthasOwn)">OK</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>   
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <md-table-pagination md-limit="query4.limit" md-page="query4.page" md-total="{{merchanthasOwns.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+
+        </div>
+        </div>
+    </div>
+</div>
+

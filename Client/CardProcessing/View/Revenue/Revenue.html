@@ -1,0 +1,179 @@
+
+<div class="container">
+    <h1 class="col-lg-11 well">Doanh thu</h1>
+    <div class="col-lg-11 well">
+        <div class="row">
+            <a style="margin-left:20px; font-size:18px;text-decoration: none;"  target="_self" ng-click="deleteClass()">Điều kiện tìm kiếm</a>
+            <div id="collapse12" >
+                <form name="RevenueForm">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div style=" height:95px;">
+                                <div style="margin-bottom:10px;" ng-if="role !='3'">
+                                    <div class='col-xs-3'>
+                                    <label>Mã merchant</label>
+                                        <input type='text' class="form-control" ng-model="Agent.merchant" />
+                                    </div>
+                                    <div class='col-xs-3'>
+                                        <label>Loại merchant</label>
+                                        <select  class="form-control" ng-model="Agent.typeMerchant">
+                                        <option value=""></option>
+                                        <option value="SIEUTHI">Siêu Thị</option>
+                                        <option value="NHAHANG">Nhà Hàng</option>
+                                        <option value="KHACHSAN">Khách sạn</option>
+                                        <option value="THOITRANG">Shop quần áo</option>
+                                    </select>
+                                    </div>
+                                    <div class='col-xs-3'>
+                                        <label>Thành phố</label>
+                                            <input type='text' class="form-control" ng-model="Agent.city" />
+                                        </div>
+                                    <div class='col-xs-3' >
+                                    <label ng-if="role == '1'">Mã Agent</label>
+                                        <input ng-if="role == '1'" type='text' class="form-control" ng-model="Agent.agent" />
+                                    </div>
+                                    
+                                    </div>
+                                <div class="col-sm-4 form-group"  ng-class="{'has-error' : RevenueMerchantForm.Date.$error.pattern}">
+                                    <label class="radio-merchantDay">
+                                    <input type="radio" ng-model="check" ng-change='newValue(check)'   name="DayRadioOptions" value="date">
+                                    NGÀY:
+                                    </label>
+                                    <br/>
+                                    <label>Ngày</label>
+                                    <input ng-disabled="check != 'date'" type="Date"  ng-model="Agent.firstDate" class="form-control">
+                                </div>	
+
+                                <div class="col-sm-4 form-group" ng-class="{'has-error' : RevenueMerchantForm.Month.$error.pattern}">
+                                    <label class="radio-merchantDay">
+                                    <input type="radio" ng-model="check" ng-change='newValue(check)' name="DayRadioOptions" id="DayRadio1" value="month" > THÁNG: 
+                                    </label>
+                                    <br/>
+                                    <label>Tháng</label>
+                                    <br/>
+                                    <select class="form-control" ng-model="Agent.MothYear" ng-disabled="check != 'month'">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <br/>
+                                    <label>Năm</label>
+                                    <input ng-disabled="check != 'month'" type="number" name="YearOfMonth" placeholder="Enter Year Here.." value="" class="form-control" maxlength="4" ng-model="Agent.YearOfMonth" ng-pattern="/^\d+$/" >
+                                    <span style="color:red" ng-show="RevenueMerchantForm.YearOfMonth.$invalid && RevenueMerchantForm.YearOfMonth.$dirty || RevenueMerchantForm.YearOfMonth.$error.pattern">Mục này không được để trống hoặc dữ liệu không phải số</span>
+                                </div>	
+
+                                <div class="col-sm-4 form-group" ng-class="{'has-error' : RevenueMerchantForm.Season.$error.pattern}">
+                                    <label class="radio-merchantDay">
+                                    <input type="radio" ng-model="check" ng-change='newValue(check)' name="DayRadioOptions" id="DayRadio2" value="quater" > QUÝ: 
+                                    </label>
+                                    <br/>
+                                    <label>Quý</label>
+                                    <br/>
+                                    <select class="form-control" ng-model="Agent.QuaterYear" ng-disabled="check != 'quater'">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                    <br/>
+                                    <label>Năm</label>
+                                    <input ng-disabled="check != 'quater'" ng-model="Agent.YearOfSeason" type="number" name="" value="" placeholder="Enter Year Here.." class="form-control" maxlength="5" ng-model="YearOfSeason" ng-pattern="/^\d+$/" >
+                                    <span style="color:red" ng-show="RevenueMerchantForm.YearOfSeason.$invalid && RevenueMerchantForm.YearOfSeason.$dirty || RevenueMerchantForm.YearOfSeason.$error.pattern">Mục này không được để trống hoặc dữ liệu không phải số</span>
+                                </div>
+                                <div style="clear: left;float:right; margin:0px 0px 10px 10px">
+                                    <button class="btn btn-primary fa fa-search" style="width:100px;height:40px;margin-right:10px;" ng-disabled="checkKT()" ng-click="searchRevenueMerchant()">Tìm kiếm</button>
+                                    <button class="btn btn-primary" style="width:100px;height:40px;margin-right:10px;" data-dismiss="modal" ng-click="PDF_click()" ng-disabled="checkClickbtn">PDF</button>
+                                    <!--<button class="btn btn-primary" style="width:100px;height:40px;margin-right:10px;" data-dismiss="modal" ng-click="CSV_click()">CSV</button>-->
+                                     <button class="btn btn-primary" ng-disabled="checkClickbtn" ng-json-export-excel style="width:100px;height:40px;margin-right:10px;" data="Agents.data" report-fields="{MERCHANT_NUMBER: 'MERCHANT NUMBER' ,MERCHANT_NAME: 'MERCHANT NAME', MERCHANT_TYPE: 'MERCHANT TYPE',FOREIGN_CARD_SALES_AMOUNT: 'FOREIGN CARD SALES AMOUNT', DEBIT_CARD_SALES_AMOUNT: 'DEBIT CARD SALES AMOUNT', VISA_CARD_SALES_AMOUNT: 'VISA CARD SALES AMOUNT', MASTER_CARD_SALES_AMOUNT: 'MASTER CARD SALES AMOUNT', AMERICANEXPRESS_CARD_SALES_AMOUNT: 'AMERICANEXPRESS CARD SALES AMOUNT', DISCOVERY_CARD_SALES_AMOUNT: 'DISCOVERY CARD SALES AMOUNT', OTHER_CARD_SALES_AMOUNT: 'OTHER CARD SALES AMOUNT', REPORT_DATE: 'REPORT DATE', RETURN_AMOUNT: 'RETURN AMOUNT' }" filename="'filename'">Export Excel</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                 
+            </div>
+    </div>
+
+    <div class="col-lg-11 well">
+        <h3 >Biểu đồ đường doanh thu merchant</h3>
+        <div class="row" >
+            <div class="col-lg-12" style="overflow: scroll">
+                <div ng-if="role != 2"  style="height:800px; width:3000px;" id="revenueChartSection">
+                    <canvas id="RevenueChart" ></canvas>
+                </div>
+                <div ng-if="role == 2"  style="height:800px;" id="revenueChartSection">
+                    <canvas id="RevenueChart" ></canvas>
+                </div>
+            </div>
+            
+            <br>
+            <h3 style="padding: 19px;" >Biểu đồ đường doanh thu merchant</h3>
+            <div class="col-lg-12"  style="height:400px" id="cardChartSection">
+                <canvas id="CardChart" ></canvas>
+            </div>
+            
+            <script src="Chart.min.js"></script>
+            <script src="pdfmake.min.js"></script>
+            <script src="vfs_fonts.js"></script>
+        </div>
+    </div>
+    
+     <div class="col-lg-11 well">
+        <h3 >Thống kê chi tiết</h3>
+        <div style="margin-top:50px">
+            <md-table-container>
+                <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="oselected" md-progress="promise">
+                    <thead  md-head md-order="query.order" md-on-reorder="logOrder">
+                    <tr md-row>
+                        <th md-column md-order-by="MERCHANT_NUMBER"><span style="font">Mã merchant</span></th>
+                        <th md-column md-numeric md-order-by="MERCHANT_NAME"><span>Tên Merchant</span></th>
+                        <th md-column md-numeric md-order-by="MERCHANT_TYPE"><span>Loại Merchant</span></th>
+                        <th md-column md-numeric md-order-by="REPORT_DATE"><span>Ngày giao dịch</span></th>
+                        <th md-column md-numeric md-order-by="SALES_AMOUNT"><span>Tổng tiền bán hàng</span></th>
+                        <th md-column md-numeric md-order-by="RETURN_AMOUNT"><span>Tổng tiền trả hàng</span></th>
+                        <th md-column md-numeric md-order-by="FOREIGN_CARD_SALES_AMOUNT"><span>Foreign Card</span></th>
+                        <th md-column md-numeric md-order-by="DEBIT_CARD_SALES_AMOUNT"><span>Debit Card</span></th>
+                        <th md-column md-numeric md-order-by="VISA_CARD_SALES_AMOUNT"><span>Visa Card</span></th>
+                        <th md-column md-numeric md-order-by="MASTER_CARD_SALES_AMOUNT"><span>Master Card</span></th>
+                        <!--<th md-column md-numeric md-order-by="AMERICANEXPRESS_CARD_SALES_AMOUNT"><span>Americanexpress Card</span></th>-->
+                        <th md-column md-numeric md-order-by="DISCOVERY_CARD_SALES_AMOUNT"><span>Discovery Card</span></th>
+                        <th md-column md-numeric md-order-by="OTHER_CARD_SALES_AMOUNT"><span>Other Card</span></th>
+                        <!--<th md-column md-numeric md-order-by="iron.value" hide-gt-xs show-gt-lg><span>Iron (%)</span></th>-->
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="Agent" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="Agent in Agents.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{{Agent.MERCHANT_NUMBER}}</td>
+                        <td md-cell>{{Agent.MERCHANT_NAME}}</td>
+                        <td md-cell>{{Agent.MERCHANT_TYPE}}</td>
+                        <td md-cell>{{Agent.REPORT_DATE | fomatdate}}</td>
+                        <td md-cell>{{Agent.SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.RETURN_AMOUNT}}</td>
+                        <td md-cell>{{Agent.FOREIGN_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.DEBIT_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.VISA_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.MASTER_CARD_SALES_AMOUNT}}<td>
+                        <!--<td md-cell>{{Agent.AMERICANEXPRESS_CARD_SALES_AMOUNT}}<td>-->
+                        <td md-cell>{{Agent.DISCOVERY_CARD_SALES_AMOUNT}}<td>
+                        <td md-cell>{{Agent.OTHER_CARD_SALES_AMOUNT}}<td>
+                        <!--<td md-cell hide-gt-xs show-gt-lg>{{Agent.iron.value}}%</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+        <md-table-pagination  md-limit="query.limit" md-page="query.page" md-total="{{Agents.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+        
+    </div>
+</div>

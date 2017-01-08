@@ -1,0 +1,137 @@
+<div class="container-fluid">
+    <div class="page-header">
+        <h2>Hộp thư đến</h2>
+        <button
+                style="width:60px; height:25px; margin-right:5px"
+                class="btn btn-primary btn-xs"
+                data-title="Back"
+                ng-click="back()"
+                ng-if="isReadMessage">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+        <button
+                ui-sref="SendMessage"
+                style="width:60px; height:25px; margin-right:5px"
+                class="btn btn-primary btn-xs"
+                data-title="SendMessage">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+        <button
+                style="width:60px; height:25px; margin-right:5px"
+                class="btn btn-danger btn-xs"
+                data-title="Delete"
+                data-toggle="modal" data-target="#modal_DeleteBoxMessage"
+                ng-if="selectedMessages.data.length > 0 && !isReadMessage">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+        <button
+                style="width:60px; height:25px; margin-right:5px"
+                class="btn btn-danger btn-xs"
+                data-title="Delete"
+                data-toggle="modal" data-target="#modal_DeleteReadingBoxMessage"
+                ng-if="isReadMessage">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>
+        
+      </div>
+    
+    <div class="row" ng-if='!isReadMessage'>
+        <div style="height:700px">
+            <md-table-container>
+                <table
+                       md-table
+                       md-row-select="options.rowSelection"
+                       multiple="{{options.multiSelect}}"
+                       ng-model="selectedMessages.data"
+                       md-progress="promise">
+
+                    <thead
+                           md-head
+                           md-order="query.order"
+                           md-on-reorder="logOrder">
+                        <tr md-row>
+                            <th md-column style="width:170px" md-order-by="SENDING_ACCOUNT"><span style="font">Người Gửi</span></th>
+                            <th md-column style="width:600px"><span>Nội Dung</span></th>
+                            <th md-column md-numeric md-order-by="SENDING_DATE"><span>Ngày Gửi</span></th>
+                        </tr>                
+                    </thead>
+
+                    <tbody md-body>
+                        <tr
+                            md-row md-select="message"
+                            md-on-select="SelectMessage"
+                            md-auto-select="options.autoSelect"
+                            ng-repeat="message in messages.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"
+                            ng-style="{{message.READING_STATUS == 'NO'}} ? {'background-color': '#f5f5f5', 'font-weight': 'bold'} : {}"
+                            ng-click="ReadMessage(message)">
+                                <td md-cell >{{message.SENDING_ACCOUNT}}</td>
+                                <td md-cell >{{message.DESCRIPTION | lengthstring}}</td>
+                                <td md-cell >{{message.SENDING_DATE.replace("/Date(","").replace(")/","") | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                        </tr>                    
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+        
+        <md-table-pagination
+                         md-limit="query.limit"
+                         md-page="query.page"
+                         md-total="{{messages.size}}"
+                         md-page-select="options.pageSelect"
+                         md-boundary-links="options.boundaryLinks"
+                         md-on-paginate="logPagination">
+        </md-table-pagination>
+    </div>
+    
+    <div class="row" ng-if='isReadMessage'>
+        <div class="col-lg-12">
+            <h2>Người gửi: {{message.SENDING_ACCOUNT}}</h2>
+            <p>Người nhận: {{message.RECEIVED_ACCOUNT}}</p>
+            <p>Ngày gửi: {{message.SENDING_DATE.replace("/Date(","").replace(")/","") | date:'dd-MM-yyyy HH:mm:ss'}}</p>
+            <p>Nội dung: {{message.DESCRIPTION}}</p>    
+
+        </div>
+    </div>
+</div>
+
+<div id="modal_DeleteBoxMessage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xóa thư</h4>
+            </div>
+            <form class="modal-body">
+                <p>Các thư đã chọn sẽ bị xóa vĩnh viễn.</p>
+            </form>
+            <div class="modal-footer">
+                <button ng-click="DeleteMessage()" class="btn btn-primary" data-dismiss="modal">Xác nhận</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<div id="modal_DeleteReadingBoxMessage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xóa thư</h4>
+            </div>
+            <form class="modal-body">
+                <p>Thư sẽ bị xóa vĩnh viễn.</p>
+            </form>
+            <div class="modal-footer">
+                <button ng-click="DeleteReadingMessage(message)" class="btn btn-primary" data-dismiss="modal">Xác nhận</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->

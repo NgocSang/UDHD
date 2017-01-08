@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h2>Tìm kiếm Agent</h2>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="panel panel-body" style="margin-top:10px; border:1px solid #ddd; border-radius: 25px">
+        <div class="row" style="margin-top:15px">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 form-group">
+                <label>Mã ngân hàng </label>
+                <input type="text" class="form-control" placeholder="Bank's Account" ng-model="agent.agentBankNumber" style="width:50%; float:right">
+            </div>
+            <div class="col-lg-5  form-group">
+                <label>Quận </label>
+                <input type="text" class="form-control" placeholder="Agent's District" ng-model="agent.agentDistrict" style="width:50%; float:right">
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5  form-group">
+                <label>Ngày kích hoạt </label>
+                <input type="date" class="form-control" placeholder="Agent's Approved Date" ng-model="agent.agentApprovedDate" style="width:50%; float:right">
+            </div>
+            <div class="col-lg-5  form-group">
+                <label>Loại Merchant </label>
+                <select   class="form-control" ng-model="agent.merchantType" style="width:50%; float:right">
+                    <option value="">Chọn loại Merchant</option>
+                    <option value="SIEUTHI">Siêu Thị</option>
+                    <option value="NHAHANG">Nhà Hàng</option>
+                    <option value="KHACHSAN">Khách sạn</option>
+                    <option value="THOITRANG">Shop quần áo</option>
+                </select>
+            </div>
+        </div>
+        <!--/.row-->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5"></div>
+            <div class="col-lg-5">
+                <button class="btn btn-primary" ng-click="SearchAgent()" style="float:right">
+                    Tìm kiếm 
+                    <span class="fa fa-search"></span>
+                </button>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+    <!-- /.panel -->
+    <div class="input-group col-md-12">
+        <input type="text" class="form-control" ng-model="customFilter.search"/>
+        <span class="input-group-btn">
+            <button class="btn btn-info " type="button">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+    </div>
+    <div class="row">
+        <md-table-container>
+            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selectedAgent" md-progress="promise">
+                <thead  md-head md-order="query.order" md-on-reorder="logOrder">
+                <tr md-row>
+                    <th md-column ng-if="role == 1" >Active</th>
+                    <th md-column md-order-by="AGENT_NUMBER"><span style="font">Mã Agent</span></th>
+                    <th md-column md-order-by="AGENT_NAME"><span>Tên Agent</span></th>
+                    <th md-column md-order-by="AGENT_TELEPHONE1" md-desc><span>SĐT</span></th>
+                    <th md-column md-order-by="AGENT_CITY"><span>Thành Phố</span></th>
+                    <th md-column md-order-by="AGENT_DISTRICT"><span>Quận</span></th>
+                    <th md-column md-order-by="AGENT_STREET"><span>Địa chỉ</span></th>
+                    <th md-column md-order-by="AGENT_EMAIL_1"><span>Email</span></th>
+                    <th md-column md-numeric md-order-by="AGENT_STATUS"><span>Trạng Thái</span></th>
+                </tr>
+                 
+                </thead>
+                <tbody md-body>
+                <tr 
+                    md-row md-select="agent"
+                    md-on-select="SelectAgent"
+                    md-auto-select="options.autoSelect"
+                    ng-repeat="agent in agents.data | filter: customFilter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                    <td md-cell ng-if="role == 1">
+                        <button
+                                ng-if="agent.AGENT_STATUS == 0"
+                                ng-click="ActDeactAgent(agent)"
+                                class="btn btn-primary">Activate</button>
+                        <button ng-if="agent.AGENT_STATUS == 1"
+                                ng-click="ActDeactAgent(agent)"
+                                class="btn btn-danger">Inactivate</button>
+                    </td>
+                    <td md-cell>{{agent.AGENT_NUMBER}}</td>
+                    <td md-cell>{{agent.AGENT_NAME}}</td>
+                    <td md-cell>{{agent.AGENT_TELEPHONE1}}</td>
+                    <td md-cell>{{agent.AGENT_CITY}}</td>
+                    <td md-cell>{{agent.AGENT_DISTRICT}}</td>
+                    <td md-cell>{{agent.AGENT_STREET}}<td>
+                    <td md-cell>{{agent.AGENT_EMAIL_1}}</td>
+                    <td md-cell>{{agent.AGENT_STATUS}}</td>
+                </tr>
+                    
+                </tbody>
+            </table>
+        </md-table-container>
+        
+        <md-table-pagination
+             md-limit="query.limit"
+             md-page="query.page"
+             md-total="{{agents.size}}"
+             md-page-select="options.pageSelect"
+             md-boundary-links="options.boundaryLinks"
+             md-on-paginate="logPagination">
+        </md-table-pagination>
+    </div>
+
+</div>

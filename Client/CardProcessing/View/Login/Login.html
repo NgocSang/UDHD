@@ -1,0 +1,58 @@
+
+    <div class="container"  ng-controller="LoginController">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default" ng-if="hideforget">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Đăng nhập vào hệ thống</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form  name="userForm" novalidate>
+                            <fieldset>
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                                    <input class="form-control" name="username" placeholder="UserName"   ng-model="user.username" autofocus required>
+                                    <p ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block">Bạn phải nhập tên đăng nhập.</p>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.passworld.$invalid && !userForm.passworld.$pristine }" >
+                                    <input class="form-control" name="passworld" placeholder="Password"  ng-model="user.password" type="password" required>
+                                    <p ng-show="userForm.passworld.$invalid && !userForm.passworld.$pristine" class="help-block">Bạn phải nhập password .</p>
+                                </div>
+                                <div ng-show="checkUser" class="has-error">
+                                    <p style="color:red"> password hoặc tên đăng nhập sai.</p>
+                                </div>
+                                
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button ng-disabled="userForm.$invalid"  class="btn btn-lg btn-success btn-block" ng-click="login_click()">Login</button>
+                                <div class="checkbox" style="text-align:center;">
+
+                                        <a ng-click="change()";>Quên mật khẩu ?</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="login-panel panel panel-default" ng-if="!hideforget">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Quên mật khẩu</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form  name="userForm" novalidate>
+                            <fieldset>
+                                <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                                    <input class="form-control" name="username" placeholder="UserName"   ng-model="forget.username" autofocus required>
+                                    <p ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block">Bạn phải nhập tên đăng nhập.</p>
+                                </div>
+                                <div ng-show="checkForget" class="has-error" style="text-align:center">
+                                    <p style="color:red"> tên đăng nhập không tồn tại.</p>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button ng-disabled="userForm.$invalid"  class="btn btn-lg btn-success btn-block" ng-click="forget_click()">Reset password</button>
+                            </fieldset>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,1925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DOANPTUDHDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ROLE" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="SALT" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="AGENT">
+          <Key>
+            <PropertyRef Name="AGENT_NUMBER" />
+          </Key>
+          <Property Name="AGENT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AGENT_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_TELEPHONE1" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="AGENT_TELEPHONE2" Type="nvarchar" MaxLength="11" />
+          <Property Name="AGENT_TELEPHONE3" Type="nvarchar" MaxLength="11" />
+          <Property Name="AGENT_CITY" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_DISTRICT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_STREET" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_STREET_NUMBER" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_REGION" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_OWNER" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_FAX" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="AGENT_EMAIL_1" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AGENT_EMAIL_2" Type="nvarchar" MaxLength="30" />
+          <Property Name="AGENT_EMAIL_3" Type="nvarchar" MaxLength="30" />
+          <Property Name="AGENT_BANK_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="BACKEND_PROCESSOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AGENT_STATUS" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="AGENT_APPR0VE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="AGENT_FIRST_DATE_ACTIVATE" Type="datetime" />
+          <Property Name="AGENT_LAST_DAY_ACTIVATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MERCHANT">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MERCHANT_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_TYPE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MERCHANT_TELEPHONE1" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="MERCHANT_TELEPHONE2" Type="nvarchar" MaxLength="11" />
+          <Property Name="MERCHANT_TELEPHONE3" Type="nvarchar" MaxLength="11" />
+          <Property Name="MERCHANT_CITY" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_DISTRICT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_STREET" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_STEET_NUMBER" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_REGION" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_OWNER" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_FAX" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="MERCHANT_EMAIL1" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MERCHANT_EMAIL2" Type="nvarchar" MaxLength="30" />
+          <Property Name="MERCHANT_EMAIL3" Type="nvarchar" MaxLength="30" />
+          <Property Name="MERCHANT_BANK_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MANAGE_AGENT" Type="nvarchar" MaxLength="10" />
+          <Property Name="BACKEND_PROCESSOR" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MERCHANT_STATUS" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="MERCHANT_APPR0VE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MERCHANT_FIRST_DATE_ACTIVATE" Type="datetime" />
+          <Property Name="MERCHANT_LAST_DAY_ACTIVATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="REPORT_DATE" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="REPORT_DATE" Type="date" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="int" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_MONTH">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="MONTH_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MONTH_REPORT" Type="int" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="int" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="int" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_QUARTER">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="QUARTER_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="QUARTER_REPORT" Type="int" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="int" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="int" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SENDING_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RECEIVED_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SENDING_DATE" Type="datetime" Nullable="false" />
+          <Property Name="READING_STATUS" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MESSAGE_OUTBOX">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SENDING_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="RECEIVED_ACCOUNT" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="SENDING_DATE" Type="datetime" Nullable="false" />
+          <Property Name="READING_STATUS" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROCESSOR">
+          <Key>
+            <PropertyRef Name="PROCESSOR_ID" />
+          </Key>
+          <Property Name="PROCESSOR_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PROCESSOR_ADDRESS" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROCESSOR_BANK_ACCOUNT" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RETRIVAL">
+          <Key>
+            <PropertyRef Name="RETRIVAL_ID" />
+          </Key>
+          <Property Name="RETRIVAL_ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TRANSACTION_ID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RETRIVAL_DATE" Type="datetime" Nullable="false" />
+          <Property Name="RETRIVAL_DESCRIPTION" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="EXPIRATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="TRANSACTION_CODE" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="TRANSACTION_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TRANSACTION_DATE" Type="date" Nullable="false" />
+          <Property Name="TRANSACTION_TIME" Type="time" Precision="7" Nullable="false" />
+          <Property Name="KEYED_ENTRY" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="AUTHORIZATION_NUMBER" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TRANSACTION_DESCRIPTION" Type="nvarchar" MaxLength="500" />
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CARDTYPE_CODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="COUNTRY_CODE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FIRST_TWELVE_ACCOUNT_NUMBER" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="IS_READ" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="AGENT_FK_PROCESSOR">
+          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="AGENT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_AGENT">
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="0..1" />
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT">
+              <PropertyRef Name="AGENT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="MANAGE_AGENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_PROCESSOR">
+          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_SUMMARY_FK_MERCHANT">
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
+          <End Role="MERCHANT_SUMMARY" Type="Self.MERCHANT_SUMMARY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT_SUMMARY">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MESSAGE_FK_ACCOUNT_RECEIVED">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="RECEIVED_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MESSAGE_FK_ACCOUNT_SEND">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="MESSAGE" Type="Self.MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="SENDING_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="MESSAGE_OUTBOX" Type="Self.MESSAGE_OUTBOX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE_OUTBOX">
+              <PropertyRef Name="RECEIVED_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OUTBOX_MESSAGE_FK_ACCOUNT_SEND">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="1" />
+          <End Role="MESSAGE_OUTBOX" Type="Self.MESSAGE_OUTBOX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE_OUTBOX">
+              <PropertyRef Name="SENDING_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSACTION_FK_MERCHANT">
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="insert_MERCHANT_SUMMARY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MERCHANT_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="REPORT_DATE" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Sp_ActDeactAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agentNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_CountUnreadMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="receiver" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_DeleteMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMessages" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_DeleteMessageOutbox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMessages" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_InsertAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AGENT_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE1" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE2" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE3" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_CITY" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_DISTRICT" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_STREET" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_STREET_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_REGION" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_OWNER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_FAX" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_2" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_3" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_BANK_ACCOUNT" Type="nvarchar" Mode="In" />
+          <Parameter Name="BACKEND_PROCESSOR" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_STATUS" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_APPR0VE_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="AGENT_FIRST_DATE_ACTIVATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sp_InsertMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MERCHANT_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE1" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE2" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE3" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_CITY" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_DISTRICT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_STREET" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_STREET_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_REGION" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_OWNER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_FAX" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL1" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL2" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL3" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_BANK_ACCOUNT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MANAGE_AGENT" Type="nvarchar" Mode="In" />
+          <Parameter Name="BACKEND_PROCESSOR" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_STATUS" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_APPR0VE_DATE" Type="datetime" Mode="In" />
+          <Parameter Name="MERCHANT_FIRST_DATE_ACTIVATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sp_KTInsertAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="backend_processor" Type="nvarchar" Mode="In" />
+          <Parameter Name="agent_number" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_LoadMerchantNoAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_LoadMerchantOfAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_LoadMerchantOtherAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_LoginUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_RemoveAgentOfMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="merchant" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_RETRIVAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RETRIVAL_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="RETRIVAL_DATE" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Sp_Revenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+          <Parameter Name="merchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="loaiMerchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngay" Type="date" Mode="In" />
+          <Parameter Name="thang" Type="int" Mode="In" />
+          <Parameter Name="namthang" Type="int" Mode="In" />
+          <Parameter Name="quy" Type="int" Mode="In" />
+          <Parameter Name="namquy" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_SearchAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agentNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="agentBankNumber" Type="varchar" Mode="In" />
+          <Parameter Name="agentDistrict" Type="varchar" Mode="In" />
+          <Parameter Name="agentApprovedDate" Type="datetime" Mode="In" />
+          <Parameter Name="merchantType" Type="char" Mode="In" />
+        </Function>
+        <Function Name="Sp_SearchMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="num" Type="nvarchar" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_SendMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sender" Type="nvarchar" Mode="In" />
+          <Parameter Name="receiver" Type="nvarchar" Mode="In" />
+          <Parameter Name="description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_ShowInbox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="receiver" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_ShowOutbox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sender" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UpdateAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AGENT_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE1" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE2" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_TELEPHONE3" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_CITY" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_DISTRICT" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_STREET" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_SRTEET_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_REGION" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_OWNER" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_FAX" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_2" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_EMAIL_3" Type="nvarchar" Mode="In" />
+          <Parameter Name="AGENT_BANK_ACCOUNT" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UpdateAgentOfMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="merchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UpdateMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MERCHANT_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TYPE" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE1" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE2" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_TELEPHONE3" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_CITY" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_DISTRICT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_STREET" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_STEET_NUMBER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_REGION" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_OWNER" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_FAX" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL1" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL2" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_EMAIL3" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_BANK_ACCOUNT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MERCHANT_LAST_DAY_ACTIVATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Sp_UpdateMessageStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMessage" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_UpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="account" Type="nvarchar" Mode="In" />
+          <Parameter Name="oldPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="newPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="confirmPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Updatestatusmerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="merchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="TONGHOP_TRANSACTION_DETAIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DOANPTUDHDModelStoreContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENT" EntityType="Self.AGENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MERCHANT" EntityType="Self.MERCHANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MERCHANT_SUMMARY" EntityType="Self.MERCHANT_SUMMARY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MERCHANT_SUMMARY_MONTH" EntityType="Self.MERCHANT_SUMMARY_MONTH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MERCHANT_SUMMARY_QUARTER" EntityType="Self.MERCHANT_SUMMARY_QUARTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGE" EntityType="Self.MESSAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGE_OUTBOX" EntityType="Self.MESSAGE_OUTBOX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROCESSOR" EntityType="Self.PROCESSOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RETRIVAL" EntityType="Self.RETRIVAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSACTION_DETAIL" EntityType="Self.TRANSACTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AGENT_FK_PROCESSOR" Association="Self.AGENT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="AGENT" EntitySet="AGENT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_AGENT" Association="Self.MERCHANT_FK_AGENT">
+            <End Role="AGENT" EntitySet="AGENT" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_PROCESSOR" Association="Self.MERCHANT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_SUMMARY_FK_MERCHANT" Association="Self.MERCHANT_SUMMARY_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="MERCHANT_SUMMARY" EntitySet="MERCHANT_SUMMARY" />
+          </AssociationSet>
+          <AssociationSet Name="MESSAGE_FK_ACCOUNT_RECEIVED" Association="Self.MESSAGE_FK_ACCOUNT_RECEIVED">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="MESSAGE_FK_ACCOUNT_SEND" Association="Self.MESSAGE_FK_ACCOUNT_SEND">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" Association="Self.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE_OUTBOX" EntitySet="MESSAGE_OUTBOX" />
+          </AssociationSet>
+          <AssociationSet Name="OUTBOX_MESSAGE_FK_ACCOUNT_SEND" Association="Self.OUTBOX_MESSAGE_FK_ACCOUNT_SEND">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE_OUTBOX" EntitySet="MESSAGE_OUTBOX" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSACTION_FK_MERCHANT" Association="Self.TRANSACTION_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DOANPTUDHDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGENT">
+          <Key>
+            <PropertyRef Name="AGENT_NUMBER" />
+          </Key>
+          <Property Name="AGENT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_TELEPHONE1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_DISTRICT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_STREET" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_STREET_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_REGION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_OWNER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_FAX" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_EMAIL_1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_EMAIL_2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_EMAIL_3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_BANK_ACCOUNT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BACKEND_PROCESSOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AGENT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AGENT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
+          <Property Name="AGENT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PROCESSOR" Relationship="Self.AGENT_FK_PROCESSOR" FromRole="AGENT" ToRole="PROCESSOR" />
+          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_FK_AGENT" FromRole="AGENT" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="MERCHANT">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_TELEPHONE1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_DISTRICT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_STREET" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_STEET_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_REGION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_OWNER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_FAX" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_EMAIL1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_EMAIL2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_EMAIL3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_BANK_ACCOUNT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANAGE_AGENT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BACKEND_PROCESSOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MERCHANT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MERCHANT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
+          <Property Name="MERCHANT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AGENT" Relationship="Self.MERCHANT_FK_AGENT" FromRole="MERCHANT" ToRole="AGENT" />
+          <NavigationProperty Name="PROCESSOR" Relationship="Self.MERCHANT_FK_PROCESSOR" FromRole="MERCHANT" ToRole="PROCESSOR" />
+          <NavigationProperty Name="MERCHANT_SUMMARY" Relationship="Self.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT" ToRole="MERCHANT_SUMMARY" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.TRANSACTION_FK_MERCHANT" FromRole="MERCHANT" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="REPORT_DATE" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="REPORT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT_SUMMARY" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_MONTH">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="MONTH_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MONTH_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_QUARTER">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="QUARTER_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QUARTER_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROCESSOR">
+          <Key>
+            <PropertyRef Name="PROCESSOR_ID" />
+          </Key>
+          <Property Name="PROCESSOR_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROCESSOR_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROCESSOR_BANK_ACCOUNT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AGENT" Relationship="Self.AGENT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="AGENT" />
+          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="RETRIVAL">
+          <Key>
+            <PropertyRef Name="RETRIVAL_ID" />
+          </Key>
+          <Property Name="RETRIVAL_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANSACTION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RETRIVAL_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RETRIVAL_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EXPIRATION_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TRANSACTION_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANSACTION_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TRANSACTION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRANSACTION_TIME" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="KEYED_ENTRY" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AUTHORIZATION_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANSACTION_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BATCH_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ACCOUNT_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARDTYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="COUNTRY_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIRST_TWELVE_ACCOUNT_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IS_READ" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MERCHANT" Relationship="Self.TRANSACTION_FK_MERCHANT" FromRole="TRANSACTION_DETAIL" ToRole="MERCHANT" />
+        </EntityType>
+        <Association Name="AGENT_FK_PROCESSOR">
+          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="AGENT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_AGENT">
+          <End Role="AGENT" Type="Self.AGENT" Multiplicity="0..1" />
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT">
+              <PropertyRef Name="AGENT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="MANAGE_AGENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_PROCESSOR">
+          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_SUMMARY_FK_MERCHANT">
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
+          <End Role="MERCHANT_SUMMARY" Type="Self.MERCHANT_SUMMARY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT_SUMMARY">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSACTION_FK_MERCHANT">
+          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
+          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DOANPTUDHDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENT" EntityType="Self.AGENT" />
+          <EntitySet Name="MERCHANT" EntityType="Self.MERCHANT" />
+          <EntitySet Name="MERCHANT_SUMMARY" EntityType="Self.MERCHANT_SUMMARY" />
+          <EntitySet Name="MERCHANT_SUMMARY_MONTH" EntityType="Self.MERCHANT_SUMMARY_MONTH" />
+          <EntitySet Name="MERCHANT_SUMMARY_QUARTER" EntityType="Self.MERCHANT_SUMMARY_QUARTER" />
+          <EntitySet Name="PROCESSOR" EntityType="Self.PROCESSOR" />
+          <EntitySet Name="RETRIVAL" EntityType="Self.RETRIVAL" />
+          <EntitySet Name="TRANSACTION_DETAIL" EntityType="Self.TRANSACTION_DETAIL" />
+          <AssociationSet Name="AGENT_FK_PROCESSOR" Association="Self.AGENT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="AGENT" EntitySet="AGENT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_AGENT" Association="Self.MERCHANT_FK_AGENT">
+            <End Role="AGENT" EntitySet="AGENT" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_PROCESSOR" Association="Self.MERCHANT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_SUMMARY_FK_MERCHANT" Association="Self.MERCHANT_SUMMARY_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="MERCHANT_SUMMARY" EntitySet="MERCHANT_SUMMARY" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSACTION_FK_MERCHANT" Association="Self.TRANSACTION_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <FunctionImport Name="insert_MERCHANT_SUMMARY">
+            <Parameter Name="MERCHANT_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="REPORT_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_ActDeactAgent">
+          <Parameter Name="agentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_CountUnreadMessage" ReturnType="Collection(Int32)">
+          <Parameter Name="receiver" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_DeleteMessage">
+          <Parameter Name="idMessages" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_DeleteMessageOutbox">
+          <Parameter Name="idMessages" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_InsertAgent">
+            <Parameter Name="AGENT_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_NAME" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE1" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE2" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE3" Mode="In" Type="String" />
+            <Parameter Name="AGENT_CITY" Mode="In" Type="String" />
+            <Parameter Name="AGENT_DISTRICT" Mode="In" Type="String" />
+            <Parameter Name="AGENT_STREET" Mode="In" Type="String" />
+            <Parameter Name="AGENT_STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_REGION" Mode="In" Type="String" />
+            <Parameter Name="AGENT_OWNER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_FAX" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_1" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_2" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_3" Mode="In" Type="String" />
+            <Parameter Name="AGENT_BANK_ACCOUNT" Mode="In" Type="String" />
+            <Parameter Name="BACKEND_PROCESSOR" Mode="In" Type="String" />
+            <Parameter Name="AGENT_STATUS" Mode="In" Type="String" />
+            <Parameter Name="AGENT_APPR0VE_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="AGENT_FIRST_DATE_ACTIVATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_InsertMerchant">
+            <Parameter Name="MERCHANT_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_NAME" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TYPE" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE1" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE2" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE3" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_CITY" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_DISTRICT" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_STREET" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_STREET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_REGION" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_OWNER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_FAX" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL1" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL2" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL3" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_BANK_ACCOUNT" Mode="In" Type="String" />
+            <Parameter Name="MANAGE_AGENT" Mode="In" Type="String" />
+            <Parameter Name="BACKEND_PROCESSOR" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_STATUS" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_APPR0VE_DATE" Mode="In" Type="DateTime" />
+            <Parameter Name="MERCHANT_FIRST_DATE_ACTIVATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_KTInsertAgent" ReturnType="Collection(Int32)">
+            <Parameter Name="backend_processor" Mode="In" Type="String" />
+            <Parameter Name="agent_number" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_LoadMerchantNoAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_LoadMerchantNoAgent_Result)" />
+          <FunctionImport Name="Sp_LoadMerchantOfAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_LoadMerchantOfAgent_Result)">
+          <Parameter Name="agent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_LoadMerchantOtherAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_LoadMerchantOtherAgent_Result)">
+          <Parameter Name="agent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_LoginUser" ReturnType="Collection(DOANPTUDHDModel.Sp_LoginUser_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_RemoveAgentOfMerchant">
+          <Parameter Name="merchant" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_RETRIVAL" ReturnType="Collection(DOANPTUDHDModel.SP_RETRIVAL_Result)">
+            <Parameter Name="RETRIVAL_ID" Mode="In" Type="String" />
+            <Parameter Name="RETRIVAL_DATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Revenue" ReturnType="Collection(DOANPTUDHDModel.Sp_Revenue_Result)">
+            <Parameter Name="agent" Mode="In" Type="String" />
+            <Parameter Name="merchant" Mode="In" Type="String" />
+            <Parameter Name="loaiMerchant" Mode="In" Type="String" />
+            <Parameter Name="ngay" Mode="In" Type="DateTime" />
+            <Parameter Name="thang" Mode="In" Type="Int32" />
+            <Parameter Name="namthang" Mode="In" Type="Int32" />
+            <Parameter Name="quy" Mode="In" Type="Int32" />
+            <Parameter Name="namquy" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_SearchMerchant" ReturnType="Collection(DOANPTUDHDModel.Sp_SearchMerchant_Result)">
+            <Parameter Name="num" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="agent" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_ShowInbox" ReturnType="Collection(DOANPTUDHDModel.Sp_ShowInbox_Result)">
+          <Parameter Name="receiver" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_ShowOutbox" ReturnType="Collection(DOANPTUDHDModel.Sp_ShowOutbox_Result)">
+          <Parameter Name="sender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UpdateAgent">
+            <Parameter Name="AGENT_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_NAME" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE1" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE2" Mode="In" Type="String" />
+            <Parameter Name="AGENT_TELEPHONE3" Mode="In" Type="String" />
+            <Parameter Name="AGENT_CITY" Mode="In" Type="String" />
+            <Parameter Name="AGENT_DISTRICT" Mode="In" Type="String" />
+            <Parameter Name="AGENT_STREET" Mode="In" Type="String" />
+            <Parameter Name="AGENT_SRTEET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_REGION" Mode="In" Type="String" />
+            <Parameter Name="AGENT_OWNER" Mode="In" Type="String" />
+            <Parameter Name="AGENT_FAX" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_1" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_2" Mode="In" Type="String" />
+            <Parameter Name="AGENT_EMAIL_3" Mode="In" Type="String" />
+            <Parameter Name="AGENT_BANK_ACCOUNT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UpdateAgentOfMerchant">
+            <Parameter Name="merchant" Mode="In" Type="String" />
+            <Parameter Name="agent" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UpdateMerchant">
+            <Parameter Name="MERCHANT_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_NAME" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TYPE" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE1" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE2" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_TELEPHONE3" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_CITY" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_DISTRICT" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_STREET" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_STEET_NUMBER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_REGION" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_OWNER" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_FAX" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL1" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL2" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_EMAIL3" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_BANK_ACCOUNT" Mode="In" Type="String" />
+            <Parameter Name="MERCHANT_LAST_DAY_ACTIVATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UpdateMessageStatus">
+          <Parameter Name="idMessage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_UpdatePassword">
+            <Parameter Name="account" Mode="In" Type="String" />
+            <Parameter Name="oldPassword" Mode="In" Type="String" />
+            <Parameter Name="newPassword" Mode="In" Type="String" />
+            <Parameter Name="confirmPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Updatestatusmerchant">
+            <Parameter Name="merchant" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TONGHOP_TRANSACTION_DETAIL" />
+          <EntitySet Name="ACCOUNT" EntityType="DOANPTUDHDModel.ACCOUNT" />
+          <EntitySet Name="MESSAGE" EntityType="DOANPTUDHDModel.MESSAGE" />
+          <EntitySet Name="MESSAGE_OUTBOX" EntityType="DOANPTUDHDModel.MESSAGE_OUTBOX" />
+          <AssociationSet Name="MESSAGE_FK_ACCOUNT_RECEIVED" Association="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_RECEIVED">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="MESSAGE_FK_ACCOUNT_SEND" Association="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_SEND">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE" EntitySet="MESSAGE" />
+          </AssociationSet>
+          <AssociationSet Name="OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" Association="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE_OUTBOX" EntitySet="MESSAGE_OUTBOX" />
+          </AssociationSet>
+          <AssociationSet Name="OUTBOX_MESSAGE_FK_ACCOUNT_SEND" Association="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_SEND">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="MESSAGE_OUTBOX" EntitySet="MESSAGE_OUTBOX" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_SearchAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_SearchAgent_Result)">
+            <Parameter Name="agentNumber" Mode="In" Type="String" />
+            <Parameter Name="agentBankNumber" Mode="In" Type="String" />
+            <Parameter Name="agentDistrict" Mode="In" Type="String" />
+            <Parameter Name="agentApprovedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="merchantType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_SendMessage">
+            <Parameter Name="sender" Mode="In" Type="String" />
+            <Parameter Name="receiver" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="Sp_LoadMerchantNoAgent_Result">
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MANAGE_AGENT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STEET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_CITY" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Sp_LoadMerchantOfAgent_Result">
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STEET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_CITY" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Sp_LoadMerchantOtherAgent_Result">
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MANAGE_AGENT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STEET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_CITY" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_NAME" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="Sp_LoginUser_Result">
+          <Property Type="String" Name="username" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="role" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_RETRIVAL_Result">
+          <Property Type="String" Name="RETRIVAL_ID" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="TRANSACTION_ID" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="RETRIVAL_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="RETRIVAL_DESCRIPTION" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Sp_Revenue_Result">
+          <Property Type="Decimal" Name="FOREIGN_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="DEBIT_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="VISA_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MASTER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="DISCOVERY_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OTHER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="REPORT_DATE" Nullable="false" />
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_TYPE" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="NET_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="RETURN_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="Sp_SearchMerchant_Result">
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_TYPE" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_TELEPHONE1" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="MERCHANT_TELEPHONE2" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="MERCHANT_TELEPHONE3" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="MERCHANT_CITY" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_STEET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_REGION" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_OWNER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_EMAIL1" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_EMAIL2" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_EMAIL3" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_FAX" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="MERCHANT_BANK_ACCOUNT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MANAGE_AGENT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_STATUS" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="BACKEND_PROCESSOR" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="MERCHANT_APPR0VE_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="MERCHANT_FIRST_DATE_ACTIVATE" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="MERCHANT_LAST_DAY_ACTIVATE" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Sp_ShowInbox_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="SENDING_ACCOUNT" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RECEIVED_ACCOUNT" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="SENDING_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="READING_STATUS" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="Sp_ShowOutbox_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="SENDING_ACCOUNT" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RECEIVED_ACCOUNT" Nullable="false" MaxLength="10" />
+          <Property Type="DateTime" Name="SENDING_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="READING_STATUS" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="1000" />
+        </ComplexType>
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="SALT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MESSAGE" Relationship="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="ACCOUNT" ToRole="MESSAGE" />
+          <NavigationProperty Name="MESSAGE1" Relationship="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_SEND" FromRole="ACCOUNT" ToRole="MESSAGE" />
+          <NavigationProperty Name="MESSAGE_OUTBOX" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="ACCOUNT" ToRole="MESSAGE_OUTBOX" />
+          <NavigationProperty Name="MESSAGE_OUTBOX1" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_SEND" FromRole="ACCOUNT" ToRole="MESSAGE_OUTBOX" />
+        </EntityType>
+        <EntityType Name="MESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SENDING_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVED_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SENDING_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="READING_STATUS" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNT" Relationship="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="MESSAGE" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNT1" Relationship="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_SEND" FromRole="MESSAGE" ToRole="ACCOUNT" />
+        </EntityType>
+        <EntityType Name="MESSAGE_OUTBOX">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SENDING_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVED_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SENDING_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="READING_STATUS" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNT" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="MESSAGE_OUTBOX" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ACCOUNT1" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_SEND" FromRole="MESSAGE_OUTBOX" ToRole="ACCOUNT" />
+        </EntityType>
+        <Association Name="MESSAGE_FK_ACCOUNT_RECEIVED">
+          <End Type="DOANPTUDHDModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MESSAGE" Role="MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="RECEIVED_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MESSAGE_FK_ACCOUNT_SEND">
+          <End Type="DOANPTUDHDModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MESSAGE" Role="MESSAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE">
+              <PropertyRef Name="SENDING_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED">
+          <End Type="DOANPTUDHDModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MESSAGE_OUTBOX" Role="MESSAGE_OUTBOX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE_OUTBOX">
+              <PropertyRef Name="RECEIVED_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OUTBOX_MESSAGE_FK_ACCOUNT_SEND">
+          <End Type="DOANPTUDHDModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MESSAGE_OUTBOX" Role="MESSAGE_OUTBOX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="USERNAME" />
+            </Principal>
+            <Dependent Role="MESSAGE_OUTBOX">
+              <PropertyRef Name="SENDING_ACCOUNT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Sp_SearchAgent_Result">
+          <Property Type="String" Name="AGENT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AGENT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_TELEPHONE1" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="AGENT_TELEPHONE2" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="AGENT_TELEPHONE3" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="AGENT_CITY" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_STREET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_REGION" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_OWNER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_FAX" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="AGENT_EMAIL_1" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_EMAIL_2" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AGENT_EMAIL_3" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AGENT_BANK_ACCOUNT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="BACKEND_PROCESSOR" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AGENT_STATUS" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="AGENT_APPR0VE_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="AGENT_FIRST_DATE_ACTIVATE" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AGENT_LAST_DAY_ACTIVATE" Nullable="true" Precision="23" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DOANPTUDHDModelStoreContainer" CdmEntityContainer="DOANPTUDHDEntities">
+          <EntitySetMapping Name="AGENT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.AGENT">
+              <MappingFragment StoreEntitySet="AGENT">
+                <ScalarProperty Name="AGENT_NUMBER" ColumnName="AGENT_NUMBER" />
+                <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+                <ScalarProperty Name="AGENT_TELEPHONE1" ColumnName="AGENT_TELEPHONE1" />
+                <ScalarProperty Name="AGENT_TELEPHONE2" ColumnName="AGENT_TELEPHONE2" />
+                <ScalarProperty Name="AGENT_TELEPHONE3" ColumnName="AGENT_TELEPHONE3" />
+                <ScalarProperty Name="AGENT_CITY" ColumnName="AGENT_CITY" />
+                <ScalarProperty Name="AGENT_DISTRICT" ColumnName="AGENT_DISTRICT" />
+                <ScalarProperty Name="AGENT_STREET" ColumnName="AGENT_STREET" />
+                <ScalarProperty Name="AGENT_STREET_NUMBER" ColumnName="AGENT_STREET_NUMBER" />
+                <ScalarProperty Name="AGENT_REGION" ColumnName="AGENT_REGION" />
+                <ScalarProperty Name="AGENT_OWNER" ColumnName="AGENT_OWNER" />
+                <ScalarProperty Name="AGENT_FAX" ColumnName="AGENT_FAX" />
+                <ScalarProperty Name="AGENT_EMAIL_1" ColumnName="AGENT_EMAIL_1" />
+                <ScalarProperty Name="AGENT_EMAIL_2" ColumnName="AGENT_EMAIL_2" />
+                <ScalarProperty Name="AGENT_EMAIL_3" ColumnName="AGENT_EMAIL_3" />
+                <ScalarProperty Name="AGENT_BANK_ACCOUNT" ColumnName="AGENT_BANK_ACCOUNT" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="AGENT_STATUS" ColumnName="AGENT_STATUS" />
+                <ScalarProperty Name="AGENT_APPR0VE_DATE" ColumnName="AGENT_APPR0VE_DATE" />
+                <ScalarProperty Name="AGENT_FIRST_DATE_ACTIVATE" ColumnName="AGENT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="AGENT_LAST_DAY_ACTIVATE" ColumnName="AGENT_LAST_DAY_ACTIVATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT">
+              <MappingFragment StoreEntitySet="MERCHANT">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE1" ColumnName="MERCHANT_TELEPHONE1" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE2" ColumnName="MERCHANT_TELEPHONE2" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE3" ColumnName="MERCHANT_TELEPHONE3" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_REGION" ColumnName="MERCHANT_REGION" />
+                <ScalarProperty Name="MERCHANT_OWNER" ColumnName="MERCHANT_OWNER" />
+                <ScalarProperty Name="MERCHANT_FAX" ColumnName="MERCHANT_FAX" />
+                <ScalarProperty Name="MERCHANT_EMAIL1" ColumnName="MERCHANT_EMAIL1" />
+                <ScalarProperty Name="MERCHANT_EMAIL2" ColumnName="MERCHANT_EMAIL2" />
+                <ScalarProperty Name="MERCHANT_EMAIL3" ColumnName="MERCHANT_EMAIL3" />
+                <ScalarProperty Name="MERCHANT_BANK_ACCOUNT" ColumnName="MERCHANT_BANK_ACCOUNT" />
+                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="MERCHANT_STATUS" ColumnName="MERCHANT_STATUS" />
+                <ScalarProperty Name="MERCHANT_APPR0VE_DATE" ColumnName="MERCHANT_APPR0VE_DATE" />
+                <ScalarProperty Name="MERCHANT_FIRST_DATE_ACTIVATE" ColumnName="MERCHANT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="MERCHANT_LAST_DAY_ACTIVATE" ColumnName="MERCHANT_LAST_DAY_ACTIVATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY_MONTH">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_MONTH">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_MONTH">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MONTH_REPORT" ColumnName="MONTH_REPORT" />
+                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY_QUARTER">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_QUARTER">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_QUARTER">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="QUARTER_REPORT" ColumnName="QUARTER_REPORT" />
+                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROCESSOR">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.PROCESSOR">
+              <MappingFragment StoreEntitySet="PROCESSOR">
+                <ScalarProperty Name="PROCESSOR_ID" ColumnName="PROCESSOR_ID" />
+                <ScalarProperty Name="PROCESSOR_ADDRESS" ColumnName="PROCESSOR_ADDRESS" />
+                <ScalarProperty Name="PROCESSOR_BANK_ACCOUNT" ColumnName="PROCESSOR_BANK_ACCOUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETRIVAL">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.RETRIVAL">
+              <MappingFragment StoreEntitySet="RETRIVAL">
+                <ScalarProperty Name="RETRIVAL_ID" ColumnName="RETRIVAL_ID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="RETRIVAL_DATE" ColumnName="RETRIVAL_DATE" />
+                <ScalarProperty Name="RETRIVAL_DESCRIPTION" ColumnName="RETRIVAL_DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTION_DETAIL">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.TRANSACTION_DETAIL">
+              <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="EXPIRATION_DATE" ColumnName="EXPIRATION_DATE" />
+                <ScalarProperty Name="TRANSACTION_CODE" ColumnName="TRANSACTION_CODE" />
+                <ScalarProperty Name="TRANSACTION_AMOUNT" ColumnName="TRANSACTION_AMOUNT" />
+                <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
+                <ScalarProperty Name="TRANSACTION_TIME" ColumnName="TRANSACTION_TIME" />
+                <ScalarProperty Name="KEYED_ENTRY" ColumnName="KEYED_ENTRY" />
+                <ScalarProperty Name="AUTHORIZATION_NUMBER" ColumnName="AUTHORIZATION_NUMBER" />
+                <ScalarProperty Name="TRANSACTION_DESCRIPTION" ColumnName="TRANSACTION_DESCRIPTION" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="BATCH_NUMBER" ColumnName="BATCH_NUMBER" />
+                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+                <ScalarProperty Name="CARDTYPE_CODE" ColumnName="CARDTYPE_CODE" />
+                <ScalarProperty Name="COUNTRY_CODE" ColumnName="COUNTRY_CODE" />
+                <ScalarProperty Name="FIRST_TWELVE_ACCOUNT_NUMBER" ColumnName="FIRST_TWELVE_ACCOUNT_NUMBER" />
+                <ScalarProperty Name="IS_READ" ColumnName="IS_READ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="insert_MERCHANT_SUMMARY" FunctionName="DOANPTUDHDModel.Store.insert_MERCHANT_SUMMARY" />
+          <FunctionImportMapping FunctionImportName="Sp_ActDeactAgent" FunctionName="DOANPTUDHDModel.Store.Sp_ActDeactAgent" />
+          <FunctionImportMapping FunctionImportName="Sp_CountUnreadMessage" FunctionName="DOANPTUDHDModel.Store.Sp_CountUnreadMessage" />
+          <FunctionImportMapping FunctionImportName="Sp_DeleteMessage" FunctionName="DOANPTUDHDModel.Store.Sp_DeleteMessage" />
+          <FunctionImportMapping FunctionImportName="Sp_DeleteMessageOutbox" FunctionName="DOANPTUDHDModel.Store.Sp_DeleteMessageOutbox" />
+          <FunctionImportMapping FunctionImportName="Sp_InsertAgent" FunctionName="DOANPTUDHDModel.Store.Sp_InsertAgent" />
+          <FunctionImportMapping FunctionImportName="Sp_InsertMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_InsertMerchant" />
+          <FunctionImportMapping FunctionImportName="Sp_KTInsertAgent" FunctionName="DOANPTUDHDModel.Store.Sp_KTInsertAgent" />
+          <FunctionImportMapping FunctionImportName="Sp_LoadMerchantNoAgent" FunctionName="DOANPTUDHDModel.Store.Sp_LoadMerchantNoAgent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_LoadMerchantNoAgent_Result">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_LoadMerchantOfAgent" FunctionName="DOANPTUDHDModel.Store.Sp_LoadMerchantOfAgent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_LoadMerchantOfAgent_Result">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_LoadMerchantOtherAgent" FunctionName="DOANPTUDHDModel.Store.Sp_LoadMerchantOtherAgent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_LoadMerchantOtherAgent_Result">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+                <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_LoginUser" FunctionName="DOANPTUDHDModel.Store.Sp_LoginUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_LoginUser_Result">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_RemoveAgentOfMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_RemoveAgentOfMerchant" />
+          <FunctionImportMapping FunctionImportName="SP_RETRIVAL" FunctionName="DOANPTUDHDModel.Store.SP_RETRIVAL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.SP_RETRIVAL_Result">
+                <ScalarProperty Name="RETRIVAL_ID" ColumnName="RETRIVAL_ID" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="RETRIVAL_DATE" ColumnName="RETRIVAL_DATE" />
+                <ScalarProperty Name="RETRIVAL_DESCRIPTION" ColumnName="RETRIVAL_DESCRIPTION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Revenue" FunctionName="DOANPTUDHDModel.Store.Sp_Revenue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_Revenue_Result">
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_SearchMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_SearchMerchant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_SearchMerchant_Result">
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE1" ColumnName="MERCHANT_TELEPHONE1" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE2" ColumnName="MERCHANT_TELEPHONE2" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE3" ColumnName="MERCHANT_TELEPHONE3" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_REGION" ColumnName="MERCHANT_REGION" />
+                <ScalarProperty Name="MERCHANT_OWNER" ColumnName="MERCHANT_OWNER" />
+                <ScalarProperty Name="MERCHANT_EMAIL1" ColumnName="MERCHANT_EMAIL1" />
+                <ScalarProperty Name="MERCHANT_EMAIL2" ColumnName="MERCHANT_EMAIL2" />
+                <ScalarProperty Name="MERCHANT_EMAIL3" ColumnName="MERCHANT_EMAIL3" />
+                <ScalarProperty Name="MERCHANT_FAX" ColumnName="MERCHANT_FAX" />
+                <ScalarProperty Name="MERCHANT_BANK_ACCOUNT" ColumnName="MERCHANT_BANK_ACCOUNT" />
+                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
+                <ScalarProperty Name="MERCHANT_STATUS" ColumnName="MERCHANT_STATUS" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="MERCHANT_APPR0VE_DATE" ColumnName="MERCHANT_APPR0VE_DATE" />
+                <ScalarProperty Name="MERCHANT_FIRST_DATE_ACTIVATE" ColumnName="MERCHANT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="MERCHANT_LAST_DAY_ACTIVATE" ColumnName="MERCHANT_LAST_DAY_ACTIVATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ShowInbox" FunctionName="DOANPTUDHDModel.Store.Sp_ShowInbox">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_ShowInbox_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ShowOutbox" FunctionName="DOANPTUDHDModel.Store.Sp_ShowOutbox">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_ShowOutbox_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_UpdateAgent" FunctionName="DOANPTUDHDModel.Store.Sp_UpdateAgent" />
+          <FunctionImportMapping FunctionImportName="Sp_UpdateAgentOfMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_UpdateAgentOfMerchant" />
+          <FunctionImportMapping FunctionImportName="Sp_UpdateMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_UpdateMerchant" />
+          <FunctionImportMapping FunctionImportName="Sp_UpdateMessageStatus" FunctionName="DOANPTUDHDModel.Store.Sp_UpdateMessageStatus" />
+          <FunctionImportMapping FunctionImportName="Sp_UpdatePassword" FunctionName="DOANPTUDHDModel.Store.Sp_UpdatePassword" />
+          <FunctionImportMapping FunctionImportName="Sp_Updatestatusmerchant" FunctionName="DOANPTUDHDModel.Store.Sp_Updatestatusmerchant" />
+          <FunctionImportMapping FunctionImportName="TONGHOP_TRANSACTION_DETAIL" FunctionName="DOANPTUDHDModel.Store.TONGHOP_TRANSACTION_DETAIL" />
+          <EntitySetMapping Name="ACCOUNT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="SALT" ColumnName="SALT" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGE">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE">
+              <MappingFragment StoreEntitySet="MESSAGE">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGE_OUTBOX">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE_OUTBOX">
+              <MappingFragment StoreEntitySet="MESSAGE_OUTBOX">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_SearchAgent" FunctionName="DOANPTUDHDModel.Store.Sp_SearchAgent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_SearchAgent_Result">
+                <ScalarProperty Name="AGENT_NUMBER" ColumnName="AGENT_NUMBER" />
+                <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+                <ScalarProperty Name="AGENT_TELEPHONE1" ColumnName="AGENT_TELEPHONE1" />
+                <ScalarProperty Name="AGENT_TELEPHONE2" ColumnName="AGENT_TELEPHONE2" />
+                <ScalarProperty Name="AGENT_TELEPHONE3" ColumnName="AGENT_TELEPHONE3" />
+                <ScalarProperty Name="AGENT_CITY" ColumnName="AGENT_CITY" />
+                <ScalarProperty Name="AGENT_DISTRICT" ColumnName="AGENT_DISTRICT" />
+                <ScalarProperty Name="AGENT_STREET" ColumnName="AGENT_STREET" />
+                <ScalarProperty Name="AGENT_STREET_NUMBER" ColumnName="AGENT_STREET_NUMBER" />
+                <ScalarProperty Name="AGENT_REGION" ColumnName="AGENT_REGION" />
+                <ScalarProperty Name="AGENT_OWNER" ColumnName="AGENT_OWNER" />
+                <ScalarProperty Name="AGENT_FAX" ColumnName="AGENT_FAX" />
+                <ScalarProperty Name="AGENT_EMAIL_1" ColumnName="AGENT_EMAIL_1" />
+                <ScalarProperty Name="AGENT_EMAIL_2" ColumnName="AGENT_EMAIL_2" />
+                <ScalarProperty Name="AGENT_EMAIL_3" ColumnName="AGENT_EMAIL_3" />
+                <ScalarProperty Name="AGENT_BANK_ACCOUNT" ColumnName="AGENT_BANK_ACCOUNT" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="AGENT_STATUS" ColumnName="AGENT_STATUS" />
+                <ScalarProperty Name="AGENT_APPR0VE_DATE" ColumnName="AGENT_APPR0VE_DATE" />
+                <ScalarProperty Name="AGENT_FIRST_DATE_ACTIVATE" ColumnName="AGENT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="AGENT_LAST_DAY_ACTIVATE" ColumnName="AGENT_LAST_DAY_ACTIVATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_SendMessage" FunctionName="DOANPTUDHDModel.Store.Sp_SendMessage" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -10,7 +10,7 @@
         }
         $scope.change = function()
         {
-            debugger;
+            
             $scope.merchant.approveDate = $scope.approveDate; 
             if($scope.merchant.approveDate >= $scope.merchant.firstDateActive)
                 {
@@ -35,9 +35,9 @@
                 url: "http://localhost:50259/Api/Account/SignUp",
                 data: register
             }).then(function sucess(objet) {
-                    debugger;
+                    
                 if (objet.data.success == true) {
-                    debugger;
+                    
                     $scope.checkAccount = 0;
                     window.location.reload();
                 }
@@ -84,7 +84,7 @@
                 merchantFirstDateActivate: $scope.merchant.firstDateActive
             }; 
             
-            debugger;
+            
             $http({
                 method: "POST",
                 url: "http://localhost:8080/DoAnAPI/rest/api/merchant",
@@ -100,7 +100,7 @@
                     
                 
             }, function errorCallback(response) {
-                debugger;
+                
                 var a = response;
             });
         };

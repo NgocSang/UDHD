@@ -10,7 +10,7 @@
         }
         $scope.change = function()
         {
-            debugger;
+             
             $scope.agent.approveDate = $scope.approveDate; 
             if($scope.agent.approveDate >= $scope.agent.firstDateActive)
                 {
@@ -35,9 +35,9 @@
                 url: "http://localhost:50259/Api/Account/SignUp",
                 data: register
             }).then(function sucess(objet) {
-                    debugger;
+                     
                 if (objet.data.success == true) {
-                    debugger;
+                     
                     $scope.checkAccount = 0;
                     window.location.reload();
                 }
@@ -77,7 +77,7 @@
                 AGENT_FIRST_DATE_ACTIVATE: moment($scope.agent.firstDateActive).format('DD/MM/YYYY')
             }; 
             
-            debugger;
+             
             $http({
                 method: "POST",
                 url: "http://localhost:50259/api/Agent/InsertAgent",
@@ -98,7 +98,7 @@
                     
                 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             });
         };

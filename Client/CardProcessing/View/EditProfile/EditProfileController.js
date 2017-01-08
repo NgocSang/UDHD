@@ -24,12 +24,12 @@
                     }
                 }).then(function sucess(objet) {
                     if (objet.data != null) {
-                        debugger;
+                        
                         $scope.Agent = objet.data[0];
                         $scope.Agent.AGENT_APPR0VE_DATE =  moment($scope.Agent.AGENT_APPR0VE_DATE).format('DD/MM/YYYY');
                     }
                 }, function errorCallback(response) {
-                    debugger;
+                    
                     var a = response;
                 });
             }
@@ -50,14 +50,14 @@
                 }
             }).then(function sucess(objet) {
                 if (objet.data != null) {
-                    debugger;
+
                     $scope.Merchant = objet.data[0];
                     $scope.Merchant.AGENT_APPR0VE_DATE =  moment($scope.Merchant.AGENT_APPR0VE_DATE).format('DD/MM/YYYY');
                     $scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE = moment($scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE).format('DD/MM/YYYY');
                    $scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE = moment($scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE).format('DD/MM/YYYY');
                 }
             }, function errorCallback(response) {
-                debugger;
+  
                 var a = response;
             });
             }
@@ -102,7 +102,7 @@
                     url: "http://localhost:8080/DoAnAPI/rest/api/merchant/",
                     data: merchantJson
                 }).then(function sucess(object) {
-                    debugger;
+ 
                     if (object.data.success == true) {
                         $scope.checkEditProfile = 0;
                     }
@@ -136,7 +136,7 @@
                     AGENT_BANK_ACCOUNT: $scope.Agent.AGENT_BANK_ACCOUNT
                     
             }
-                debugger;
+ 
                 $http({
                     method: "POST",
                     headers: {
@@ -146,7 +146,7 @@
                     url: "http://localhost:50259/Api/Agent/UpdateAgent",
                     data: $.param(agent)
                 }).then(function sucess(object) {
-                    debugger;
+           
                     if (object.data == true) {
                         $scope.checkEditProfile = 0;
                     }

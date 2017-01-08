@@ -16,7 +16,7 @@
         }
         $scope.hideforget = true;
         $scope.login_click = function () {
-            debugger;
+            
             var user = {
                 username: $scope.user.username,
                 password: $scope.user.password
@@ -31,7 +31,7 @@
                     $scope.checkUser = true;
                 }
                 else {
-                    debugger;
+                    
                     Myfactory.user = objet.data.dbUser;
                     Myfactory.user.token = objet.data.token;
                     storage.set('User', Myfactory.user);

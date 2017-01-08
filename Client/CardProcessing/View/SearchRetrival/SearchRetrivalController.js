@@ -32,7 +32,7 @@
                     page: 1
                 };
         $scope.searchRetrival = function() {
-            debugger;
+            
             var retrival = {
                 retrivalId: $scope.retrivalId,
                 retrivalDate: new Date($scope.retrivalDate).getTime()
@@ -45,7 +45,7 @@
             {
                 retrival.retrivalDate = undefined;
             }
-            debugger;
+            
             $http({
                 method: "POST",
                 url: "http://localhost:8080/DoAnAPI/rest/api/retrival/searchRetrival",
@@ -60,7 +60,7 @@
                     $scope.retrivals.count = objet.data.length;
                 }
             }, function errorCallback(response) {
-                debugger;
+                
                 var a = response;
             });
         }

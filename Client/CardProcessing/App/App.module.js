@@ -41,7 +41,6 @@
                     controller: "LoginController",
                     resolve: {
                         "authentication": function ($location, Myfactory) {
-                            debugger;
                             var user = Myfactory.user;
                             if (user !== null) {
                                 $location.url("/home");
@@ -62,16 +61,7 @@
                     templateUrl: 'Home/Home.html',
                     controller: "HomeController",
                     login: true
-                    /*resolve: {
-                        "authentication": function ($location, Myfactory) {
-                            debugger;
-                            var user = Myfactory.user;
-                            if (user == null) {
-                                $location.url("/login");
-                            }
-                        }
-                        
-                    }*/
+                    
                 })
                 .state("SearchRetrival", {
                         parent: "root",
@@ -79,16 +69,7 @@
                         templateUrl: 'SearchRetrival/SearchRetrival.html',
                         controller: "SearchRetrivalController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 .state("ChangePassword", {
                             parent: "root",
@@ -96,16 +77,7 @@
                             templateUrl: 'ChangePassword/ChangePassword.html',
                             controller: "ChangePasswordController",
                             login: true 
-                            /*resolve: {
-                                "authentication": function ($location, Myfactory) {
-                                    debugger;
-                                    var user = Myfactory.user;
-                                    if (user == null) {
-                                        $location.url("/login");
-                                    }
-                                }
-
-                            }*/
+                            
                         })
                 .state("SearchMerchant", {
                         parent: "root",
@@ -113,16 +85,7 @@
                         templateUrl: 'SearchMerchant/SearchMerchant.html',
                         controller: "SearchMerchantController",
                         login: true        
-                /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                
                     })
                 .state("SearchAgent", {
                             parent: "root",
@@ -130,16 +93,7 @@
                             templateUrl: 'SearchAgent/SearchAgent.html',
                             controller: "SearchAgentController",
                             login: true
-                            /*resolve: {
-                                "authentication": function ($location, Myfactory) {
-                                    debugger;
-                                    var user = Myfactory.user;
-                                    if (user == null) {
-                                        $location.url("/login");
-                                    }
-                                }
-
-                            }*/
+                            
                         })
                 .state("BoxMessage", {
                         parent: "root",
@@ -147,16 +101,7 @@
                         templateUrl: 'BoxMessage/BoxMessage.html',
                         controller: "BoxMessageController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 .state("OutboxMessage", {
                             parent: "root",
@@ -164,16 +109,7 @@
                             templateUrl: 'OutboxMessage/OutboxMessage.html',
                             controller: "OutboxMessageController",
                             login: true
-                            /*resolve: {
-                                "authentication": function ($location, Myfactory) {
-                                    debugger;
-                                    var user = Myfactory.user;
-                                    if (user == null) {
-                                        $location.url("/login");
-                                    }
-                                }
-
-                            }*/
+                            
                         })
                 .state("SendMessage", {
                         parent: "root",
@@ -181,16 +117,7 @@
                         templateUrl: 'SendMessage/SendMessage.html',
                         controller: "SendMessageController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 .state("InsertAgent", {
                         parent: "root",
@@ -198,16 +125,7 @@
                         templateUrl: 'InsertAgent/InsertAgent.html',
                         controller: "InsertAgentController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 .state("InsertMerchant", {
                         parent: "root",
@@ -215,16 +133,7 @@
                         templateUrl: 'InsertMerchant/InsertMerchant.html',
                         controller: "InsertMerchantController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 
                 .state("GrantAgent", {
@@ -233,16 +142,7 @@
                         templateUrl: 'GrantAgent/GrantAgent.html',
                         controller: "GrantAgentController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                 .state("EditProfile", {
                         parent: "root",
@@ -250,16 +150,7 @@
                         templateUrl: 'EditProfile/EditProfile.html',
                         controller: "EditProfileController",
                         login: true
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
                     
                 .state("Revenue", {
@@ -269,28 +160,17 @@
                         controller: "RevenueController",
                         login: true,
                 
-                        /*resolve: {
-                            "authentication": function ($location, Myfactory) {
-                                debugger;
-                                var user = Myfactory.user;
-                                if (user == null) {
-                                    $location.url("/login");
-                                }
-                            }
-
-                        }*/
+                        
                     })
             ;
 
         }]);
     app.run(function (Myfactory, storage, $rootScope, $state, $timeout) {
-        debugger;
         var a = storage.get('User');
         if (a) {
             Myfactory.user = a;
         }
         $rootScope.$on('$stateChangeStart', function(event, state, param, fromsate, fromparam){
-            debugger;
             if(state.login)
             {
                 var user = Myfactory.user;

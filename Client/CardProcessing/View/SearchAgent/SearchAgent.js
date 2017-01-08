@@ -18,7 +18,7 @@
             merchantType: '',
         }
         $scope.deleteClass = function(){
-            debugger;
+            
             
             if($('#collapse12').css('display') == 'none'){
                 $('#collapse12').show('slow');
@@ -97,7 +97,7 @@
                 }
             }).then(function sucess(response) {
                 if (response.data != null) {
-                    debugger;
+                    
                     $scope.agents.data = response.data;
                     $scope.agents.size = response.data.length;
                     //$scope.deleteClass();
@@ -125,7 +125,7 @@
                     agent.AGENT_STATUS = !agent.AGENT_STATUS
                 }
                 else {
-                    debugger;
+                    
                     Myfactory.user = response.data;
                     storage.set('User', Myfactory.user);
                     $location.url("/home")

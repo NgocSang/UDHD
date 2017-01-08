@@ -6,7 +6,7 @@
         $scope.SendMessage = function() {
             $scope.isErr = false
             $scope.isSuc = false
-            debugger;
+            
             $http({
                 
                 method: "PUT",
@@ -17,7 +17,7 @@
                     description: $scope.description
                 }
             }).then(function successCallBack(response) {
-                 debugger;
+                 
                 if (response.data > 0) {
                     $scope.receiver = ""
                     $scope.description = ""

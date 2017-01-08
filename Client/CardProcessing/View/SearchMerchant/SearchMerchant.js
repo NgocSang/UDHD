@@ -3,7 +3,7 @@
     angular.module('app.SearchMerchant', []).controller('SearchMerchantController', Home);
     function Home($scope, $http, $location, Myfactory, storage)
     {
-        debugger;
+        
         $scope.role = Myfactory.user.role;
         $scope.token = Myfactory.user.token;
         $scope.merchant = {
@@ -14,7 +14,7 @@
             merchant_name: ""
         }
         $scope.deleteClass = function(){
-            debugger;
+            
             
             if($('#collapse12').css('display') == 'none'){
                 $('#collapse12').show('slow');
@@ -92,7 +92,7 @@
         
         $scope.Update_status = function(item){
             
-            debugger;
+            
             var status;
             if(item.MERCHANT_STATUS == '1')
             {
@@ -117,12 +117,12 @@
                     $scope.checkUser = true;
                 }
                 else {
-                    debugger;
+                    
                     var a = $scope.merchants.data.indexOf(item);
                     $scope.merchants.data[a].MERCHANT_STATUS = status;
                     }
             }, function errorCallback(response) {
-                debugger;
+                
                 var a = response;
             });
         }
@@ -131,9 +131,9 @@
         {
             $scope.firstName = '';
              
-            debugger;
+            
             ConvertNull($scope.merchant);
-            debugger;
+            
             $http({
                 method: "GET",
                 url: 'http://localhost:50259/api/Merchant/searchmerchant',
@@ -151,13 +151,13 @@
             })
             .then(function sucess(objet) {
                 if (objet.data != null) {
-                    debugger;
+                    
                     $scope.merchants.data = objet.data;
                     $scope.merchants.count = objet.data.length;
                     $scope.deleteClass();
                 }
             }, function errorCallback(response) {
-                debugger;
+                
                 var a = response;
                 console.log(response);
             });

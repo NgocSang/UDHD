@@ -120,7 +120,6 @@
             })
         }
         $scope.logItem = function (item) {
-            debugger;
             $scope.information = item;
             console.log(item, 'was selected');
             
@@ -137,15 +136,14 @@
                     }).then(function sucess(objet) {
                 
                if(objet.data != null) {
-                    debugger;
                      $scope.merchantNoOwns = objet.data;
                 }
 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             }); 
-            debugger;
+             
             $http({
                 method: "GET",
                 headers: {
@@ -162,13 +160,12 @@
                 }
                 else
                 {
-                    debugger;
+                     
                     information.AGENT_NUMBER = "ko dc";
                 }
                     
                 
             }, function errorCallback(response) {
-                debugger;
                 var a = response;
             });
             
@@ -188,13 +185,11 @@
                 }
                 else
                 {
-                    debugger;
                     information.AGENT_NUMBER = "ko dc";
                 }
                     
                 
             }, function errorCallback(response) {
-                debugger;
                 var a = response;
             });
 
@@ -208,7 +203,6 @@
         };
 
         $scope.showAlert = function (item) {
-            debugger;
             $scope.message = item;
             
         }
@@ -242,24 +236,23 @@
                 }
                 else
                 {
-                    debugger;
                     information.AGENT_NUMBER = "ko dc";
                 }
                     
                 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             });
         }
         $scope.them = function (item) {
-            debugger;
+             
             
             var Obj = {
                 AGENT_NUMBER: $scope.information.AGENT_NUMBER,
                 MERCHANT_NUMBER: item.MERCHANT_NUMBER  
             };
-            debugger;
+             
             $http({
                 method: "POST",
                 headers: {
@@ -280,13 +273,13 @@
                 }
                 else
                 {
-                    debugger;
+                     
                     information.AGENT_NUMBER = "ko dc";
                 }
                     
                 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             });
            
@@ -296,7 +289,7 @@
                 AGENT_NUMBER: $scope.information.AGENT_NUMBER,
                 MERCHANT_NUMBER: item.MERCHANT_NUMBER  
             };
-            debugger;
+             
             $http({
                 method: "POST",
                 headers: {
@@ -317,13 +310,13 @@
                 }
                 else
                 {
-                    debugger;
+                     
                     information.AGENT_NUMBER = "ko dc";
                 }
                     
                 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             });
             
@@ -341,12 +334,12 @@
                     }).then(function sucess(objet) {
                 
                if(objet.data != null) {
-                    debugger;
+                     
                      $scope.desserts.data = objet.data;
                 }
 
             }, function errorCallback(response) {
-                debugger;
+                 
                 var a = response;
             }); 
         }  

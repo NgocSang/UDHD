@@ -4,7 +4,6 @@
     function ChangePassword($scope, $http, $location, Myfactory, storage)
     {
        $scope.ChangePassword = function() {
-           debugger
             if (!$scope.newPassword.localeCompare($scope.confirmPassword))
                 $http({
                 method: "POST",
@@ -16,7 +15,6 @@
                         confirmPassword: $scope.confirmPassword
                     }
                 }).then(function sucess(response) {
-                    debugger
                     if (response.data > 0)
                         $scope.result = "Mật khẩu đã cập nhật."
                     else

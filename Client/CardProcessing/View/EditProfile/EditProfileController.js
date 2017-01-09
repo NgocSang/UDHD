@@ -3,7 +3,9 @@
     angular.module('app.EditProfile', []).controller('EditProfileController', EditProfile);
     function EditProfile($scope, $http, $location, Myfactory, storage)
     {
-        $scope.Agent = {};
+        $scope.Agent = {
+            AGENT_APPR0VE_DATE: null
+        };
         $scope.Merchant = {}
         $scope.role = Myfactory.user.role;
         function init(){
@@ -50,11 +52,10 @@
                 }
             }).then(function sucess(objet) {
                 if (objet.data != null) {
-
                     $scope.Merchant = objet.data[0];
-                    $scope.Merchant.AGENT_APPR0VE_DATE =  moment($scope.Merchant.AGENT_APPR0VE_DATE).format('DD/MM/YYYY');
+                    $scope.Merchant.MERCHANT_APPR0VE_DATE =  moment($scope.Merchant.MERCHANT_APPR0VE_DATE).format('DD/MM/YYYY');
                     $scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE = moment($scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE).format('DD/MM/YYYY');
-                   $scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE = moment($scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE).format('DD/MM/YYYY');
+                    $scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE = moment($scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE).format('DD/MM/YYYY');
                 }
             }, function errorCallback(response) {
   

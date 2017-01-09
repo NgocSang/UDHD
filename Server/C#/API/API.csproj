@@ -302,6 +302,9 @@
     <Compile Include="Data\MERCHANT_SUMMARY_QUARTER.cs">
       <DependentUpon>DBcontext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\MERCHANT_SUMMARY_YEAR.cs">
+      <DependentUpon>DBcontext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\MESSAGE.cs">
       <DependentUpon>DBcontext.tt</DependentUpon>
     </Compile>
@@ -327,6 +330,9 @@
       <DependentUpon>DBcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\SP_RETRIVAL_Result.cs">
+      <DependentUpon>DBcontext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Sp_Revenue_Option_Result.cs">
       <DependentUpon>DBcontext.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Sp_Revenue_Result.cs">

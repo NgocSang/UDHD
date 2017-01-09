@@ -246,6 +246,64 @@
           <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="OTHER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_YEAR">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="int" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEYED_COUNT" Type="int" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="KEY_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="int" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="MESSAGE">
           <Key>
             <PropertyRef Name="ID" />
@@ -507,6 +565,18 @@
           <Parameter Name="namthang" Type="int" Mode="In" />
           <Parameter Name="quy" Type="int" Mode="In" />
           <Parameter Name="namquy" Type="int" Mode="In" />
+          <Parameter Name="nam" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Revenue_Option" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="agent" Type="nvarchar" Mode="In" />
+          <Parameter Name="merchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="loaiMerchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngay" Type="date" Mode="In" />
+          <Parameter Name="thang" Type="int" Mode="In" />
+          <Parameter Name="namthang" Type="int" Mode="In" />
+          <Parameter Name="quy" Type="int" Mode="In" />
+          <Parameter Name="namquy" Type="int" Mode="In" />
+          <Parameter Name="nam" Type="int" Mode="In" />
         </Function>
         <Function Name="Sp_SearchAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="agentNumber" Type="nvarchar" Mode="In" />
@@ -596,6 +666,7 @@
           <EntitySet Name="MERCHANT_SUMMARY" EntityType="Self.MERCHANT_SUMMARY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MERCHANT_SUMMARY_MONTH" EntityType="Self.MERCHANT_SUMMARY_MONTH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MERCHANT_SUMMARY_QUARTER" EntityType="Self.MERCHANT_SUMMARY_QUARTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MERCHANT_SUMMARY_YEAR" EntityType="Self.MERCHANT_SUMMARY_YEAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MESSAGE" EntityType="Self.MESSAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MESSAGE_OUTBOX" EntityType="Self.MESSAGE_OUTBOX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROCESSOR" EntityType="Self.PROCESSOR" Schema="dbo" store:Type="Tables" />
@@ -642,375 +713,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DOANPTUDHDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AGENT">
-          <Key>
-            <PropertyRef Name="AGENT_NUMBER" />
-          </Key>
-          <Property Name="AGENT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_TELEPHONE1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="AGENT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="AGENT_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_DISTRICT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_STREET" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_STREET_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_REGION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_OWNER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_FAX" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_EMAIL_1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_EMAIL_2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AGENT_EMAIL_3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="AGENT_BANK_ACCOUNT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BACKEND_PROCESSOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AGENT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="AGENT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
-          <Property Name="AGENT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="PROCESSOR" Relationship="Self.AGENT_FK_PROCESSOR" FromRole="AGENT" ToRole="PROCESSOR" />
-          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_FK_AGENT" FromRole="AGENT" ToRole="MERCHANT" />
-        </EntityType>
-        <EntityType Name="MERCHANT">
-          <Key>
-            <PropertyRef Name="MERCHANT_NUMBER" />
-          </Key>
-          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_TELEPHONE1" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="MERCHANT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="MERCHANT_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_DISTRICT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_STREET" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_STEET_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_REGION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_OWNER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_FAX" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_EMAIL1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_EMAIL2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MERCHANT_EMAIL3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MERCHANT_BANK_ACCOUNT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MANAGE_AGENT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="BACKEND_PROCESSOR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MERCHANT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="MERCHANT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
-          <Property Name="MERCHANT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AGENT" Relationship="Self.MERCHANT_FK_AGENT" FromRole="MERCHANT" ToRole="AGENT" />
-          <NavigationProperty Name="PROCESSOR" Relationship="Self.MERCHANT_FK_PROCESSOR" FromRole="MERCHANT" ToRole="PROCESSOR" />
-          <NavigationProperty Name="MERCHANT_SUMMARY" Relationship="Self.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT" ToRole="MERCHANT_SUMMARY" />
-          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="Self.TRANSACTION_FK_MERCHANT" FromRole="MERCHANT" ToRole="TRANSACTION_DETAIL" />
-        </EntityType>
-        <EntityType Name="MERCHANT_SUMMARY">
-          <Key>
-            <PropertyRef Name="MERCHANT_NUMBER" />
-            <PropertyRef Name="REPORT_DATE" />
-          </Key>
-          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="REPORT_DATE" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT_SUMMARY" ToRole="MERCHANT" />
-        </EntityType>
-        <EntityType Name="MERCHANT_SUMMARY_MONTH">
-          <Key>
-            <PropertyRef Name="MERCHANT_NUMBER" />
-            <PropertyRef Name="MONTH_REPORT" />
-            <PropertyRef Name="YEAR_REPORT" />
-          </Key>
-          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MONTH_REPORT" Type="Int32" Nullable="false" />
-          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
-          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MERCHANT_SUMMARY_QUARTER">
-          <Key>
-            <PropertyRef Name="MERCHANT_NUMBER" />
-            <PropertyRef Name="QUARTER_REPORT" />
-            <PropertyRef Name="YEAR_REPORT" />
-          </Key>
-          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="QUARTER_REPORT" Type="Int32" Nullable="false" />
-          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
-          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="KEY_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
-          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PROCESSOR">
-          <Key>
-            <PropertyRef Name="PROCESSOR_ID" />
-          </Key>
-          <Property Name="PROCESSOR_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PROCESSOR_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PROCESSOR_BANK_ACCOUNT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AGENT" Relationship="Self.AGENT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="AGENT" />
-          <NavigationProperty Name="MERCHANT" Relationship="Self.MERCHANT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="MERCHANT" />
-        </EntityType>
-        <EntityType Name="RETRIVAL">
-          <Key>
-            <PropertyRef Name="RETRIVAL_ID" />
-          </Key>
-          <Property Name="RETRIVAL_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TRANSACTION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="RETRIVAL_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RETRIVAL_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TRANSACTION_DETAIL">
-          <Key>
-            <PropertyRef Name="TRANSACTION_ID" />
-          </Key>
-          <Property Name="TRANSACTION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EXPIRATION_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TRANSACTION_CODE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TRANSACTION_AMOUNT" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="TRANSACTION_DATE" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TRANSACTION_TIME" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="KEYED_ENTRY" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AUTHORIZATION_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TRANSACTION_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="MERCHANT_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BATCH_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ACCOUNT_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CARDTYPE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="COUNTRY_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FIRST_TWELVE_ACCOUNT_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IS_READ" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="MERCHANT" Relationship="Self.TRANSACTION_FK_MERCHANT" FromRole="TRANSACTION_DETAIL" ToRole="MERCHANT" />
-        </EntityType>
-        <Association Name="AGENT_FK_PROCESSOR">
-          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
-          <End Role="AGENT" Type="Self.AGENT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROCESSOR">
-              <PropertyRef Name="PROCESSOR_ID" />
-            </Principal>
-            <Dependent Role="AGENT">
-              <PropertyRef Name="BACKEND_PROCESSOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MERCHANT_FK_AGENT">
-          <End Role="AGENT" Type="Self.AGENT" Multiplicity="0..1" />
-          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AGENT">
-              <PropertyRef Name="AGENT_NUMBER" />
-            </Principal>
-            <Dependent Role="MERCHANT">
-              <PropertyRef Name="MANAGE_AGENT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MERCHANT_FK_PROCESSOR">
-          <End Role="PROCESSOR" Type="Self.PROCESSOR" Multiplicity="1" />
-          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROCESSOR">
-              <PropertyRef Name="PROCESSOR_ID" />
-            </Principal>
-            <Dependent Role="MERCHANT">
-              <PropertyRef Name="BACKEND_PROCESSOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MERCHANT_SUMMARY_FK_MERCHANT">
-          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
-          <End Role="MERCHANT_SUMMARY" Type="Self.MERCHANT_SUMMARY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MERCHANT">
-              <PropertyRef Name="MERCHANT_NUMBER" />
-            </Principal>
-            <Dependent Role="MERCHANT_SUMMARY">
-              <PropertyRef Name="MERCHANT_NUMBER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TRANSACTION_FK_MERCHANT">
-          <End Role="MERCHANT" Type="Self.MERCHANT" Multiplicity="1" />
-          <End Role="TRANSACTION_DETAIL" Type="Self.TRANSACTION_DETAIL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MERCHANT">
-              <PropertyRef Name="MERCHANT_NUMBER" />
-            </Principal>
-            <Dependent Role="TRANSACTION_DETAIL">
-              <PropertyRef Name="MERCHANT_NUMBER" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DOANPTUDHDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AGENT" EntityType="Self.AGENT" />
-          <EntitySet Name="MERCHANT" EntityType="Self.MERCHANT" />
-          <EntitySet Name="MERCHANT_SUMMARY" EntityType="Self.MERCHANT_SUMMARY" />
-          <EntitySet Name="MERCHANT_SUMMARY_MONTH" EntityType="Self.MERCHANT_SUMMARY_MONTH" />
-          <EntitySet Name="MERCHANT_SUMMARY_QUARTER" EntityType="Self.MERCHANT_SUMMARY_QUARTER" />
-          <EntitySet Name="PROCESSOR" EntityType="Self.PROCESSOR" />
-          <EntitySet Name="RETRIVAL" EntityType="Self.RETRIVAL" />
-          <EntitySet Name="TRANSACTION_DETAIL" EntityType="Self.TRANSACTION_DETAIL" />
-          <AssociationSet Name="AGENT_FK_PROCESSOR" Association="Self.AGENT_FK_PROCESSOR">
-            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
-            <End Role="AGENT" EntitySet="AGENT" />
-          </AssociationSet>
-          <AssociationSet Name="MERCHANT_FK_AGENT" Association="Self.MERCHANT_FK_AGENT">
-            <End Role="AGENT" EntitySet="AGENT" />
-            <End Role="MERCHANT" EntitySet="MERCHANT" />
-          </AssociationSet>
-          <AssociationSet Name="MERCHANT_FK_PROCESSOR" Association="Self.MERCHANT_FK_PROCESSOR">
-            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
-            <End Role="MERCHANT" EntitySet="MERCHANT" />
-          </AssociationSet>
-          <AssociationSet Name="MERCHANT_SUMMARY_FK_MERCHANT" Association="Self.MERCHANT_SUMMARY_FK_MERCHANT">
-            <End Role="MERCHANT" EntitySet="MERCHANT" />
-            <End Role="MERCHANT_SUMMARY" EntitySet="MERCHANT_SUMMARY" />
-          </AssociationSet>
-          <AssociationSet Name="TRANSACTION_FK_MERCHANT" Association="Self.TRANSACTION_FK_MERCHANT">
-            <End Role="MERCHANT" EntitySet="MERCHANT" />
-            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
-          </AssociationSet>
           <FunctionImport Name="insert_MERCHANT_SUMMARY">
             <Parameter Name="MERCHANT_NUMBER" Mode="In" Type="String" />
             <Parameter Name="REPORT_DATE" Mode="In" Type="DateTime" />
@@ -1095,16 +798,6 @@
             <Parameter Name="RETRIVAL_ID" Mode="In" Type="String" />
             <Parameter Name="RETRIVAL_DATE" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="Sp_Revenue" ReturnType="Collection(DOANPTUDHDModel.Sp_Revenue_Result)">
-            <Parameter Name="agent" Mode="In" Type="String" />
-            <Parameter Name="merchant" Mode="In" Type="String" />
-            <Parameter Name="loaiMerchant" Mode="In" Type="String" />
-            <Parameter Name="ngay" Mode="In" Type="DateTime" />
-            <Parameter Name="thang" Mode="In" Type="Int32" />
-            <Parameter Name="namthang" Mode="In" Type="Int32" />
-            <Parameter Name="quy" Mode="In" Type="Int32" />
-            <Parameter Name="namquy" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Sp_SearchMerchant" ReturnType="Collection(DOANPTUDHDModel.Sp_SearchMerchant_Result)">
             <Parameter Name="num" Mode="In" Type="String" />
             <Parameter Name="name" Mode="In" Type="String" />
@@ -1174,9 +867,30 @@
             <Parameter Name="status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="TONGHOP_TRANSACTION_DETAIL" />
+          <FunctionImport Name="Sp_SearchAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_SearchAgent_Result)">
+            <Parameter Name="agentNumber" Mode="In" Type="String" />
+            <Parameter Name="agentBankNumber" Mode="In" Type="String" />
+            <Parameter Name="agentDistrict" Mode="In" Type="String" />
+            <Parameter Name="agentApprovedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="merchantType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_SendMessage">
+            <Parameter Name="sender" Mode="In" Type="String" />
+            <Parameter Name="receiver" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="ACCOUNT" EntityType="DOANPTUDHDModel.ACCOUNT" />
+          <EntitySet Name="AGENT" EntityType="DOANPTUDHDModel.AGENT" />
+          <EntitySet Name="MERCHANT" EntityType="DOANPTUDHDModel.MERCHANT" />
+          <EntitySet Name="MERCHANT_SUMMARY" EntityType="DOANPTUDHDModel.MERCHANT_SUMMARY" />
+          <EntitySet Name="MERCHANT_SUMMARY_MONTH" EntityType="DOANPTUDHDModel.MERCHANT_SUMMARY_MONTH" />
+          <EntitySet Name="MERCHANT_SUMMARY_QUARTER" EntityType="DOANPTUDHDModel.MERCHANT_SUMMARY_QUARTER" />
+          <EntitySet Name="MERCHANT_SUMMARY_YEAR" EntityType="DOANPTUDHDModel.MERCHANT_SUMMARY_YEAR" />
           <EntitySet Name="MESSAGE" EntityType="DOANPTUDHDModel.MESSAGE" />
           <EntitySet Name="MESSAGE_OUTBOX" EntityType="DOANPTUDHDModel.MESSAGE_OUTBOX" />
+          <EntitySet Name="PROCESSOR" EntityType="DOANPTUDHDModel.PROCESSOR" />
+          <EntitySet Name="RETRIVAL" EntityType="DOANPTUDHDModel.RETRIVAL" />
+          <EntitySet Name="TRANSACTION_DETAIL" EntityType="DOANPTUDHDModel.TRANSACTION_DETAIL" />
           <AssociationSet Name="MESSAGE_FK_ACCOUNT_RECEIVED" Association="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_RECEIVED">
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="MESSAGE" EntitySet="MESSAGE" />
@@ -1193,17 +907,47 @@
             <End Role="ACCOUNT" EntitySet="ACCOUNT" />
             <End Role="MESSAGE_OUTBOX" EntitySet="MESSAGE_OUTBOX" />
           </AssociationSet>
-          <FunctionImport Name="Sp_SearchAgent" ReturnType="Collection(DOANPTUDHDModel.Sp_SearchAgent_Result)">
-            <Parameter Name="agentNumber" Mode="In" Type="String" />
-            <Parameter Name="agentBankNumber" Mode="In" Type="String" />
-            <Parameter Name="agentDistrict" Mode="In" Type="String" />
-            <Parameter Name="agentApprovedDate" Mode="In" Type="DateTime" />
-            <Parameter Name="merchantType" Mode="In" Type="String" />
+          <AssociationSet Name="AGENT_FK_PROCESSOR" Association="DOANPTUDHDModel.AGENT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="AGENT" EntitySet="AGENT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_AGENT" Association="DOANPTUDHDModel.MERCHANT_FK_AGENT">
+            <End Role="AGENT" EntitySet="AGENT" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_FK_PROCESSOR" Association="DOANPTUDHDModel.MERCHANT_FK_PROCESSOR">
+            <End Role="PROCESSOR" EntitySet="PROCESSOR" />
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+          </AssociationSet>
+          <AssociationSet Name="MERCHANT_SUMMARY_FK_MERCHANT" Association="DOANPTUDHDModel.MERCHANT_SUMMARY_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="MERCHANT_SUMMARY" EntitySet="MERCHANT_SUMMARY" />
+          </AssociationSet>
+          <AssociationSet Name="TRANSACTION_FK_MERCHANT" Association="DOANPTUDHDModel.TRANSACTION_FK_MERCHANT">
+            <End Role="MERCHANT" EntitySet="MERCHANT" />
+            <End Role="TRANSACTION_DETAIL" EntitySet="TRANSACTION_DETAIL" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_Revenue" ReturnType="Collection(DOANPTUDHDModel.Sp_Revenue_Result)">
+            <Parameter Name="agent" Mode="In" Type="String" />
+            <Parameter Name="merchant" Mode="In" Type="String" />
+            <Parameter Name="loaiMerchant" Mode="In" Type="String" />
+            <Parameter Name="ngay" Mode="In" Type="DateTime" />
+            <Parameter Name="thang" Mode="In" Type="Int32" />
+            <Parameter Name="namthang" Mode="In" Type="Int32" />
+            <Parameter Name="quy" Mode="In" Type="Int32" />
+            <Parameter Name="namquy" Mode="In" Type="Int32" />
+            <Parameter Name="nam" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Sp_SendMessage">
-            <Parameter Name="sender" Mode="In" Type="String" />
-            <Parameter Name="receiver" Mode="In" Type="String" />
-            <Parameter Name="description" Mode="In" Type="String" />
+          <FunctionImport Name="Sp_Revenue_Option" ReturnType="Collection(DOANPTUDHDModel.Sp_Revenue_Option_Result)">
+            <Parameter Name="agent" Mode="In" Type="String" />
+            <Parameter Name="merchant" Mode="In" Type="String" />
+            <Parameter Name="loaiMerchant" Mode="In" Type="String" />
+            <Parameter Name="ngay" Mode="In" Type="DateTime" />
+            <Parameter Name="thang" Mode="In" Type="Int32" />
+            <Parameter Name="namthang" Mode="In" Type="Int32" />
+            <Parameter Name="quy" Mode="In" Type="Int32" />
+            <Parameter Name="namquy" Mode="In" Type="Int32" />
+            <Parameter Name="nam" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="Sp_LoadMerchantNoAgent_Result">
@@ -1243,22 +987,6 @@
           <Property Type="String" Name="TRANSACTION_ID" Nullable="true" MaxLength="15" />
           <Property Type="DateTime" Name="RETRIVAL_DATE" Nullable="false" Precision="23" />
           <Property Type="String" Name="RETRIVAL_DESCRIPTION" Nullable="true" MaxLength="500" />
-        </ComplexType>
-        <ComplexType Name="Sp_Revenue_Result">
-          <Property Type="Decimal" Name="FOREIGN_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="DEBIT_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="VISA_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="MASTER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="DISCOVERY_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="OTHER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="DateTime" Name="REPORT_DATE" Nullable="false" />
-          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="MERCHANT_TYPE" Nullable="false" MaxLength="10" />
-          <Property Type="Decimal" Name="SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="NET_AMOUNT" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="RETURN_AMOUNT" Nullable="false" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="Sp_SearchMerchant_Result">
           <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
@@ -1301,6 +1029,29 @@
           <Property Type="String" Name="READING_STATUS" Nullable="false" MaxLength="3" />
           <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="1000" />
         </ComplexType>
+        <ComplexType Name="Sp_SearchAgent_Result">
+          <Property Type="String" Name="AGENT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AGENT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_TELEPHONE1" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="AGENT_TELEPHONE2" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="AGENT_TELEPHONE3" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="AGENT_CITY" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_DISTRICT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_STREET" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_STREET_NUMBER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_REGION" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_OWNER" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_FAX" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="AGENT_EMAIL_1" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="AGENT_EMAIL_2" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AGENT_EMAIL_3" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="AGENT_BANK_ACCOUNT" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="BACKEND_PROCESSOR" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AGENT_STATUS" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="AGENT_APPR0VE_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="AGENT_FIRST_DATE_ACTIVATE" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AGENT_LAST_DAY_ACTIVATE" Nullable="true" Precision="23" />
+        </ComplexType>
         <EntityType Name="ACCOUNT">
           <Key>
             <PropertyRef Name="USERNAME" />
@@ -1313,6 +1064,303 @@
           <NavigationProperty Name="MESSAGE1" Relationship="DOANPTUDHDModel.MESSAGE_FK_ACCOUNT_SEND" FromRole="ACCOUNT" ToRole="MESSAGE" />
           <NavigationProperty Name="MESSAGE_OUTBOX" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="ACCOUNT" ToRole="MESSAGE_OUTBOX" />
           <NavigationProperty Name="MESSAGE_OUTBOX1" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_SEND" FromRole="ACCOUNT" ToRole="MESSAGE_OUTBOX" />
+        </EntityType>
+        <EntityType Name="AGENT">
+          <Key>
+            <PropertyRef Name="AGENT_NUMBER" />
+          </Key>
+          <Property Name="AGENT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_TELEPHONE1" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_CITY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_DISTRICT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_STREET" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_STREET_NUMBER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_REGION" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_OWNER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_FAX" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_EMAIL_1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_EMAIL_2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_EMAIL_3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_BANK_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BACKEND_PROCESSOR" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="AGENT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AGENT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
+          <Property Name="AGENT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PROCESSOR" Relationship="DOANPTUDHDModel.AGENT_FK_PROCESSOR" FromRole="AGENT" ToRole="PROCESSOR" />
+          <NavigationProperty Name="MERCHANT" Relationship="DOANPTUDHDModel.MERCHANT_FK_AGENT" FromRole="AGENT" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="MERCHANT">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_NAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_TYPE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_TELEPHONE1" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_TELEPHONE2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_TELEPHONE3" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_CITY" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_DISTRICT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_STREET" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_STEET_NUMBER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_REGION" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_OWNER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_FAX" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_EMAIL1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_EMAIL2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_EMAIL3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_BANK_ACCOUNT" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MANAGE_AGENT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BACKEND_PROCESSOR" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_STATUS" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_APPR0VE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MERCHANT_FIRST_DATE_ACTIVATE" Type="DateTime" Precision="3" />
+          <Property Name="MERCHANT_LAST_DAY_ACTIVATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AGENT" Relationship="DOANPTUDHDModel.MERCHANT_FK_AGENT" FromRole="MERCHANT" ToRole="AGENT" />
+          <NavigationProperty Name="PROCESSOR" Relationship="DOANPTUDHDModel.MERCHANT_FK_PROCESSOR" FromRole="MERCHANT" ToRole="PROCESSOR" />
+          <NavigationProperty Name="MERCHANT_SUMMARY" Relationship="DOANPTUDHDModel.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT" ToRole="MERCHANT_SUMMARY" />
+          <NavigationProperty Name="TRANSACTION_DETAIL" Relationship="DOANPTUDHDModel.TRANSACTION_FK_MERCHANT" FromRole="MERCHANT" ToRole="TRANSACTION_DETAIL" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="REPORT_DATE" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="REPORT_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="MERCHANT" Relationship="DOANPTUDHDModel.MERCHANT_SUMMARY_FK_MERCHANT" FromRole="MERCHANT_SUMMARY" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_MONTH">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="MONTH_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MONTH_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_QUARTER">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="QUARTER_REPORT" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="QUARTER_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MERCHANT_SUMMARY_YEAR">
+          <Key>
+            <PropertyRef Name="MERCHANT_NUMBER" />
+            <PropertyRef Name="YEAR_REPORT" />
+          </Key>
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="YEAR_REPORT" Type="Int32" Nullable="false" />
+          <Property Name="TRANSACTION_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEYED_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="KEY_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="FOREIGN_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FOREIGN_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DEBIT_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DEBIT_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="VISA_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="VISA_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="MASTER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="MASTER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AMERICANEXPRESS_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="DISCOVERY_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DISCOVERY_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_RETURN_COUNT" Type="Int32" Nullable="false" />
+          <Property Name="OTHER_CARD_SALES_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_RETURN_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="OTHER_CARD_NET_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="MESSAGE">
           <Key>
@@ -1339,6 +1387,47 @@
           <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ACCOUNT" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_RECEIVED" FromRole="MESSAGE_OUTBOX" ToRole="ACCOUNT" />
           <NavigationProperty Name="ACCOUNT1" Relationship="DOANPTUDHDModel.OUTBOX_MESSAGE_FK_ACCOUNT_SEND" FromRole="MESSAGE_OUTBOX" ToRole="ACCOUNT" />
+        </EntityType>
+        <EntityType Name="PROCESSOR">
+          <Key>
+            <PropertyRef Name="PROCESSOR_ID" />
+          </Key>
+          <Property Name="PROCESSOR_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESSOR_ADDRESS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROCESSOR_BANK_ACCOUNT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AGENT" Relationship="DOANPTUDHDModel.AGENT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="AGENT" />
+          <NavigationProperty Name="MERCHANT" Relationship="DOANPTUDHDModel.MERCHANT_FK_PROCESSOR" FromRole="PROCESSOR" ToRole="MERCHANT" />
+        </EntityType>
+        <EntityType Name="RETRIVAL">
+          <Key>
+            <PropertyRef Name="RETRIVAL_ID" />
+          </Key>
+          <Property Name="RETRIVAL_ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TRANSACTION_ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RETRIVAL_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RETRIVAL_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TRANSACTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TRANSACTION_ID" />
+          </Key>
+          <Property Name="TRANSACTION_ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="EXPIRATION_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TRANSACTION_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="TRANSACTION_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TRANSACTION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TRANSACTION_TIME" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="KEYED_ENTRY" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AUTHORIZATION_NUMBER" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="TRANSACTION_DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MERCHANT_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BATCH_NUMBER" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNT_NUMBER" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CARDTYPE_CODE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="COUNTRY_CODE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FIRST_TWELVE_ACCOUNT_NUMBER" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IS_READ" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MERCHANT" Relationship="DOANPTUDHDModel.TRANSACTION_FK_MERCHANT" FromRole="TRANSACTION_DETAIL" ToRole="MERCHANT" />
         </EntityType>
         <Association Name="MESSAGE_FK_ACCOUNT_RECEIVED">
           <End Type="DOANPTUDHDModel.ACCOUNT" Role="ACCOUNT" Multiplicity="1" />
@@ -1388,28 +1477,93 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="Sp_SearchAgent_Result">
-          <Property Type="String" Name="AGENT_NUMBER" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="AGENT_NAME" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_TELEPHONE1" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="AGENT_TELEPHONE2" Nullable="true" MaxLength="11" />
-          <Property Type="String" Name="AGENT_TELEPHONE3" Nullable="true" MaxLength="11" />
-          <Property Type="String" Name="AGENT_CITY" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_DISTRICT" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_STREET" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_STREET_NUMBER" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_REGION" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_OWNER" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_FAX" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="AGENT_EMAIL_1" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="AGENT_EMAIL_2" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="AGENT_EMAIL_3" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="AGENT_BANK_ACCOUNT" Nullable="false" MaxLength="30" />
-          <Property Type="String" Name="BACKEND_PROCESSOR" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="AGENT_STATUS" Nullable="false" MaxLength="1" />
-          <Property Type="DateTime" Name="AGENT_APPR0VE_DATE" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="AGENT_FIRST_DATE_ACTIVATE" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="AGENT_LAST_DAY_ACTIVATE" Nullable="true" Precision="23" />
+        <Association Name="AGENT_FK_PROCESSOR">
+          <End Type="DOANPTUDHDModel.PROCESSOR" Role="PROCESSOR" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.AGENT" Role="AGENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="AGENT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_AGENT">
+          <End Type="DOANPTUDHDModel.AGENT" Role="AGENT" Multiplicity="0..1" />
+          <End Type="DOANPTUDHDModel.MERCHANT" Role="MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT">
+              <PropertyRef Name="AGENT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="MANAGE_AGENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_FK_PROCESSOR">
+          <End Type="DOANPTUDHDModel.PROCESSOR" Role="PROCESSOR" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MERCHANT" Role="MERCHANT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROCESSOR">
+              <PropertyRef Name="PROCESSOR_ID" />
+            </Principal>
+            <Dependent Role="MERCHANT">
+              <PropertyRef Name="BACKEND_PROCESSOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MERCHANT_SUMMARY_FK_MERCHANT">
+          <End Type="DOANPTUDHDModel.MERCHANT" Role="MERCHANT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.MERCHANT_SUMMARY" Role="MERCHANT_SUMMARY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="MERCHANT_SUMMARY">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRANSACTION_FK_MERCHANT">
+          <End Type="DOANPTUDHDModel.MERCHANT" Role="MERCHANT" Multiplicity="1" />
+          <End Type="DOANPTUDHDModel.TRANSACTION_DETAIL" Role="TRANSACTION_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MERCHANT">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Principal>
+            <Dependent Role="TRANSACTION_DETAIL">
+              <PropertyRef Name="MERCHANT_NUMBER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Sp_Revenue_Result">
+          <Property Type="Decimal" Name="FOREIGN_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="DEBIT_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="VISA_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MASTER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="DISCOVERY_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OTHER_CARD_SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="REPORT_DATE" Nullable="false" />
+          <Property Type="String" Name="MERCHANT_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MERCHANT_NAME" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="MERCHANT_TYPE" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="SALES_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="NET_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="RETURN_AMOUNT" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="Sp_Revenue_Option_Result">
+          <Property Type="Decimal" Name="TOTAL_FOREIGN_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_DEBIT_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_VISA_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_MASTER_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_AMERICANEXPRESS_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_DISCOVERY_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_OTHER_CARD_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_SALES_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_NET_AMOUNT" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TOTAL_RETURN_AMOUNT" Nullable="true" Precision="38" Scale="0" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1417,279 +1571,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DOANPTUDHDModelStoreContainer" CdmEntityContainer="DOANPTUDHDEntities">
-          <EntitySetMapping Name="AGENT">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.AGENT">
-              <MappingFragment StoreEntitySet="AGENT">
-                <ScalarProperty Name="AGENT_NUMBER" ColumnName="AGENT_NUMBER" />
-                <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
-                <ScalarProperty Name="AGENT_TELEPHONE1" ColumnName="AGENT_TELEPHONE1" />
-                <ScalarProperty Name="AGENT_TELEPHONE2" ColumnName="AGENT_TELEPHONE2" />
-                <ScalarProperty Name="AGENT_TELEPHONE3" ColumnName="AGENT_TELEPHONE3" />
-                <ScalarProperty Name="AGENT_CITY" ColumnName="AGENT_CITY" />
-                <ScalarProperty Name="AGENT_DISTRICT" ColumnName="AGENT_DISTRICT" />
-                <ScalarProperty Name="AGENT_STREET" ColumnName="AGENT_STREET" />
-                <ScalarProperty Name="AGENT_STREET_NUMBER" ColumnName="AGENT_STREET_NUMBER" />
-                <ScalarProperty Name="AGENT_REGION" ColumnName="AGENT_REGION" />
-                <ScalarProperty Name="AGENT_OWNER" ColumnName="AGENT_OWNER" />
-                <ScalarProperty Name="AGENT_FAX" ColumnName="AGENT_FAX" />
-                <ScalarProperty Name="AGENT_EMAIL_1" ColumnName="AGENT_EMAIL_1" />
-                <ScalarProperty Name="AGENT_EMAIL_2" ColumnName="AGENT_EMAIL_2" />
-                <ScalarProperty Name="AGENT_EMAIL_3" ColumnName="AGENT_EMAIL_3" />
-                <ScalarProperty Name="AGENT_BANK_ACCOUNT" ColumnName="AGENT_BANK_ACCOUNT" />
-                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
-                <ScalarProperty Name="AGENT_STATUS" ColumnName="AGENT_STATUS" />
-                <ScalarProperty Name="AGENT_APPR0VE_DATE" ColumnName="AGENT_APPR0VE_DATE" />
-                <ScalarProperty Name="AGENT_FIRST_DATE_ACTIVATE" ColumnName="AGENT_FIRST_DATE_ACTIVATE" />
-                <ScalarProperty Name="AGENT_LAST_DAY_ACTIVATE" ColumnName="AGENT_LAST_DAY_ACTIVATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MERCHANT">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT">
-              <MappingFragment StoreEntitySet="MERCHANT">
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
-                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
-                <ScalarProperty Name="MERCHANT_TELEPHONE1" ColumnName="MERCHANT_TELEPHONE1" />
-                <ScalarProperty Name="MERCHANT_TELEPHONE2" ColumnName="MERCHANT_TELEPHONE2" />
-                <ScalarProperty Name="MERCHANT_TELEPHONE3" ColumnName="MERCHANT_TELEPHONE3" />
-                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
-                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
-                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
-                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
-                <ScalarProperty Name="MERCHANT_REGION" ColumnName="MERCHANT_REGION" />
-                <ScalarProperty Name="MERCHANT_OWNER" ColumnName="MERCHANT_OWNER" />
-                <ScalarProperty Name="MERCHANT_FAX" ColumnName="MERCHANT_FAX" />
-                <ScalarProperty Name="MERCHANT_EMAIL1" ColumnName="MERCHANT_EMAIL1" />
-                <ScalarProperty Name="MERCHANT_EMAIL2" ColumnName="MERCHANT_EMAIL2" />
-                <ScalarProperty Name="MERCHANT_EMAIL3" ColumnName="MERCHANT_EMAIL3" />
-                <ScalarProperty Name="MERCHANT_BANK_ACCOUNT" ColumnName="MERCHANT_BANK_ACCOUNT" />
-                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
-                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
-                <ScalarProperty Name="MERCHANT_STATUS" ColumnName="MERCHANT_STATUS" />
-                <ScalarProperty Name="MERCHANT_APPR0VE_DATE" ColumnName="MERCHANT_APPR0VE_DATE" />
-                <ScalarProperty Name="MERCHANT_FIRST_DATE_ACTIVATE" ColumnName="MERCHANT_FIRST_DATE_ACTIVATE" />
-                <ScalarProperty Name="MERCHANT_LAST_DAY_ACTIVATE" ColumnName="MERCHANT_LAST_DAY_ACTIVATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MERCHANT_SUMMARY">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY">
-              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY">
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
-                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
-                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
-                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
-                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
-                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
-                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
-                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
-                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MERCHANT_SUMMARY_MONTH">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_MONTH">
-              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_MONTH">
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="MONTH_REPORT" ColumnName="MONTH_REPORT" />
-                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
-                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
-                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
-                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
-                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
-                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
-                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
-                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
-                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MERCHANT_SUMMARY_QUARTER">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_QUARTER">
-              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_QUARTER">
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="QUARTER_REPORT" ColumnName="QUARTER_REPORT" />
-                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
-                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
-                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
-                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
-                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
-                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
-                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
-                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
-                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PROCESSOR">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.PROCESSOR">
-              <MappingFragment StoreEntitySet="PROCESSOR">
-                <ScalarProperty Name="PROCESSOR_ID" ColumnName="PROCESSOR_ID" />
-                <ScalarProperty Name="PROCESSOR_ADDRESS" ColumnName="PROCESSOR_ADDRESS" />
-                <ScalarProperty Name="PROCESSOR_BANK_ACCOUNT" ColumnName="PROCESSOR_BANK_ACCOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RETRIVAL">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.RETRIVAL">
-              <MappingFragment StoreEntitySet="RETRIVAL">
-                <ScalarProperty Name="RETRIVAL_ID" ColumnName="RETRIVAL_ID" />
-                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
-                <ScalarProperty Name="RETRIVAL_DATE" ColumnName="RETRIVAL_DATE" />
-                <ScalarProperty Name="RETRIVAL_DESCRIPTION" ColumnName="RETRIVAL_DESCRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TRANSACTION_DETAIL">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.TRANSACTION_DETAIL">
-              <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
-                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
-                <ScalarProperty Name="EXPIRATION_DATE" ColumnName="EXPIRATION_DATE" />
-                <ScalarProperty Name="TRANSACTION_CODE" ColumnName="TRANSACTION_CODE" />
-                <ScalarProperty Name="TRANSACTION_AMOUNT" ColumnName="TRANSACTION_AMOUNT" />
-                <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
-                <ScalarProperty Name="TRANSACTION_TIME" ColumnName="TRANSACTION_TIME" />
-                <ScalarProperty Name="KEYED_ENTRY" ColumnName="KEYED_ENTRY" />
-                <ScalarProperty Name="AUTHORIZATION_NUMBER" ColumnName="AUTHORIZATION_NUMBER" />
-                <ScalarProperty Name="TRANSACTION_DESCRIPTION" ColumnName="TRANSACTION_DESCRIPTION" />
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="BATCH_NUMBER" ColumnName="BATCH_NUMBER" />
-                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
-                <ScalarProperty Name="CARDTYPE_CODE" ColumnName="CARDTYPE_CODE" />
-                <ScalarProperty Name="COUNTRY_CODE" ColumnName="COUNTRY_CODE" />
-                <ScalarProperty Name="FIRST_TWELVE_ACCOUNT_NUMBER" ColumnName="FIRST_TWELVE_ACCOUNT_NUMBER" />
-                <ScalarProperty Name="IS_READ" ColumnName="IS_READ" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="insert_MERCHANT_SUMMARY" FunctionName="DOANPTUDHDModel.Store.insert_MERCHANT_SUMMARY" />
           <FunctionImportMapping FunctionImportName="Sp_ActDeactAgent" FunctionName="DOANPTUDHDModel.Store.Sp_ActDeactAgent" />
           <FunctionImportMapping FunctionImportName="Sp_CountUnreadMessage" FunctionName="DOANPTUDHDModel.Store.Sp_CountUnreadMessage" />
@@ -1757,26 +1638,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Sp_Revenue" FunctionName="DOANPTUDHDModel.Store.Sp_Revenue">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_Revenue_Result">
-                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
-                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
-                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
-                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
-                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
-                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
-                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
-                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Sp_SearchMerchant" FunctionName="DOANPTUDHDModel.Store.Sp_SearchMerchant">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_SearchMerchant_Result">
@@ -1837,40 +1698,6 @@
           <FunctionImportMapping FunctionImportName="Sp_UpdatePassword" FunctionName="DOANPTUDHDModel.Store.Sp_UpdatePassword" />
           <FunctionImportMapping FunctionImportName="Sp_Updatestatusmerchant" FunctionName="DOANPTUDHDModel.Store.Sp_Updatestatusmerchant" />
           <FunctionImportMapping FunctionImportName="TONGHOP_TRANSACTION_DETAIL" FunctionName="DOANPTUDHDModel.Store.TONGHOP_TRANSACTION_DETAIL" />
-          <EntitySetMapping Name="ACCOUNT">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.ACCOUNT">
-              <MappingFragment StoreEntitySet="ACCOUNT">
-                <ScalarProperty Name="SALT" ColumnName="SALT" />
-                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MESSAGE">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE">
-              <MappingFragment StoreEntitySet="MESSAGE">
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
-                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
-                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
-                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MESSAGE_OUTBOX">
-            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE_OUTBOX">
-              <MappingFragment StoreEntitySet="MESSAGE_OUTBOX">
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
-                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
-                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
-                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Sp_SearchAgent" FunctionName="DOANPTUDHDModel.Store.Sp_SearchAgent">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_SearchAgent_Result">
@@ -1899,6 +1726,407 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Sp_SendMessage" FunctionName="DOANPTUDHDModel.Store.Sp_SendMessage" />
+          <EntitySetMapping Name="ACCOUNT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="SALT" ColumnName="SALT" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.AGENT">
+              <MappingFragment StoreEntitySet="AGENT">
+                <ScalarProperty Name="AGENT_LAST_DAY_ACTIVATE" ColumnName="AGENT_LAST_DAY_ACTIVATE" />
+                <ScalarProperty Name="AGENT_FIRST_DATE_ACTIVATE" ColumnName="AGENT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="AGENT_APPR0VE_DATE" ColumnName="AGENT_APPR0VE_DATE" />
+                <ScalarProperty Name="AGENT_STATUS" ColumnName="AGENT_STATUS" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="AGENT_BANK_ACCOUNT" ColumnName="AGENT_BANK_ACCOUNT" />
+                <ScalarProperty Name="AGENT_EMAIL_3" ColumnName="AGENT_EMAIL_3" />
+                <ScalarProperty Name="AGENT_EMAIL_2" ColumnName="AGENT_EMAIL_2" />
+                <ScalarProperty Name="AGENT_EMAIL_1" ColumnName="AGENT_EMAIL_1" />
+                <ScalarProperty Name="AGENT_FAX" ColumnName="AGENT_FAX" />
+                <ScalarProperty Name="AGENT_OWNER" ColumnName="AGENT_OWNER" />
+                <ScalarProperty Name="AGENT_REGION" ColumnName="AGENT_REGION" />
+                <ScalarProperty Name="AGENT_STREET_NUMBER" ColumnName="AGENT_STREET_NUMBER" />
+                <ScalarProperty Name="AGENT_STREET" ColumnName="AGENT_STREET" />
+                <ScalarProperty Name="AGENT_DISTRICT" ColumnName="AGENT_DISTRICT" />
+                <ScalarProperty Name="AGENT_CITY" ColumnName="AGENT_CITY" />
+                <ScalarProperty Name="AGENT_TELEPHONE3" ColumnName="AGENT_TELEPHONE3" />
+                <ScalarProperty Name="AGENT_TELEPHONE2" ColumnName="AGENT_TELEPHONE2" />
+                <ScalarProperty Name="AGENT_TELEPHONE1" ColumnName="AGENT_TELEPHONE1" />
+                <ScalarProperty Name="AGENT_NAME" ColumnName="AGENT_NAME" />
+                <ScalarProperty Name="AGENT_NUMBER" ColumnName="AGENT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT">
+              <MappingFragment StoreEntitySet="MERCHANT">
+                <ScalarProperty Name="MERCHANT_LAST_DAY_ACTIVATE" ColumnName="MERCHANT_LAST_DAY_ACTIVATE" />
+                <ScalarProperty Name="MERCHANT_FIRST_DATE_ACTIVATE" ColumnName="MERCHANT_FIRST_DATE_ACTIVATE" />
+                <ScalarProperty Name="MERCHANT_APPR0VE_DATE" ColumnName="MERCHANT_APPR0VE_DATE" />
+                <ScalarProperty Name="MERCHANT_STATUS" ColumnName="MERCHANT_STATUS" />
+                <ScalarProperty Name="BACKEND_PROCESSOR" ColumnName="BACKEND_PROCESSOR" />
+                <ScalarProperty Name="MANAGE_AGENT" ColumnName="MANAGE_AGENT" />
+                <ScalarProperty Name="MERCHANT_BANK_ACCOUNT" ColumnName="MERCHANT_BANK_ACCOUNT" />
+                <ScalarProperty Name="MERCHANT_EMAIL3" ColumnName="MERCHANT_EMAIL3" />
+                <ScalarProperty Name="MERCHANT_EMAIL2" ColumnName="MERCHANT_EMAIL2" />
+                <ScalarProperty Name="MERCHANT_EMAIL1" ColumnName="MERCHANT_EMAIL1" />
+                <ScalarProperty Name="MERCHANT_FAX" ColumnName="MERCHANT_FAX" />
+                <ScalarProperty Name="MERCHANT_OWNER" ColumnName="MERCHANT_OWNER" />
+                <ScalarProperty Name="MERCHANT_REGION" ColumnName="MERCHANT_REGION" />
+                <ScalarProperty Name="MERCHANT_STEET_NUMBER" ColumnName="MERCHANT_STEET_NUMBER" />
+                <ScalarProperty Name="MERCHANT_STREET" ColumnName="MERCHANT_STREET" />
+                <ScalarProperty Name="MERCHANT_DISTRICT" ColumnName="MERCHANT_DISTRICT" />
+                <ScalarProperty Name="MERCHANT_CITY" ColumnName="MERCHANT_CITY" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE3" ColumnName="MERCHANT_TELEPHONE3" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE2" ColumnName="MERCHANT_TELEPHONE2" />
+                <ScalarProperty Name="MERCHANT_TELEPHONE1" ColumnName="MERCHANT_TELEPHONE1" />
+                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY">
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY_MONTH">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_MONTH">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_MONTH">
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
+                <ScalarProperty Name="MONTH_REPORT" ColumnName="MONTH_REPORT" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY_QUARTER">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_QUARTER">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_QUARTER">
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
+                <ScalarProperty Name="QUARTER_REPORT" ColumnName="QUARTER_REPORT" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MERCHANT_SUMMARY_YEAR">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MERCHANT_SUMMARY_YEAR">
+              <MappingFragment StoreEntitySet="MERCHANT_SUMMARY_YEAR">
+                <ScalarProperty Name="OTHER_CARD_NET_AMOUNT" ColumnName="OTHER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_AMOUNT" ColumnName="OTHER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_RETURN_COUNT" ColumnName="OTHER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_COUNT" ColumnName="OTHER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="OTHER_CARD_COUNT" ColumnName="OTHER_CARD_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_NET_AMOUNT" ColumnName="DISCOVERY_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_AMOUNT" ColumnName="DISCOVERY_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_RETURN_COUNT" ColumnName="DISCOVERY_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_COUNT" ColumnName="DISCOVERY_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_COUNT" ColumnName="DISCOVERY_CARD_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_NET_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_RETURN_COUNT" ColumnName="AMERICANEXPRESS_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_COUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_COUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_COUNT" ColumnName="AMERICANEXPRESS_CARD_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_NET_AMOUNT" ColumnName="MASTER_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_AMOUNT" ColumnName="MASTER_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_RETURN_COUNT" ColumnName="MASTER_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_COUNT" ColumnName="MASTER_CARD_SALES_COUNT" />
+                <ScalarProperty Name="MASTER_CARD_COUNT" ColumnName="MASTER_CARD_COUNT" />
+                <ScalarProperty Name="VISA_CARD_NET_AMOUNT" ColumnName="VISA_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_AMOUNT" ColumnName="VISA_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_RETURN_COUNT" ColumnName="VISA_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_COUNT" ColumnName="VISA_CARD_SALES_COUNT" />
+                <ScalarProperty Name="VISA_CARD_COUNT" ColumnName="VISA_CARD_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_NET_AMOUNT" ColumnName="DEBIT_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_AMOUNT" ColumnName="DEBIT_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_RETURN_COUNT" ColumnName="DEBIT_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_COUNT" ColumnName="DEBIT_CARD_SALES_COUNT" />
+                <ScalarProperty Name="DEBIT_CARD_COUNT" ColumnName="DEBIT_CARD_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_NET_AMOUNT" ColumnName="FOREIGN_CARD_NET_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_AMOUNT" ColumnName="FOREIGN_CARD_RETURN_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_RETURN_COUNT" ColumnName="FOREIGN_CARD_RETURN_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_SALES_COUNT" ColumnName="FOREIGN_CARD_SALES_COUNT" />
+                <ScalarProperty Name="FOREIGN_CARD_COUNT" ColumnName="FOREIGN_CARD_COUNT" />
+                <ScalarProperty Name="KEY_AMOUNT" ColumnName="KEY_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="KEYED_COUNT" ColumnName="KEYED_COUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+                <ScalarProperty Name="RETURN_COUNT" ColumnName="RETURN_COUNT" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="SALES_COUNT" ColumnName="SALES_COUNT" />
+                <ScalarProperty Name="TRANSACTION_COUNT" ColumnName="TRANSACTION_COUNT" />
+                <ScalarProperty Name="YEAR_REPORT" ColumnName="YEAR_REPORT" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGE">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE">
+              <MappingFragment StoreEntitySet="MESSAGE">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGE_OUTBOX">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.MESSAGE_OUTBOX">
+              <MappingFragment StoreEntitySet="MESSAGE_OUTBOX">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="READING_STATUS" ColumnName="READING_STATUS" />
+                <ScalarProperty Name="SENDING_DATE" ColumnName="SENDING_DATE" />
+                <ScalarProperty Name="RECEIVED_ACCOUNT" ColumnName="RECEIVED_ACCOUNT" />
+                <ScalarProperty Name="SENDING_ACCOUNT" ColumnName="SENDING_ACCOUNT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROCESSOR">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.PROCESSOR">
+              <MappingFragment StoreEntitySet="PROCESSOR">
+                <ScalarProperty Name="PROCESSOR_BANK_ACCOUNT" ColumnName="PROCESSOR_BANK_ACCOUNT" />
+                <ScalarProperty Name="PROCESSOR_ADDRESS" ColumnName="PROCESSOR_ADDRESS" />
+                <ScalarProperty Name="PROCESSOR_ID" ColumnName="PROCESSOR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RETRIVAL">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.RETRIVAL">
+              <MappingFragment StoreEntitySet="RETRIVAL">
+                <ScalarProperty Name="RETRIVAL_DESCRIPTION" ColumnName="RETRIVAL_DESCRIPTION" />
+                <ScalarProperty Name="RETRIVAL_DATE" ColumnName="RETRIVAL_DATE" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+                <ScalarProperty Name="RETRIVAL_ID" ColumnName="RETRIVAL_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTION_DETAIL">
+            <EntityTypeMapping TypeName="DOANPTUDHDModel.TRANSACTION_DETAIL">
+              <MappingFragment StoreEntitySet="TRANSACTION_DETAIL">
+                <ScalarProperty Name="IS_READ" ColumnName="IS_READ" />
+                <ScalarProperty Name="FIRST_TWELVE_ACCOUNT_NUMBER" ColumnName="FIRST_TWELVE_ACCOUNT_NUMBER" />
+                <ScalarProperty Name="COUNTRY_CODE" ColumnName="COUNTRY_CODE" />
+                <ScalarProperty Name="CARDTYPE_CODE" ColumnName="CARDTYPE_CODE" />
+                <ScalarProperty Name="ACCOUNT_NUMBER" ColumnName="ACCOUNT_NUMBER" />
+                <ScalarProperty Name="BATCH_NUMBER" ColumnName="BATCH_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="TRANSACTION_DESCRIPTION" ColumnName="TRANSACTION_DESCRIPTION" />
+                <ScalarProperty Name="AUTHORIZATION_NUMBER" ColumnName="AUTHORIZATION_NUMBER" />
+                <ScalarProperty Name="KEYED_ENTRY" ColumnName="KEYED_ENTRY" />
+                <ScalarProperty Name="TRANSACTION_TIME" ColumnName="TRANSACTION_TIME" />
+                <ScalarProperty Name="TRANSACTION_DATE" ColumnName="TRANSACTION_DATE" />
+                <ScalarProperty Name="TRANSACTION_AMOUNT" ColumnName="TRANSACTION_AMOUNT" />
+                <ScalarProperty Name="TRANSACTION_CODE" ColumnName="TRANSACTION_CODE" />
+                <ScalarProperty Name="EXPIRATION_DATE" ColumnName="EXPIRATION_DATE" />
+                <ScalarProperty Name="TRANSACTION_ID" ColumnName="TRANSACTION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Revenue" FunctionName="DOANPTUDHDModel.Store.Sp_Revenue">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_Revenue_Result">
+                <ScalarProperty Name="FOREIGN_CARD_SALES_AMOUNT" ColumnName="FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DEBIT_CARD_SALES_AMOUNT" ColumnName="DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="VISA_CARD_SALES_AMOUNT" ColumnName="VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="MASTER_CARD_SALES_AMOUNT" ColumnName="MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="DISCOVERY_CARD_SALES_AMOUNT" ColumnName="DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="OTHER_CARD_SALES_AMOUNT" ColumnName="OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="REPORT_DATE" ColumnName="REPORT_DATE" />
+                <ScalarProperty Name="MERCHANT_NUMBER" ColumnName="MERCHANT_NUMBER" />
+                <ScalarProperty Name="MERCHANT_NAME" ColumnName="MERCHANT_NAME" />
+                <ScalarProperty Name="MERCHANT_TYPE" ColumnName="MERCHANT_TYPE" />
+                <ScalarProperty Name="SALES_AMOUNT" ColumnName="SALES_AMOUNT" />
+                <ScalarProperty Name="NET_AMOUNT" ColumnName="NET_AMOUNT" />
+                <ScalarProperty Name="RETURN_AMOUNT" ColumnName="RETURN_AMOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Revenue_Option" FunctionName="DOANPTUDHDModel.Store.Sp_Revenue_Option">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DOANPTUDHDModel.Sp_Revenue_Option_Result">
+                <ScalarProperty Name="TOTAL_FOREIGN_CARD_SALES_AMOUNT" ColumnName="TOTAL_FOREIGN_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_DEBIT_CARD_SALES_AMOUNT" ColumnName="TOTAL_DEBIT_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_VISA_CARD_SALES_AMOUNT" ColumnName="TOTAL_VISA_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_MASTER_CARD_SALES_AMOUNT" ColumnName="TOTAL_MASTER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_AMERICANEXPRESS_CARD_SALES_AMOUNT" ColumnName="TOTAL_AMERICANEXPRESS_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_DISCOVERY_CARD_SALES_AMOUNT" ColumnName="TOTAL_DISCOVERY_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_OTHER_CARD_SALES_AMOUNT" ColumnName="TOTAL_OTHER_CARD_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_SALES_AMOUNT" ColumnName="TOTAL_SALES_AMOUNT" />
+                <ScalarProperty Name="TOTAL_NET_AMOUNT" ColumnName="TOTAL_NET_AMOUNT" />
+                <ScalarProperty Name="TOTAL_RETURN_AMOUNT" ColumnName="TOTAL_RETURN_AMOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

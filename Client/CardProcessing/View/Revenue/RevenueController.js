@@ -15,6 +15,9 @@
             "count": 0,
             "data": []
         };
+        $scope.Renve ={
+            "data": []
+        };
         $scope.rselected = [];
         $scope.Agent = {
             agent: '',
@@ -25,6 +28,7 @@
             YearOfMonth: '',
             QuaterYear: '',
             YearOfSeason: '',
+            Year: '',
             Role: user.role
         }
         $scope.deleteClass = function(){
@@ -53,6 +57,10 @@
                     return false;
                 case "quater":
                     if($scope.Agent.QuaterYear == "" || $scope.Agent.YearOfSeason == "")
+                        return true;
+                    return false;
+                case "year":
+                    if($scope.Agent.Year == "" )
                         return true;
                     return false;
                     
@@ -102,18 +110,28 @@
                 case 'date':
                     $scope.Agent.MothYear = '';
                     $scope.Agent.YearOfMonth = '';
-                    $scope.AgentQuaterYear = '';
-                    $scope.AgentYearOfSeason = '';
+                    $scope.Agent.QuaterYear = '';
+                    $scope.Agent.YearOfSeason = '';
+                    $scope.Agent.Year = '';
                     break;
                 case 'month':
                     $scope.Agent.firstDate = '';
-                    $scope.AgentQuaterYear = '';
-                    $scope.AgentYearOfSeason = '';
+                    $scope.Agent.QuaterYear = '';
+                    $scope.Agent.YearOfSeason = '';
+                    $scope.Agent.Year = '';
                     break;
                 case 'quater':
                     $scope.Agent.MothYear = '';
                     $scope.Agent.firstDate = '';
                     $scope.Agent.YearOfMonth = '';
+                    $scope.Agent.Year = '';
+                    break;
+                case 'year':
+                    $scope.Agent.MothYear = '';
+                    $scope.Agent.YearOfMonth = '';
+                    $scope.AgentQuaterYear = '';
+                    $scope.AgentYearOfSeason = '';
+                    $scope.Agent.firstDate = '';
                     break;
                     
             }
@@ -136,6 +154,8 @@
                 data.QuaterYear = "";
             if(data.YearOfSeason == null)
                 data.YearOfSeason = "";
+            if(data.Year == null)
+                data.Year = "";
             if(data.Role == null)
                 data.Role = user.role;
             if(user.role == '2')
@@ -169,8 +189,7 @@
         }
         
         $scope.searchRevenueMerchant = function (){
-            debugger;
-            console.log('aa');
+
             ConvertNull($scope.Agent);
             $http({
                 method: "GET",
@@ -189,6 +208,7 @@
                     namthang: $scope.Agent.YearOfMonth,
                     quy: $scope.Agent.QuaterYear,
                     namquy: $scope.Agent.YearOfSeason,
+                    nam: $scope.Agent.Year,
                     role: $scope.Agent.Role
                 }
             }).then(function sucess(objet) {
@@ -209,7 +229,39 @@
             }, function errorCallback(response) {
                 var a = response;
             });
-            
+            ///////
+            $http({
+                method: "GET",
+                headers: {
+                        
+                        Authorization: Myfactory.user.token
+                    },
+                url: "http://localhost:50259/api/Revenue/getRevenueOption",
+                params: {
+                    
+                    agent: $scope.Agent.agent,
+                    merchant: $scope.Agent.merchant,
+                    loaiMerchant: $scope.Agent.typeMerchant,
+                    ngay: $scope.Agent.firstDate,
+                    thang:$scope.Agent.MothYear,
+                    namthang: $scope.Agent.YearOfMonth,
+                    quy: $scope.Agent.QuaterYear,
+                    namquy: $scope.Agent.YearOfSeason,
+                    nam: $scope.Agent.Year
+                }
+            }).then(function sucess(objet) {
+                if (objet.data != null) {
+                    $scope.Renve.data = objet.data;
+                    $scope.body = [];
+                    //convert($scope.body, $scope.Agents.data);
+                    //$scope.checkClickbtn = false;
+                     $scope.deleteClass();
+                }
+                
+
+            }, function errorCallback(response) {
+                var a = response;
+            });
             ///////
             debugger;
         $http.get('http://localhost:50259/api/Chart/getRevenue', {
@@ -226,6 +278,7 @@
             namthang: $scope.Agent.YearOfMonth,
             quy: $scope.Agent.QuaterYear,
             namquy: $scope.Agent.YearOfSeason,
+            nam: $scope.Agent.Year,
             role: $scope.Agent.Role
         }
     }).success(data=> {
@@ -383,6 +436,11 @@
                                 }
                             }
                         }
+                        break;
+                    case 'year':
+                         report.type = 'NĂM'
+                        report.datefrom = '01/01/'+$scope.Agent.Year;
+                        report.dateto = '31/12/'+$scope.Agent.Year;
                         break;
                 }
                 ////

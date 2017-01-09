@@ -287,7 +287,7 @@
                     <div style=" height:95px;">
                         <div class="col-sm-6 form-group" ng-class="{'has-error' : EditProfileForm.Fax.$error.required || EditProfileForm.Fax.$error.pattern}">
                             <label>Fax*</label>
-                            <input type="text" name="Fax" placeholder="Enter Fax Here.." class="form-control" maxlength="11" ng-model="Merchant.MERCHANT_FAX" ng-pattern="/^\d+$/" required>
+                            <input type="text" name="Fax" placeholder="Enter Fax Here.." class="form-control" maxlength="11" ng-model="Merchant.MERCHANT_FAX" ng-pattern="/^[0-9]+[-0-9]*$/" required>
                             <span style="color:red" ng-show="EditProfileForm.Fax.$error.required">This content is required!</span>
                             <span style="color:red" ng-show="EditProfileForm.Fax.$error.pattern">This content only accepts digits!</span>
                         </div>

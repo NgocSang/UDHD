@@ -27,17 +27,18 @@ namespace API.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
         public virtual DbSet<AGENT> AGENT { get; set; }
         public virtual DbSet<MERCHANT> MERCHANT { get; set; }
         public virtual DbSet<MERCHANT_SUMMARY> MERCHANT_SUMMARY { get; set; }
         public virtual DbSet<MERCHANT_SUMMARY_MONTH> MERCHANT_SUMMARY_MONTH { get; set; }
         public virtual DbSet<MERCHANT_SUMMARY_QUARTER> MERCHANT_SUMMARY_QUARTER { get; set; }
+        public virtual DbSet<MERCHANT_SUMMARY_YEAR> MERCHANT_SUMMARY_YEAR { get; set; }
+        public virtual DbSet<MESSAGE> MESSAGE { get; set; }
+        public virtual DbSet<MESSAGE_OUTBOX> MESSAGE_OUTBOX { get; set; }
         public virtual DbSet<PROCESSOR> PROCESSOR { get; set; }
         public virtual DbSet<RETRIVAL> RETRIVAL { get; set; }
         public virtual DbSet<TRANSACTION_DETAIL> TRANSACTION_DETAIL { get; set; }
-        public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
-        public virtual DbSet<MESSAGE> MESSAGE { get; set; }
-        public virtual DbSet<MESSAGE_OUTBOX> MESSAGE_OUTBOX { get; set; }
     
         public virtual int insert_MERCHANT_SUMMARY(string mERCHANT_NUMBER, Nullable<System.DateTime> rEPORT_DATE)
         {
@@ -337,43 +338,6 @@ namespace API.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_RETRIVAL_Result>("SP_RETRIVAL", rETRIVAL_IDParameter, rETRIVAL_DATEParameter);
         }
     
-        public virtual ObjectResult<Sp_Revenue_Result> Sp_Revenue(string agent, string merchant, string loaiMerchant, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy)
-        {
-            var agentParameter = agent != null ?
-                new ObjectParameter("agent", agent) :
-                new ObjectParameter("agent", typeof(string));
-    
-            var merchantParameter = merchant != null ?
-                new ObjectParameter("merchant", merchant) :
-                new ObjectParameter("merchant", typeof(string));
-    
-            var loaiMerchantParameter = loaiMerchant != null ?
-                new ObjectParameter("loaiMerchant", loaiMerchant) :
-                new ObjectParameter("loaiMerchant", typeof(string));
-    
-            var ngayParameter = ngay.HasValue ?
-                new ObjectParameter("ngay", ngay) :
-                new ObjectParameter("ngay", typeof(System.DateTime));
-    
-            var thangParameter = thang.HasValue ?
-                new ObjectParameter("thang", thang) :
-                new ObjectParameter("thang", typeof(int));
-    
-            var namthangParameter = namthang.HasValue ?
-                new ObjectParameter("namthang", namthang) :
-                new ObjectParameter("namthang", typeof(int));
-    
-            var quyParameter = quy.HasValue ?
-                new ObjectParameter("quy", quy) :
-                new ObjectParameter("quy", typeof(int));
-    
-            var namquyParameter = namquy.HasValue ?
-                new ObjectParameter("namquy", namquy) :
-                new ObjectParameter("namquy", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Result>("Sp_Revenue", agentParameter, merchantParameter, loaiMerchantParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter);
-        }
-    
         public virtual ObjectResult<Sp_SearchMerchant_Result> Sp_SearchMerchant(string num, string name, string type, string agent, string city)
         {
             var numParameter = num != null ?
@@ -664,6 +628,88 @@ namespace API.Data
                 new ObjectParameter("description", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_SendMessage", senderParameter, receiverParameter, descriptionParameter);
+        }
+    
+        public virtual ObjectResult<Sp_Revenue_Result> Sp_Revenue(string agent, string merchant, string loaiMerchant, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
+        {
+            var agentParameter = agent != null ?
+                new ObjectParameter("agent", agent) :
+                new ObjectParameter("agent", typeof(string));
+    
+            var merchantParameter = merchant != null ?
+                new ObjectParameter("merchant", merchant) :
+                new ObjectParameter("merchant", typeof(string));
+    
+            var loaiMerchantParameter = loaiMerchant != null ?
+                new ObjectParameter("loaiMerchant", loaiMerchant) :
+                new ObjectParameter("loaiMerchant", typeof(string));
+    
+            var ngayParameter = ngay.HasValue ?
+                new ObjectParameter("ngay", ngay) :
+                new ObjectParameter("ngay", typeof(System.DateTime));
+    
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("thang", thang) :
+                new ObjectParameter("thang", typeof(int));
+    
+            var namthangParameter = namthang.HasValue ?
+                new ObjectParameter("namthang", namthang) :
+                new ObjectParameter("namthang", typeof(int));
+    
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("quy", quy) :
+                new ObjectParameter("quy", typeof(int));
+    
+            var namquyParameter = namquy.HasValue ?
+                new ObjectParameter("namquy", namquy) :
+                new ObjectParameter("namquy", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("nam", nam) :
+                new ObjectParameter("nam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Result>("Sp_Revenue", agentParameter, merchantParameter, loaiMerchantParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
+        }
+    
+        public virtual ObjectResult<Sp_Revenue_Option_Result> Sp_Revenue_Option(string agent, string merchant, string loaiMerchant, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
+        {
+            var agentParameter = agent != null ?
+                new ObjectParameter("agent", agent) :
+                new ObjectParameter("agent", typeof(string));
+    
+            var merchantParameter = merchant != null ?
+                new ObjectParameter("merchant", merchant) :
+                new ObjectParameter("merchant", typeof(string));
+    
+            var loaiMerchantParameter = loaiMerchant != null ?
+                new ObjectParameter("loaiMerchant", loaiMerchant) :
+                new ObjectParameter("loaiMerchant", typeof(string));
+    
+            var ngayParameter = ngay.HasValue ?
+                new ObjectParameter("ngay", ngay) :
+                new ObjectParameter("ngay", typeof(System.DateTime));
+    
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("thang", thang) :
+                new ObjectParameter("thang", typeof(int));
+    
+            var namthangParameter = namthang.HasValue ?
+                new ObjectParameter("namthang", namthang) :
+                new ObjectParameter("namthang", typeof(int));
+    
+            var quyParameter = quy.HasValue ?
+                new ObjectParameter("quy", quy) :
+                new ObjectParameter("quy", typeof(int));
+    
+            var namquyParameter = namquy.HasValue ?
+                new ObjectParameter("namquy", namquy) :
+                new ObjectParameter("namquy", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("nam", nam) :
+                new ObjectParameter("nam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Option_Result>("Sp_Revenue_Option", agentParameter, merchantParameter, loaiMerchantParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
         }
     }
 }

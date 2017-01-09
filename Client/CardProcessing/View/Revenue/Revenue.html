@@ -34,7 +34,7 @@
                                     </div>
                                     
                                     </div>
-                                <div class="col-sm-4 form-group"  ng-class="{'has-error' : RevenueMerchantForm.Date.$error.pattern}">
+                                <div class="col-sm-3 form-group"  ng-class="{'has-error' : RevenueMerchantForm.Date.$error.pattern}">
                                     <label class="radio-merchantDay">
                                     <input type="radio" ng-model="check" ng-change='newValue(check)'   name="DayRadioOptions" value="date">
                                     NGÀY:
@@ -44,7 +44,7 @@
                                     <input ng-disabled="check != 'date'" type="Date"  ng-model="Agent.firstDate" class="form-control">
                                 </div>	
 
-                                <div class="col-sm-4 form-group" ng-class="{'has-error' : RevenueMerchantForm.Month.$error.pattern}">
+                                <div class="col-sm-3 form-group" ng-class="{'has-error' : RevenueMerchantForm.Month.$error.pattern}">
                                     <label class="radio-merchantDay">
                                     <input type="radio" ng-model="check" ng-change='newValue(check)' name="DayRadioOptions" id="DayRadio1" value="month" > THÁNG: 
                                     </label>
@@ -71,7 +71,7 @@
                                     <span style="color:red" ng-show="RevenueMerchantForm.YearOfMonth.$invalid && RevenueMerchantForm.YearOfMonth.$dirty || RevenueMerchantForm.YearOfMonth.$error.pattern">Mục này không được để trống hoặc dữ liệu không phải số</span>
                                 </div>	
 
-                                <div class="col-sm-4 form-group" ng-class="{'has-error' : RevenueMerchantForm.Season.$error.pattern}">
+                                <div class="col-sm-3 form-group" ng-class="{'has-error' : RevenueMerchantForm.Season.$error.pattern}">
                                     <label class="radio-merchantDay">
                                     <input type="radio" ng-model="check" ng-change='newValue(check)' name="DayRadioOptions" id="DayRadio2" value="quater" > QUÝ: 
                                     </label>
@@ -89,6 +89,15 @@
                                     <input ng-disabled="check != 'quater'" ng-model="Agent.YearOfSeason" type="number" name="" value="" placeholder="Enter Year Here.." class="form-control" maxlength="5" ng-model="YearOfSeason" ng-pattern="/^\d+$/" >
                                     <span style="color:red" ng-show="RevenueMerchantForm.YearOfSeason.$invalid && RevenueMerchantForm.YearOfSeason.$dirty || RevenueMerchantForm.YearOfSeason.$error.pattern">Mục này không được để trống hoặc dữ liệu không phải số</span>
                                 </div>
+                                <div class="col-sm-3 form-group"  ng-class="{'has-error' : RevenueMerchantForm.Date.$error.pattern}">
+                                    <label class="radio-merchantDay">
+                                    <input type="radio" ng-model="check" ng-change='newValue(check)'   name="DayRadioOptions" value="year">
+                                    NĂM:
+                                    </label>
+                                    <br/>
+                                    <label>Năm</label>
+                                    <input ng-disabled="check != 'year'" type="number"  ng-model="Agent.Year" class="form-control">
+                                </div>
                                 <div style="clear: left;float:right; margin:0px 0px 10px 10px">
                                     <button class="btn btn-primary fa fa-search" style="width:100px;height:40px;margin-right:10px;" ng-disabled="checkKT()" ng-click="searchRevenueMerchant()">Tìm kiếm</button>
                                     <button class="btn btn-primary" style="width:100px;height:40px;margin-right:10px;" data-dismiss="modal" ng-click="PDF_click()" ng-disabled="checkClickbtn">PDF</button>
@@ -104,7 +113,49 @@
                  
             </div>
     </div>
-
+    
+    <div class="col-lg-11 well">
+        <h3 >Tổng Doanh thu </h3>
+        <div style="margin-top:50px">
+            <md-table-container>
+                <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="oselected" md-progress="promise">
+                    <thead  md-head md-order="query.order" md-on-reorder="logOrder">
+                    <tr md-row>
+                        <th md-column md-numeric md-order-by="TOTAL_SALES_AMOUNT"><span>Tổng tiền SALES_AMOUNT</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_RETURN_AMOUNT"><span>Tổng tiền RETURN_AMOUNT</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_FOREIGN_CARD_SALES_AMOUNT"><span>Tổng tiền FOREIGN</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_DEBIT_CARD_SALES_AMOUNT"><span>Tổng tiền DEBIT</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_VISA_CARD_SALES_AMOUNT"><span>Tổng tiền VISA_CARD</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_MASTER_CARD_SALES_AMOUNT"><span>Tổng tiền MASTER_CARD</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_AMERICANEXPRESS_CARD_SALES_AMOUNT"><span>Tổng tiền AMERICANEXPRESS</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_DISCOVERY_CARD_SALES_AMOUNT"><span>Tổng tiền DISCOVERY_CARD</span></th>
+                        <th md-column md-numeric md-order-by="TOTAL_OTHER_CARD_SALES_AMOUNT"><span>Tổng tiền OTHER_CARD_SALES_AMOUNT</span></th>
+                    
+                        <th md-column md-numeric md-order-by="TOTAL_NET_AMOUNT"><span>Tổng tiền NET_AMOUNT</span></th>
+  
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row md-select="Agent" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="Agent in Renve.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+                        <td md-cell>{{Agent.TOTAL_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_RETURN_AMOUNT}}<td>
+                        <td md-cell>{{Agent.TOTAL_FOREIGN_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_DEBIT_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_VISA_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_MASTER_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_AMERICANEXPRESS_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_DISCOVERY_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_OTHER_CARD_SALES_AMOUNT}}</td>
+                        <td md-cell>{{Agent.TOTAL_NET_AMOUNT}}<td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+        
+        
+    </div>
+    
     <div class="col-lg-11 well">
         <h3 >Biểu đồ đường doanh thu merchant</h3>
         <div class="row" >

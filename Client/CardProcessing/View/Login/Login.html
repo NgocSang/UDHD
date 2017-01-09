@@ -18,7 +18,7 @@
                                     <p ng-show="userForm.passworld.$invalid && !userForm.passworld.$pristine" class="help-block">Bạn phải nhập password .</p>
                                 </div>
                                 <div ng-show="checkUser" class="has-error">
-                                    <p style="color:red"> password hoặc tên đăng nhập sai.</p>
+                                    <p style="color:red"> Mật khẩu hoặc tên đăng nhập sai.</p>
                                 </div>
                                 
                                 <!-- Change this to a button or input when using this as a form -->
@@ -45,8 +45,15 @@
                                 <div ng-show="checkForget" class="has-error" style="text-align:center">
                                     <p style="color:red"> tên đăng nhập không tồn tại.</p>
                                 </div>
+                                <div ng-show="checkForget1" class="has-error" style="text-align:center">
+                                    <p class="alert alert-success"> Mật khẩu đã được reset vui lòng kiểm tra email.</p>
+                                </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button ng-disabled="userForm.$invalid"  class="btn btn-lg btn-success btn-block" ng-click="forget_click()">Reset password</button>
+                                <div class="checkbox" style="text-align:center;">
+
+                                        <a ng-click="changeLogin()";>Quay lại trang login ?</a>
+                                </div>
                             </fieldset>
                             
                         </form>

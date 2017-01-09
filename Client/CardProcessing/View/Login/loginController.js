@@ -14,6 +14,9 @@
         $scope.change = function(){
             $scope.hideforget = false;
         }
+        $scope.changeLogin = function(){
+            $scope.hideforget = true;
+        }
         $scope.hideforget = true;
         $scope.login_click = function () {
             
@@ -59,7 +62,7 @@
                         $scope.checkForget = true;
                     }
                     else
-                        $scope.hideforget = true;
+                        $scope.checkForget1 = true;
                 }
 
             }, function errorCallback(response) {

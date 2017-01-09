@@ -84,11 +84,12 @@
                     md-auto-select="options.autoSelect"
                     ng-repeat="agent in agents.data | filter: customFilter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
                     <td md-cell ng-if="role == 1">
-                        <button
+                        <button style="width: 100px;text-align:center"
                                 ng-if="agent.AGENT_STATUS == 0"
                                 ng-click="ActDeactAgent(agent)"
                                 class="btn btn-primary">Activate</button>
-                        <button ng-if="agent.AGENT_STATUS == 1"
+                        <button style="width: 100px;text-align:center"
+                                ng-if="agent.AGENT_STATUS == 1"
                                 ng-click="ActDeactAgent(agent)"
                                 class="btn btn-danger">Inactivate</button>
                     </td>

@@ -110,6 +110,14 @@
             })
         }
         $scope.ActDeactAgent = function(agent) {
+            var status;
+            if(agent.AGENT_STATUS == '1')
+            {
+                status = '0';
+            }
+            else{
+                status = '1';
+            }
             $http({
                 method: "POST",
                 url: "http://localhost:50259/Api/Agent/ActDeactAgent",
@@ -122,7 +130,8 @@
                 }
             }).then(function sucess(response) {
                 if (response.data != null) {
-                    agent.AGENT_STATUS = !agent.AGENT_STATUS
+                    debugger;
+                    agent.AGENT_STATUS = status
                 }
                 else {
                     

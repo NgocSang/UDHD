@@ -23,6 +23,7 @@
             agent: '',
             merchant: '',
             typeMerchant: '',
+            city: '',
             firstDate: '',
             MothYear: '',
             YearOfMonth: '',
@@ -144,6 +145,8 @@
                 data.merchant = "";
             if(data.typeMerchant == null)
                 data.typeMerchant = "";
+            if(data.city == null)
+                data.city = "";
             if(data.firstDate == null)
                 data.firstDate = "";
             if(data.MothYear == null)
@@ -203,6 +206,7 @@
                     agent: $scope.Agent.agent,
                     merchant: $scope.Agent.merchant,
                     loaiMerchant: $scope.Agent.typeMerchant,
+                    city: $scope.Agent.city,
                     ngay: $scope.Agent.firstDate,
                     thang:$scope.Agent.MothYear,
                     namthang: $scope.Agent.YearOfMonth,
@@ -242,6 +246,7 @@
                     agent: $scope.Agent.agent,
                     merchant: $scope.Agent.merchant,
                     loaiMerchant: $scope.Agent.typeMerchant,
+                    city: $scope.Agent.city,
                     ngay: $scope.Agent.firstDate,
                     thang:$scope.Agent.MothYear,
                     namthang: $scope.Agent.YearOfMonth,
@@ -273,6 +278,7 @@
             agent: $scope.Agent.agent,
             merchant: $scope.Agent.merchant,
             loaiMerchant: $scope.Agent.typeMerchant,
+            city: $scope.Agent.city,
             ngay: $scope.Agent.firstDate,
             thang: $scope.Agent.MothYear,
             namthang: $scope.Agent.YearOfMonth,

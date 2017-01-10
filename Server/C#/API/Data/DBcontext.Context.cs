@@ -630,7 +630,7 @@ namespace API.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_SendMessage", senderParameter, receiverParameter, descriptionParameter);
         }
     
-        public virtual ObjectResult<Sp_Revenue_Result> Sp_Revenue(string agent, string merchant, string loaiMerchant, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
+        public virtual ObjectResult<Sp_Revenue_Result> Sp_Revenue(string agent, string merchant, string loaiMerchant, string city, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
         {
             var agentParameter = agent != null ?
                 new ObjectParameter("agent", agent) :
@@ -643,6 +643,10 @@ namespace API.Data
             var loaiMerchantParameter = loaiMerchant != null ?
                 new ObjectParameter("loaiMerchant", loaiMerchant) :
                 new ObjectParameter("loaiMerchant", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
     
             var ngayParameter = ngay.HasValue ?
                 new ObjectParameter("ngay", ngay) :
@@ -668,10 +672,10 @@ namespace API.Data
                 new ObjectParameter("nam", nam) :
                 new ObjectParameter("nam", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Result>("Sp_Revenue", agentParameter, merchantParameter, loaiMerchantParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Result>("Sp_Revenue", agentParameter, merchantParameter, loaiMerchantParameter, cityParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
         }
     
-        public virtual ObjectResult<Sp_Revenue_Option_Result> Sp_Revenue_Option(string agent, string merchant, string loaiMerchant, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
+        public virtual ObjectResult<Sp_Revenue_Option_Result> Sp_Revenue_Option(string agent, string merchant, string loaiMerchant, string city, Nullable<System.DateTime> ngay, Nullable<int> thang, Nullable<int> namthang, Nullable<int> quy, Nullable<int> namquy, Nullable<int> nam)
         {
             var agentParameter = agent != null ?
                 new ObjectParameter("agent", agent) :
@@ -684,6 +688,10 @@ namespace API.Data
             var loaiMerchantParameter = loaiMerchant != null ?
                 new ObjectParameter("loaiMerchant", loaiMerchant) :
                 new ObjectParameter("loaiMerchant", typeof(string));
+    
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
     
             var ngayParameter = ngay.HasValue ?
                 new ObjectParameter("ngay", ngay) :
@@ -709,7 +717,7 @@ namespace API.Data
                 new ObjectParameter("nam", nam) :
                 new ObjectParameter("nam", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Option_Result>("Sp_Revenue_Option", agentParameter, merchantParameter, loaiMerchantParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sp_Revenue_Option_Result>("Sp_Revenue_Option", agentParameter, merchantParameter, loaiMerchantParameter, cityParameter, ngayParameter, thangParameter, namthangParameter, quyParameter, namquyParameter, namParameter);
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Server.Controllers
     {
         DOANPTUDHDEntities context = new DOANPTUDHDEntities();
         [HttpGet]
-        public Chart_Display getRevenue(string agent, string merchant, string loaiMerchant, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy,int? nam, string role)
+        public Chart_Display getRevenue(string agent, string merchant, string loaiMerchant, string city, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy,int? nam, string role)
         {
-            List<Sp_Revenue_Result> dt = context.Sp_Revenue(agent, merchant, loaiMerchant, ngay, thang, namthang, quy, namquy, nam).ToList().OrderBy(i => i.REPORT_DATE).ToList();
+            List<Sp_Revenue_Result> dt = context.Sp_Revenue(agent, merchant, loaiMerchant, city, ngay, thang, namthang, quy, namquy, nam).ToList().OrderBy(i => i.REPORT_DATE).ToList();
             List<double> value = new List<double>();
             List<double> old_value = new List<double>();
             List<string> lables = new List<string>();
@@ -53,7 +53,7 @@ namespace Server.Controllers
                 if (namquy != null)
                     namquy = namquy - 1;
             }
-            List<Sp_Revenue_Result> dt_old = context.Sp_Revenue(agent, merchant, loaiMerchant, ngay, thang, namthang, quy, namquy, nam).ToList();
+            List<Sp_Revenue_Result> dt_old = context.Sp_Revenue(agent, merchant, loaiMerchant, city,ngay, thang, namthang, quy, namquy, nam).ToList();
 
             if ((thang != null || quy != null || nam != null)&& role == "3")
             {

@@ -560,6 +560,7 @@
           <Parameter Name="agent" Type="nvarchar" Mode="In" />
           <Parameter Name="merchant" Type="nvarchar" Mode="In" />
           <Parameter Name="loaiMerchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
           <Parameter Name="ngay" Type="date" Mode="In" />
           <Parameter Name="thang" Type="int" Mode="In" />
           <Parameter Name="namthang" Type="int" Mode="In" />
@@ -571,6 +572,7 @@
           <Parameter Name="agent" Type="nvarchar" Mode="In" />
           <Parameter Name="merchant" Type="nvarchar" Mode="In" />
           <Parameter Name="loaiMerchant" Type="nvarchar" Mode="In" />
+          <Parameter Name="City" Type="nvarchar" Mode="In" />
           <Parameter Name="ngay" Type="date" Mode="In" />
           <Parameter Name="thang" Type="int" Mode="In" />
           <Parameter Name="namthang" Type="int" Mode="In" />
@@ -931,6 +933,7 @@
             <Parameter Name="agent" Mode="In" Type="String" />
             <Parameter Name="merchant" Mode="In" Type="String" />
             <Parameter Name="loaiMerchant" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
             <Parameter Name="ngay" Mode="In" Type="DateTime" />
             <Parameter Name="thang" Mode="In" Type="Int32" />
             <Parameter Name="namthang" Mode="In" Type="Int32" />
@@ -942,6 +945,7 @@
             <Parameter Name="agent" Mode="In" Type="String" />
             <Parameter Name="merchant" Mode="In" Type="String" />
             <Parameter Name="loaiMerchant" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
             <Parameter Name="ngay" Mode="In" Type="DateTime" />
             <Parameter Name="thang" Mode="In" Type="Int32" />
             <Parameter Name="namthang" Mode="In" Type="Int32" />

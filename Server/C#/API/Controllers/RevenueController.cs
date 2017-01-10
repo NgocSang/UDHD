@@ -15,18 +15,18 @@ namespace Server.Controllers
         [Route("getRevenue")]
         [HttpGet]
 
-        public List<Sp_Revenue_Result> getRevenue(string agent, string merchant, string loaiMerchant, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy, int? nam)
+        public List<Sp_Revenue_Result> getRevenue(string agent, string merchant, string loaiMerchant,string city, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy, int? nam)
         {
             List<Sp_Revenue_Result> result = new List<Sp_Revenue_Result>();
-            result = context.Sp_Revenue(agent, merchant, loaiMerchant, ngay, thang, namthang, quy, namquy, nam).ToList();
+            result = context.Sp_Revenue(agent, merchant, loaiMerchant, city, ngay, thang, namthang, quy, namquy, nam).ToList();
             return result;
         }
         [Route("getRevenueOption")]
         [HttpGet]
-        public List<Sp_Revenue_Option_Result> getRevenueOption(string agent, string merchant, string loaiMerchant, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy, int? nam)
+        public List<Sp_Revenue_Option_Result> getRevenueOption(string agent, string merchant, string loaiMerchant,string city, DateTime? ngay, int? thang, int? namthang, int? quy, int? namquy, int? nam)
         {
             List<Sp_Revenue_Option_Result> result = new List<Sp_Revenue_Option_Result>();
-            result = context.Sp_Revenue_Option(agent, merchant, loaiMerchant, ngay, thang, namthang, quy, namquy, nam).ToList();
+            result = context.Sp_Revenue_Option(agent, merchant, loaiMerchant, city, ngay, thang, namthang, quy, namquy, nam).ToList();
             return result;
         }
     }

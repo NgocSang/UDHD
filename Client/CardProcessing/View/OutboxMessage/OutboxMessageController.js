@@ -75,11 +75,16 @@
             $scope.selectedMessages = []
         }
         $scope.DeleteReadingMessage= function(message) {
+            debugger
             $http({
                 method: "POST",
-                url: "http://localhost:50259/api/MessageOutbox/DeleteMessage", 
+                url: "http://localhost:50259/api/MessageOutbox/DeleteMessage",
+                headers: {
+                        
+                        Authorization: Myfactory.user.token
+                    },
                 params: {
-                    idMessage: message.ID.toString()
+                    idMessage: message.emailId.toString()
                 }
             }).then(function successCallBack(response) {
                 if (response.data > 0) {
@@ -92,10 +97,12 @@
             })
         }
         $scope.DeleteMessage= function() {
+            debugger
             selectedMessagesID = []
             angular.forEach($scope.selectedMessages, function(message){
-                selectedMessagesID.push(message.ID)
+                selectedMessagesID.push(message.emailId)
             })
+            debugger
             
             $http({
                 method: "POST",

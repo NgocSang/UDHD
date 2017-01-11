@@ -21,7 +21,7 @@ namespace Server.Controllers
 
         {
             List<Sp_SearchMerchant_Result> result = new List<Sp_SearchMerchant_Result>();
-            result = context.Sp_SearchMerchant(merchant_number, merchant_address, merchant_type, agent_manager, merchant_name).ToList();
+            result = context.Sp_SearchMerchant(merchant_number, merchant_name, merchant_type, agent_manager, merchant_address).ToList();
             return result;
         }
         [Authorize(Roles = "1")]

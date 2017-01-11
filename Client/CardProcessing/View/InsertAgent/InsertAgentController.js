@@ -25,7 +25,7 @@
         
          $scope.reload_click = function(){
                 var register = {
-                UserName: $scope.merchant.merchantNumber,
+                UserName: $scope.agent.agentNumber,
                 Role : '2',
                 Password: $scope.register.Password,
                 ConfirmPassword: $scope.register.ConfirmPassword

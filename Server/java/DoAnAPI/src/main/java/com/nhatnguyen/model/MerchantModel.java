@@ -69,7 +69,11 @@ public class MerchantModel {
 			preparedStatement.setString(15, merchant.getMerchantEmail2());
 			preparedStatement.setString(16, merchant.getMerchantEmail3());
 			preparedStatement.setString(17, merchant.getMerchantBankAccount());
-			preparedStatement.setDate(18, cvtIntoSqlDate(merchant.getMerchantLastDayActivate()));
+			if (merchant.getMerchantLastDayActivate()==null){
+				preparedStatement.setDate(18, null);
+			} else {
+				preparedStatement.setDate(18, cvtIntoSqlDate(merchant.getMerchantLastDayActivate()));
+			}
 			result = preparedStatement.executeUpdate();
 			session.getTransaction().commit();
 			session.close();

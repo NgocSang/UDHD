@@ -37,19 +37,19 @@
                             <div class="row">
                                 <div style=" height:95px;">
                                     <div class="col-sm-4 form-group" ng-class="{'has-error' : insertMerchantForm.Telephone1.$invalid && insertMerchantForm.Telephone1.$dirty || insertMerchantForm.Telephone1.$error.pattern}">
-                                        <label>Telephone 1*</label>
+                                        <label>Số điện thoại 1*</label>
                                         <input type="text" name="Telephone1" class="form-control" maxlength="11" ng-model="merchant.telephone1" ng-pattern="/^\d+$/" required>
                                         <span style="color:red" ng-show="insertMerchantForm.Telephone1.$invalid && insertMerchantForm.Telephone1.$dirty || insertMerchantForm.Telephone1.$error.pattern">Mục này không được để trống hoặc số điện thoại bạn nhập không hợp lệ</span>
                                     </div>	
                                     
                                     <div class="col-sm-4 form-group" ng-class="{'has-error' : insertMerchantForm.Telephone2.$error.pattern}">
-                                        <label>Telephone 2</label>
+                                        <label>Số điện thoại 2</label>
                                         <input type="text" name="Telephone2" class="form-control" maxlength="11" ng-model="merchant.telephone2" ng-pattern="/^\d+$/">
                                         <span style="color:red" ng-show="insertMerchantForm.Telephone2.$error.pattern">Số điện thoại bạn nhập không hợp lệ</span>
                                     </div>	
                                     
                                     <div class="col-sm-4 form-group" ng-class="{'has-error' : insertMerchantForm.Telephone3.$error.pattern}">
-                                        <label>Telephone 3</label>
+                                        <label>Số điện thoại 3</label>
                                         <input type="text" name="Telephone3"class="form-control" maxlength="11" ng-model="merchant.telephone3" ng-pattern="/^\d+$/">
                                        <span style="color:red" ng-show="insertMerchantForm.Telephone3.$error.pattern">Số điện thoại bạn nhập không hợp lệ</span>
                                     </div>	   
@@ -59,12 +59,12 @@
                             <div class="row">
                                 <div style=" height:95px;">
                                     <div class="col-sm-6 form-group" ng-class="{'has-error' : insertMerchantForm.City.$invalid && insertMerchantForm.City.$dirty}">
-                                        <label>City*</label>
+                                        <label>Thành phố*</label>
                                         <input type="text" name="City" placeholder="Enter City Here.." class="form-control" maxlength="30" ng-model="merchant.city" required>
                                         <span style="color:red" ng-show="insertMerchantForm.City.$dirty && insertMerchantForm.City.$invalid">Mục này không được để trống</span>
                                     </div>		
                                     <div class="col-sm-6 form-group" ng-class="{'has-error' : insertMerchantForm.District.$invalid && insertMerchantForm.District.$dirty}">
-                                        <label>District*</label>
+                                        <label>Quận*</label>
                                         <input type="text" name="District" placeholder="Enter District Here.." class="form-control" maxlength="30" ng-model="merchant.district" required>
                                         <span style="color:red" ng-show="insertMerchantForm.District.$dirty && insertMerchantForm.District.$invalid">Mục này không được để trống</span>
                                     </div>
@@ -74,13 +74,13 @@
                         <div class="row">
                             <div style=" height:95px;">
                                 <div class="col-sm-6 form-group" ng-class="{'has-error' : insertMerchantForm.Street.$invalid && insertMerchantForm.Street.$dirty}">
-                                    <label>Street*</label>
+                                    <label>Tên đường*</label>
                                     <input type="text" name="Street" placeholder="Enter Street Here.." class="form-control" maxlength="30" ng-model="merchant.street" required>
                                     <span style="color:red" ng-show="insertMerchantForm.Street.$dirty && insertMerchantForm.Street.$invalid">Mục này không được để trống</span>
                                 </div>	
 
                                 <div class="col-sm-6 form-group" ng-class="{'has-error' : insertMerchantForm.StreetNumber.$invalid && insertMerchantForm.StreetNumber.$dirty || insertMerchantForm.StreetNumber.$error.pattern}">
-                                    <label>Street Number*</label>
+                                    <label>Số nhà*</label>
                                     <input type="text" name="StreetNumber" placeholder="Enter Street Number Here.." class="form-control" maxlength="30" ng-model="merchant.streetNumber" ng-pattern="/^\d+$/" required>
                                     <span style="color:red" ng-show="insertMerchantForm.StreetNumber.$invalid && insertMerchantForm.StreetNumber.$dirty || insertMerchantForm.StreetNumber.$error.pattern">Mục này không được để trống hoặc dữ liệu không phải số</span>
                                 </div>
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <div class="col-sm-6 form-group" ng-class="{'has-error' : insertMerchantForm.Owner.$invalid && insertMerchantForm.Owner.$dirty}">
-                                    <label>Owner*</label>
+                                    <label>Tên người đại diện*</label>
                                     <input type="text" name="Owner"  placeholder="Enter Website Name Here.." class="form-control" maxlength="30" ng-model="merchant.owner" required>
                                     <span style="color:red" ng-show="insertMerchantForm.Owner.$dirty && insertMerchantForm.Owner.$invalid">Mục này không được để trống</span>
                                 </div>
@@ -140,7 +140,7 @@
                          <div class="row">
                             <div style=" height:95px;">
                                 <div class="col-sm-4 form-group" ng-class="{'has-error': checkMaAgent == 1}">
-                                    <label>Manage Agent</label>
+                                    <label>Agent quản lý</label>
                                     <input type="text" name="ManageAgent" placeholder="Enter Manage Agent Here.." class="form-control" maxlength="10" ng-model="merchant.manageAgent" ng-change="ktMaAgent()" autofocus>
                                     <span style="color:red" ng-if="checkMaAgent == 1">Mã AGENT này không tồn tại</span>
                                 </div>
@@ -167,11 +167,11 @@
                             
                         <div class="row">
                                 <div class="col-sm-6 form-group">
-                                    <label>Approve Date</label>
+                                    <label>Ngày chấp nhận</label>
                                     <input type="date" name="ApproveDate" ng-model="approveDate" class="form-control" disabled>
     
                                     <br>
-                                    <label>First Date Active</label>
+                                    <label>Ngày đầu tiên hoạt động</label>
                                     <input type="date" name="FirstDateActive" ng-model="merchant.firstDateActive" class="form-control"  ng-change="change()" required>
                                 </div>
                               <br><br><br>

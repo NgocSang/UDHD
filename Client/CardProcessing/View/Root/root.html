@@ -71,16 +71,11 @@
                             </ul>
                         </li>
                         <li ng-if="user.role == 1">
-                            <a href="#"><i class="fa fa-search fa-fw"></i> Thêm thành viên<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a ui-sref="InsertMerchant">Thêm mới Merchant</a>
-                                </li>
-                                <li ng-if="user.role != 3">
-                                    <a ui-sref="InsertAgent" >Thêm mới Agent</a>
-                                </li>
-                            </ul>
+                            <a ui-sref="SearchRetrival"><i class="fa fa-search fa-fw"></i>Tìm kiếm retrival</a>
+
+                            <!-- /.nav-second-level -->
                         </li>
+                        
                         <li>
                             <a href="#" ><i class="fa fa-envelope fa-fw"></i>Hộp thư <span style="color:red; font-weight:bold;">({{noUnreadMessage}})</span><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -104,10 +99,17 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li ng-if="user.role == 1">
-                            <a ui-sref="SearchRetrival"><i class="fa fa-wrench fa-fw"></i>Tìm kiếm retrival</a>
-
-                            <!-- /.nav-second-level -->
+                            <a href="#"><i class="fa fa-search fa-fw"></i> Thêm thành viên<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a ui-sref="InsertMerchant">Thêm mới Merchant</a>
+                                </li>
+                                <li ng-if="user.role != 3">
+                                    <a ui-sref="InsertAgent" >Thêm mới Agent</a>
+                                </li>
+                            </ul>
                         </li>
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -192,7 +192,7 @@
         }
         
         $scope.searchRevenueMerchant = function (){
-
+            $scope.loading1 = true
             ConvertNull($scope.Agent);
             $http({
                 method: "GET",
@@ -229,11 +229,16 @@
                     storage.set('User', Myfactory.user);
                     $location.url("/home");
                 }
+                
+                $scope.loading1 = false
 
             }, function errorCallback(response) {
                 var a = response;
+                
+                $scope.loading1 = false
             });
             ///////
+            $scope.loading1 = true
             $http({
                 method: "GET",
                 headers: {
@@ -262,13 +267,15 @@
                     //$scope.checkClickbtn = false;
                      $scope.deleteClass();
                 }
-                
+                $scope.loading1 = false
 
             }, function errorCallback(response) {
                 var a = response;
+                $scope.loading1 = false
             });
             ///////
             debugger;
+        $scope.loading2 = true
         $http.get('http://localhost:50259/api/Chart/getRevenue', {
             headers: {
                         
@@ -395,8 +402,10 @@
                 }
             }
         });
+        $scope.loading2 = false;
     }).error(() => {
         $scope.msg = "Error when processing"
+        $scope.loading2 = false
     });
             
             
@@ -457,6 +466,7 @@
             var data1 = canvat1[0].toDataURL();
             var canvat2 = $("#CardChart");
             var data2 = canvat2[0].toDataURL();
+            
             
                 var docDefinition = {
             

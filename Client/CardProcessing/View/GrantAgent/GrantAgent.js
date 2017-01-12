@@ -90,6 +90,7 @@
         };
         $scope.SearchAgent = function() {
             ConvertNull($scope.agent);
+            $scope.loading = true
             $http({
                 method: "GET",
                 url: "http://localhost:50259/Api/Agent/SearchAgent",
@@ -114,9 +115,11 @@
                     storage.set('User', Myfactory.user);
                     $location.url("/home")
                 }
+                $scope.loading = false
             }, function errorCallback(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.logItem = function (item) {

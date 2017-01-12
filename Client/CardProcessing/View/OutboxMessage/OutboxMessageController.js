@@ -45,7 +45,7 @@
         function ShowOutbox() {
             debugger;
             $scope.isReadMessage = false
-
+            $scope.loading = true
             $http({
                 method: "GET",
                 url: "http://localhost:8080/DoAnAPI/rest/api/outboxMessage/showOutbox",
@@ -63,9 +63,11 @@
                     storage.set('User', Myfactory.user)
                     $location.url("/home")                   
                 }
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.message = {}
@@ -75,7 +77,7 @@
             $scope.selectedMessages = []
         }
         $scope.DeleteReadingMessage= function(message) {
-            debugger
+            $scope.loading = true
             $http({
                 method: "POST",
                 url: "http://localhost:50259/api/MessageOutbox/DeleteMessage",
@@ -91,18 +93,21 @@
                     $scope.messages.data.splice($scope.messages.data.indexOf(message), 1)
                     $scope.isReadMessage = false
                 }
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.DeleteMessage= function() {
-            debugger
+            
             selectedMessagesID = []
             angular.forEach($scope.selectedMessages, function(message){
                 selectedMessagesID.push(message.emailId)
             })
-            debugger
+            
+            $scope.loading = true
             
             $http({
                 method: "POST",
@@ -122,9 +127,11 @@
                         $scope.selectedMessages = []
                     })
                 }
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.back = function (){

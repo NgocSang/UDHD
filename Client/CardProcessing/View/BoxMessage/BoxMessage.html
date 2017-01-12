@@ -36,6 +36,7 @@
       </div>
     
     <div class="row" ng-if='!isReadMessage'>
+        <div class="loader" ng-show="loading"></div>
         <div style="height:700px">
             <md-table-container>
                 <table
@@ -84,6 +85,7 @@
     </div>
     
     <div class="row" ng-if='isReadMessage'>
+        <div class="loader" ng-show="loading"></div>
         <div class="col-lg-12">
             <h2>Người gửi: {{message.SENDING_ACCOUNT}}</h2>
             <p>Người nhận: {{message.RECEIVED_ACCOUNT}}</p>

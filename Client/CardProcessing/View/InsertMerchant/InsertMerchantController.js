@@ -24,6 +24,7 @@
         }
         
         $scope.reload_click = function(){
+            $scope.loading = true
             var register = {
                 UserName: $scope.merchant.merchantNumber,
                 Email: $scope.merchant.email1,
@@ -46,16 +47,18 @@
                     {
                         $scope.checkAccount = 1;
                     }
-                    
+                $scope.loading = false
                 
             }, function errorCallback(response) {
                 $scope.checkAccount = 1;
                 var a = response;
+                $scope.loading = false
             });
                 
         }
        
         $scope.insertMerchant_click = function () { 
+            $scope.loading = true
             var merchant = {
                 merchantNumber: $scope.merchant.merchantNumber,
                 merchantName: $scope.merchant.merchantName,
@@ -98,11 +101,12 @@
                     {
                         $scope.checkInsertMerchant = 1;
                     }
-                    
+                $scope.loading = false
                 
             }, function errorCallback(response) {
                 
                 var a = response;
+                $scope.loading = false
             });
         };
     }

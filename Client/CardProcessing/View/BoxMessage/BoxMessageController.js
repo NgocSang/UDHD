@@ -47,6 +47,7 @@
         ShowInbox()
         function ShowInbox() {
             $scope.isReadMessage = false
+            $scope.loading = true
             $http({
                 method: "GET",
                 headers: {
@@ -68,10 +69,11 @@
                     storage.set('User', Myfactory.user)
                     $location.url("/home")                   
                 }
-                
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.message = {}
@@ -102,7 +104,8 @@
                     console.log(response.status)
                 })
         }
-        $scope.DeleteReadingMessage= function(message) {
+        $scope.DeleteReadingMessage = function(message) {
+            $scope.loading = true;
             $http({
                 method: "POST",
                 headers: {
@@ -118,12 +121,15 @@
                     $scope.messages.data.splice($scope.messages.data.indexOf(message), 1)
                     $scope.isReadMessage = false
                 }
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
-        $scope.DeleteMessage= function() {
+        $scope.DeleteMessage = function() {
+            $scope.loading = true
             selectedMessagesID = []
             angular.forEach($scope.selectedMessages.data, function(message){
                 selectedMessagesID.push(message.ID)
@@ -151,10 +157,12 @@
                     $scope.$emit('ReadDeleteMessage', $scope.selectedMessages.noUnreadMessage)
                     $scope.selectedMessages.data=[]
                     $scope.selectedMessages.noUnreadMessage=0
+                    $scope.loading = false
                 }
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         function CountUnreadMessage() {

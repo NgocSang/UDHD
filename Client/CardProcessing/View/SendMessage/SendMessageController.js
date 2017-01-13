@@ -6,7 +6,7 @@
         $scope.SendMessage = function() {
             $scope.isErr = false
             $scope.isSuc = false
-            
+            $scope.loading = true
             $http({
                 
                 method: "PUT",
@@ -27,9 +27,11 @@
                     $scope.result = "Tin nhắn không thể gửi."
                     $scope.isErr = true
                 }
+                $scope.loading = false
             }, function errorCallBack(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
     }

@@ -9,6 +9,7 @@
         $scope.Merchant = {}
         $scope.role = Myfactory.user.role;
         function init(){
+            $scope.loading = true
             if($scope.role == '2'){
                     $http({
                     method: "GET",
@@ -30,9 +31,11 @@
                         $scope.Agent = objet.data[0];
                         $scope.Agent.AGENT_APPR0VE_DATE =  moment($scope.Agent.AGENT_APPR0VE_DATE).format('DD/MM/YYYY');
                     }
+                    $scope.loading = false
                 }, function errorCallback(response) {
                     
                     var a = response;
+                    $scope.loading = false
                 });
             }
             else{
@@ -57,16 +60,19 @@
                     $scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE = moment($scope.Merchant.MERCHANT_FIRST_DATE_ACTIVATE).format('DD/MM/YYYY');
                     $scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE = moment($scope.Merchant.MERCHANT_LAST_DAY_ACTIVATE).format('DD/MM/YYYY');
                 }
+                $scope.loading = false
             }, function errorCallback(response) {
   
                 var a = response;
+                $scope.loading = false
             });
             }
             
         }
         init();
         
-        $scope.EditProfile_click = function () { 
+        $scope.EditProfile_click = function () {
+            $scope.loading = true
             if($scope.role == '3'){
                 var merchant = {
                     merchantNumber: $scope.Merchant.MERCHANT_NUMBER,
@@ -111,10 +117,12 @@
                         {
                             $scope.checkEditProfile = 1;
                         }
+                    $scope.loading = false
 
                 }, function errorCallback(response) {
                     console.log("error");
                     var a = response;
+                    $scope.loading = false
                 });
             }
             else{
@@ -155,10 +163,12 @@
                         {
                             $scope.checkEditProfile = 1;
                         }
+                    $scope.loading = false
 
                 }, function errorCallback(response) {
                     console.log("error");
                     var a = response;
+                    $scope.loading = false
                 });
         };
         }

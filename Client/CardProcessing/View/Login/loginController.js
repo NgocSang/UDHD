@@ -20,6 +20,8 @@
         $scope.hideforget = true;
         $scope.login_click = function () {
             
+            $scope.loading = true;
+            
             var user = {
                 username: $scope.user.username,
                 password: $scope.user.password
@@ -30,6 +32,7 @@
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: $.param(user)
             }).then(function sucess(objet) {
+                $scope.loading = false;
                 if (objet.data == null) {
                     $scope.checkUser = true;
                 }
@@ -42,11 +45,13 @@
                 }
 
             }, function errorCallback(response) {
+                $scope.loading = false;
                 $scope.checkUser = true;
                 var a = response;
             });
         };
         $scope.forget_click = function(){
+            $scope.loading = true;
             $http({
                 method: "GET",
                 url: "http://localhost:50259/api/Account/ForgetPassword",
@@ -64,8 +69,10 @@
                     else
                         $scope.checkForget1 = true;
                 }
+                $scope.loading = false;
 
             }, function errorCallback(response) {
+                $scope.loading = false;
                 $scope.checkUser = true;
                 var a = response;
             });

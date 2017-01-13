@@ -131,7 +131,7 @@
         {
             $scope.firstName = '';
              
-            
+            $scope.loading = true
             ConvertNull($scope.merchant);
             
             $http({
@@ -156,10 +156,12 @@
                     $scope.merchants.count = objet.data.length;
                     $scope.deleteClass();
                 }
+                $scope.loading = false;
             }, function errorCallback(response) {
                 
                 var a = response;
                 console.log(response);
+                $scope.loading = false;
             });
         }
     }

@@ -17,6 +17,7 @@
                                     <input class="form-control" name="passworld" placeholder="Mật khẩu"  ng-model="user.password" type="password" required>
                                     <p ng-show="userForm.passworld.$invalid && !userForm.passworld.$pristine" class="help-block">Bạn phải nhập password .</p>
                                 </div>
+                                <p class="loader text-center" ng-show="loading"></p>
                                 <div ng-show="checkUser" class="has-error">
                                     <p style="color:red"> Mật khẩu hoặc tên đăng nhập sai.</p>
                                 </div>
@@ -42,6 +43,7 @@
                                     <input class="form-control" name="username" placeholder="UserName"   ng-model="forget.username" autofocus required>
                                     <p ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block">Bạn phải nhập tên đăng nhập.</p>
                                 </div>
+                                <div class="loader" ng-if="loading"></div>
                                 <div ng-show="checkForget" class="has-error" style="text-align:center">
                                     <p style="color:red"> tên đăng nhập không tồn tại.</p>
                                 </div>
@@ -54,6 +56,7 @@
 
                                         <a ng-click="changeLogin()";>Quay lại trang login ?</a>
                                 </div>
+                                
                             </fieldset>
                             
                         </form>

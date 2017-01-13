@@ -82,6 +82,7 @@
             ConvertNull($scope.agent)
             ConvertDate()
             debugger
+            $scope.loading = true
             $http({
                 method: "GET",
    
@@ -101,12 +102,13 @@
                     $scope.agents.data = response.data;
                     $scope.agents.size = response.data.length;
                     //$scope.deleteClass();
-                    
+                    $scope.loading = false                    
                 }
                 
             }, function errorCallback(response) {
                 console.log(response.data)
                 console.log(response.status)
+                $scope.loading = false
             })
         }
         $scope.ActDeactAgent = function(agent) {

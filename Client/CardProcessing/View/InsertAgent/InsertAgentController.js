@@ -24,6 +24,7 @@
         }     
         
          $scope.reload_click = function(){
+             $scope.loading = true
                 var register = {
                 UserName: $scope.agent.agentNumber,
                 Role : '2',
@@ -46,15 +47,17 @@
                     {
                         $scope.checkAccount = 1;
                     }
-                    
+                $scope.loading = false
                 
             }, function errorCallback(response) {
                 $scope.checkAccount = 1;
                 var a = response;
+                $scope.loading = false
             });
         }
        
         $scope.insertAgent_click = function () { 
+            $scope.loading = true
             var agent = {
                 AGENT_NUMBER: $scope.agent.agentNumber,
                 AGENT_NAME: $scope.agent.agentName,
@@ -96,11 +99,12 @@
                     {
                         $scope.checkInsertAgent = 1;
                     }
-                    
+                $scope.loading = false
                 
             }, function errorCallback(response) {
                  
                 var a = response;
+                $scope.loading = false
             });
         };
     }

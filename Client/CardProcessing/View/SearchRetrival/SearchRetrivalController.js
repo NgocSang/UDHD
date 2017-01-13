@@ -32,7 +32,7 @@
                     page: 1
                 };
         $scope.searchRetrival = function() {
-            
+            $scope.loading = true;
             var retrival = {
                 retrivalId: $scope.retrivalId,
                 retrivalDate: new Date($scope.retrivalDate).getTime()
@@ -58,10 +58,12 @@
                     console.log(objet.data);
                     $scope.retrivals.data = objet.data;
                     $scope.retrivals.count = objet.data.length;
+                    $scope.loading = false
                 }
             }, function errorCallback(response) {
                 
                 var a = response;
+                $scope.loading = false
             });
         }
     }

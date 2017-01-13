@@ -12,6 +12,7 @@
                     RETURN_AMOUNT: null
                 }
             ];
+        $scope.checkdate;
         var user = Myfactory.user;
         var report = {};
         $scope.check = 'date';
@@ -195,7 +196,7 @@
                     fila.push( peaje.MERCHANT_NUMBER );
                     fila.push( peaje.MERCHANT_NAME  );
                     if($scope.Agent.firstDate != '' && $scope.Agent.firstDate != null)
-                        fila.push($scope.Agent.firstDate);
+                        fila.push($scope.Agent.firstDate.getDate() + "/" + $scope.Agent.firstDate.getMonth() + 1 + "/" + $scope.Agent.firstDate.getFullYear());
                     if($scope.Agent.MothYear != '' && $scope.Agent.MothYear != null)
                         fila.push($scope.Agent.MothYear + '/' + $scope.Agent.YearOfMonth);
                     if($scope.Agent.QuaterYear != '' && $scope.Agent.QuaterYear != null)
@@ -280,6 +281,8 @@
                     $scope.body = [];
                     $scope.array = [];
                     SumTotal ($scope.Agents.data, $scope.array);
+                    if($scope.Agent.firstDate != '' || $scope.Agent.firstDate != null)
+                        $scope.array = $scope.Agents.data;
                     convert($scope.body, $scope.array);
                     $scope.checkClickbtn = false;
                      $scope.deleteClass();

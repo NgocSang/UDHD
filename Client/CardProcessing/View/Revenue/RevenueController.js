@@ -4,6 +4,14 @@
     function RevenueAgent($scope, $http, $location, Myfactory, storage)
     {
         $scope.body = [];
+        $scope.array = [
+                {
+                    MERCHANT_NUMBER: null,
+                    MERCHANT_NAME: null,
+                    SALES_AMOUNT: null,
+                    RETURN_AMOUNT: null
+                }
+            ];
         var user = Myfactory.user;
         var report = {};
         $scope.check = 'date';
@@ -33,7 +41,7 @@
             Role: user.role
         }
         $scope.deleteClass = function(){
-            debugger;
+            
             
             if($('#collapse12').css('display') == 'none'){
                 $('#collapse12').show('slow');
@@ -46,7 +54,7 @@
         //$scope.Agent.firstDate =  moment(new Date()).format('DD/MM/YYYY');
         $scope.limitOptions = [10, 10, 15];
         $scope.checkKT = function(){
-            debugger;
+            
             switch($scope.check){
                 case 'date':
                     if($scope.Agent.firstDate == "" )
@@ -168,7 +176,7 @@
             }
         
         function convert(body, data){
-
+            debugger;
             //body = [];
             var headertable = new Array('Merchant number', 'Merchant name',  'REPORT DATE', 'SALES AMOUNT',  'RETURN AMOUNT');
             body.push(headertable);
@@ -180,17 +188,67 @@
                 if (data.hasOwnProperty(key))
                 {
                     var peaje = data[key];
-                    var fila = new Array();
+                    if(peaje.MERCHANT_NUMBER != null)
+                    {
+                         var fila = new Array();
+                    debugger;
                     fila.push( peaje.MERCHANT_NUMBER );
                     fila.push( peaje.MERCHANT_NAME  );
-                    fila.push( moment(peaje.REPORT_DATE).format('DD/MM/YYYY'));
+                    if($scope.Agent.firstDate != '' && $scope.Agent.firstDate != null)
+                        fila.push($scope.Agent.firstDate);
+                    if($scope.Agent.MothYear != '' && $scope.Agent.MothYear != null)
+                        fila.push($scope.Agent.MothYear + '/' + $scope.Agent.YearOfMonth);
+                    if($scope.Agent.QuaterYear != '' && $scope.Agent.QuaterYear != null)
+                        fila.push($scope.Agent.QuaterYear + '/' + $scope.Agent.YearOfSeason);
+                    if($scope.Agent.Year != '' && $scope.Agent.Year != null)
+                        fila.push($scope.Agent.Year);
                     fila.push(  peaje.SALES_AMOUNT.toString());
                     fila.push( peaje.RETURN_AMOUNT.toString()  );
                     body.push(fila);
+                    }
+                   
                 }
             }
         }
+        function SumTotal (data, array)
+        {
+            
         
+            var check = []
+            
+            for(var i = 0 ; i < data.length - 1; i++)
+            {
+                var item ={
+                        MERCHANT_NUMBER: null,
+                        MERCHANT_NAME: null,
+                        SALES_AMOUNT: 0,
+                        RETURN_AMOUNT: 0
+                    }
+                
+                for(var j = i + 1 ; j< data.length ; j ++)
+                    if(data[i].MERCHANT_NUMBER == data[j].MERCHANT_NUMBER && check.indexOf(data[i].MERCHANT_NUMBER) === -1)
+                    {
+                        
+                        
+                        if(check.indexOf(data[i].MERCHANT_NUMBER) === -1)
+                        {
+                            
+                            var MERCHANT_NUMBER = data[i].MERCHANT_NUMBER;
+                            check.push(MERCHANT_NUMBER);
+                        }
+                        item.SALES_AMOUNT = parseInt(data[j].SALES_AMOUNT) + parseInt(item.SALES_AMOUNT);
+                        item.RETURN_AMOUNT = parseInt(data[j].RETURN_AMOUNT) + parseInt(item.RETURN_AMOUNT);
+                        item.MERCHANT_NUMBER = data[j].MERCHANT_NUMBER;
+                        item.MERCHANT_NAME = data[j].MERCHANT_NAME;
+                        
+                    }
+                
+                if(item.MERCHANT_NUMBER != null)
+                    array.push(item); 
+            }
+            debugger;
+            
+        }
         $scope.searchRevenueMerchant = function (){
             $scope.loading1 = true
             ConvertNull($scope.Agent);
@@ -220,7 +278,9 @@
                     $scope.Agents.data = objet.data;
                     $scope.Agents.count = objet.data.length;
                     $scope.body = [];
-                    convert($scope.body, $scope.Agents.data);
+                    $scope.array = [];
+                    SumTotal ($scope.Agents.data, $scope.array);
+                    convert($scope.body, $scope.array);
                     $scope.checkClickbtn = false;
                      $scope.deleteClass();
                 }
@@ -273,8 +333,7 @@
                 var a = response;
                 $scope.loading1 = false
             });
-            ///////
-            debugger;
+            
         $scope.loading2 = true
         $http.get('http://localhost:50259/api/Chart/getRevenue', {
             headers: {
@@ -295,6 +354,7 @@
             role: $scope.Agent.Role
         }
     }).success(data=> {
+            
         $("#RevenueChart").remove();
         $("#revenueChartSection").append('<canvas id="RevenueChart" ></canvas>');
         var ctx = document.getElementById("RevenueChart");

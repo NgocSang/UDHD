@@ -29,6 +29,7 @@
                 UserName: $scope.merchant.merchantNumber,
                 Email: $scope.merchant.email1,
                 Role : '3',
+                Phone: $scope.merchant.telephone1,
                 Password: $scope.register.Password,
                 ConfirmPassword: $scope.register.ConfirmPassword
             };

@@ -24,6 +24,7 @@ using System.Data.Entity;
 using System.Net.Mail;
 using System.Configuration;
 using Twilio;
+using System.Text;
 
 namespace API.Controllers
 {
@@ -32,7 +33,7 @@ namespace API.Controllers
         public string role { set; get; }
         public string username { set; get; }
     }
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -367,7 +368,8 @@ namespace API.Controllers
                 mailMessage.Body = "Tên đăng nhập là: " + model.UserName + "\n" + "Mật khẩu là:" + model.Password;
                 SmtpClient client = new SmtpClient();
                 client.Send(mailMessage);
-                SendSMS(model.Phone, "Tạo tài khoản thành công vui lòng kiểm tra email");
+                model.Phone = "+84" + model.Phone.Substring(1);
+                SendMessage(model.Phone, "Tạo tài khoản thành công vui lòng kiểm tra email");
                 response = Request.CreateResponse(HttpStatusCode.OK, new { success = true });
             }
             else
@@ -407,7 +409,9 @@ namespace API.Controllers
             mailMessag.Body = "Mật khẩu mới của bạn là: " + temp;
             SmtpClient client = new SmtpClient();
             client.Send(mailMessag);
-            SendSMS(phone, "Bạn mới thay đổi passworld");
+
+            phone = "+84" + phone.Substring(1); 
+            SendMessage(phone, "Bạn mới thay đổi passworld");
             var passwordSalt = CreateSalt();
             account.SALT = passwordSalt;
             account.PASSWORD = EncryptPassword(temp, passwordSalt);

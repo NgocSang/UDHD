@@ -27,6 +27,7 @@
                 var register = {
                 UserName: $scope.agent.agentNumber,
                 Role : '2',
+                Email: $scope.agent.email1,
                 Password: $scope.register.Password,
                 ConfirmPassword: $scope.register.ConfirmPassword
             };

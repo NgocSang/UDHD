@@ -23,6 +23,7 @@ using System.Net;
 using System.Data.Entity;
 using System.Net.Mail;
 using System.Configuration;
+using Twilio;
 
 namespace API.Controllers
 {
@@ -31,7 +32,7 @@ namespace API.Controllers
         public string role { set; get; }
         public string username { set; get; }
     }
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -66,7 +67,38 @@ namespace API.Controllers
             }
             return new string(chars);
         }
+        public void SendSMS(string Phone, string message)
+        {
+            try
+            {
+                string AccountSid = ConfigurationManager.AppSettings.Get("Account_id"); ;
+                string AuthToken = ConfigurationManager.AppSettings.Get("Auth_token"); ;
+                var twilio = new TwilioRestClient(AccountSid, AuthToken);
+                var sms = twilio.SendSmsMessage("+1 203-916-0402", Phone, message, "");
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
+        public bool SendMessage(string phone, string message)
+        {
+            if (!ModelState.IsValid)
+            {
+                return false;
+            }
+            try
+            {
+                
+                SendSMS(phone, message);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
         /// </summary>
         /// <param name="model">Model login chứa các thông tin cần thiết để đăng nhập bao gồm : Email, Password</param>
         /// <returns></returns>
@@ -330,8 +362,12 @@ namespace API.Controllers
                 //Create user and save to database
                 var user = CreateUser(model);
 
-               
-
+               MailMessage mailMessage = new MailMessage(ConfigurationManager.AppSettings.Get("Email"), model.Email);
+                mailMessage.Subject = "Thông tin tài khoản";
+                mailMessage.Body = "Tên đăng nhập là: " + model.UserName + "\n" + "Mật khẩu là:" + model.Password;
+                SmtpClient client = new SmtpClient();
+                client.Send(mailMessage);
+                SendSMS(model.Phone, "Tạo tài khoản thành công vui lòng kiểm tra email");
                 response = Request.CreateResponse(HttpStatusCode.OK, new { success = true });
             }
             else
@@ -348,6 +384,7 @@ namespace API.Controllers
         public bool ForegetPassword(string username)
         {
             string email;
+            string phone;
             ACCOUNT account = db.ACCOUNT.FirstOrDefault(x => x.USERNAME == username);
             if (account == null)
             {
@@ -356,11 +393,13 @@ namespace API.Controllers
             MERCHANT merchant = db.MERCHANT.FirstOrDefault(x => x.MERCHANT_NUMBER == username);
             if(merchant != null) { 
                 email = merchant.MERCHANT_EMAIL1;
+                phone = merchant.MERCHANT_TELEPHONE1;
             }
             else
             {
                 AGENT agent = db.AGENT.FirstOrDefault(x => x.AGENT_NUMBER == username);
                 email = agent.AGENT_EMAIL_1;
+                phone = agent.AGENT_TELEPHONE1;
             }
             string temp = CreatePassword();
             MailMessage mailMessag = new MailMessage(ConfigurationManager.AppSettings.Get("Email"), email);
@@ -368,6 +407,7 @@ namespace API.Controllers
             mailMessag.Body = "Mật khẩu mới của bạn là: " + temp;
             SmtpClient client = new SmtpClient();
             client.Send(mailMessag);
+            SendSMS(phone, "Bạn mới thay đổi passworld");
             var passwordSalt = CreateSalt();
             account.SALT = passwordSalt;
             account.PASSWORD = EncryptPassword(temp, passwordSalt);

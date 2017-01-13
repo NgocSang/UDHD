@@ -32,7 +32,7 @@
         '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider, Myfactory) {
             // $locationProvider.html5Mode(true);
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/login');
 
             $stateProvider
                 .state("/login", {
@@ -84,7 +84,7 @@
                         url: "/SearchMerchant",
                         templateUrl: 'SearchMerchant/SearchMerchant.html',
                         controller: "SearchMerchantController",
-                        login: true        
+                        //login: true        
                 
                     })
                 .state("SearchAgent", {
@@ -92,7 +92,7 @@
                             url: "/SearchAgent",
                             templateUrl: 'SearchAgent/SearchAgent.html',
                             controller: "SearchAgentController",
-                            login: true
+                            //login: true
                             
                         })
                 .state("BoxMessage", {
@@ -124,7 +124,7 @@
                         url: "/InsertAgent",
                         templateUrl: 'InsertAgent/InsertAgent.html',
                         controller: "InsertAgentController",
-                        login: true
+                        //login: true
                         
                     })
                 .state("InsertMerchant", {
@@ -132,7 +132,7 @@
                         url: "/InsertMerchant",
                         templateUrl: 'InsertMerchant/InsertMerchant.html',
                         controller: "InsertMerchantController",
-                        login: true
+                        //login: true
                         
                     })
                 

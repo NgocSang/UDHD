@@ -58,8 +58,7 @@
                 agent.agentDistrict = ""
             if(agent.agentApprovedDate == null)
                 agent.agentApprovedDate = ""
-            if(Myfactory.user.role == '2')
-                data.agentNumber = Myfactory.user.username;
+            agent.agentNumber = Myfactory.user.username;
         }
         
         $scope.loadStuff = function () {
